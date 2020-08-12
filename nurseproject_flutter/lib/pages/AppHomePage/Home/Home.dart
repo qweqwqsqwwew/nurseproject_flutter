@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'provider/counterStore.p.dart';
+import 'provider/homeBannerData.p.dart';
 import 'package:nurseproject_flutter/thirdparty/carousel.dart';
 import 'package:nurseproject_flutter/services/api.dart';
 import 'package:nurseproject_flutter/utils/log_util.dart';
-import 'package:nurseproject_flutter/utils/log_util.dart' show PermUtils, SpUtil;
 
 class Home extends StatefulWidget {
   Home({Key key, this.params}) : super(key: key);
@@ -18,6 +18,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
   CounterStore _counter;
+  homeBannerData _banner;
 
   @override
   void initState() {
@@ -29,6 +30,13 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     try {
       Map resData = await getHomeBannerData();
       LogUtil.d(resData);
+      var imageData = [];
+      if (resData["success"] == 1){
+          resData["data"].forEach((value){
+            imageData.add(value);
+          });
+          _banner.changeBanner(imageData);
+      }
     }catch(e){
       LogUtil.d('---------');
     }
@@ -38,6 +46,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   Widget build(BuildContext context) {
     super.build(context);
     _counter = Provider.of<CounterStore>(context);
+    _banner = Provider.of<homeBannerData>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -104,7 +113,16 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
 // mock 轮播列表
 List carouselList = <Widget>[
   Container(
-      color: Colors.deepOrange, child: Center(child: Text('111'))
+      color: Colors.amberAccent, child: Center(child: Text('222'))
+  ),
+  Container(
+      color: Colors.amberAccent,child: Center(
+    child: Consumer<homeBannerData>(
+      builder: (_, homeBannerData, child) {
+        return Text('${homeBannerData.imageData[0]["title"]}');
+      },
+    ),
+  ),
   ),
   Container(
       color: Colors.amberAccent, child: Center(child: Text('222'))
