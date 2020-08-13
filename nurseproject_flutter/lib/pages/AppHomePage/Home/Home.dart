@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jh_debug/utils/logData_utls.dart';
 import 'package:provider/provider.dart';
 import 'provider/counterStore.p.dart';
-import 'package:nurseproject_flutter/thirdparty/carousel.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:nurseproject_flutter/pages/AppHomePage/Home/home_request/home_request.dart';
 import 'package:nurseproject_flutter/pages/AppHomePage/Home/home_request/home_model.dart';
 import 'package:nurseproject_flutter/utils/log_util.dart';
@@ -21,17 +21,12 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   CounterStore _counter;
   final List<BannerItem> banner_lists = [];
   final List<Widget> bannerWidgetLists = <Widget>[];
-
   @override
   void initState() {
     super.initState();
     HomeBannerRequest.requestHomeBannerAds().then((res){
       setState(() {
         banner_lists.addAll(res);
-        for (BannerItem bannerItem in banner_lists){
-          bannerWidgetLists.add(Container(color: Colors.amberAccent, child: Center(child: Text('${bannerItem.title}'))));
-          LogUtil.d('------${bannerItem}');
-        }
       });
     });
   }
@@ -67,7 +62,14 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              new Carousel(carouselList: bannerWidgetLists.length>0?bannerWidgetLists:carouselList, tagWidth: 414.0),
+              CarouselSlider(
+                options: CarouselOptions(height: 200,autoPlay: true,aspectRatio: 2.0,enlargeCenterPage: true,),
+                items: banner_lists.map((item) => Container(
+                  child: Center(
+                      child: Image.network(item.img, fit: BoxFit.cover, width: MediaQuery.of(context).size.width,height:200)
+                  ),
+                )).toList(),
+              ),
               _button(
                 '点我去test页',
                 onPressed: () {

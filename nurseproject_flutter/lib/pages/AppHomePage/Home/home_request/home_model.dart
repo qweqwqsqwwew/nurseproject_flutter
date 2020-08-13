@@ -1,6 +1,6 @@
 
 class BannerItem {
-  String id;
+  int id;
   String title;
   String link;
   String desc;
@@ -18,7 +18,7 @@ class BannerItem {
 
   @override
   String toString(){
-    return 'BannerItem{id:$id,title:$title,link:$link,desc:$desc,type:$type,img:$img}';
+    return 'BannerItem{title:$title,link:$link,desc:$desc,type:$type,img:$img}';
   }
 }
 

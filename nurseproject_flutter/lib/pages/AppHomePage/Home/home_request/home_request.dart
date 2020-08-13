@@ -21,7 +21,7 @@ class HomeBannerRequest {
   static Future<List<BannerItem>> requestHomeBannerAds() async {
     Map resData = await getHomeBannerData();
     LogUtil.d(resData);
-    final subjects = resData["data"];
+    final subjects = resData['data'];
      List<BannerItem> imageData = [];
      for (var sub in subjects){
        imageData.add(BannerItem.fromMap(sub));

@@ -28,5 +28,5 @@ Future<Map> getHomeBannerData() async {
     data: {}, // 传递参数
     options: Options(method: 'GET'),
   );
-  return resData['data'] ?? {};
+  return resData ?? {};
 }
