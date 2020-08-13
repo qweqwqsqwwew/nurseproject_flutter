@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:jh_debug/utils/logData_utls.dart';
 import 'package:provider/provider.dart';
 import 'provider/counterStore.p.dart';
-import 'provider/homeBannerData.p.dart';
 import 'package:nurseproject_flutter/thirdparty/carousel.dart';
-import 'package:nurseproject_flutter/services/api.dart';
+import 'package:nurseproject_flutter/pages/AppHomePage/Home/home_request/home_request.dart';
+import 'package:nurseproject_flutter/pages/AppHomePage/Home/home_request/home_model.dart';
 import 'package:nurseproject_flutter/utils/log_util.dart';
 
 class Home extends StatefulWidget {
@@ -18,35 +19,28 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
   CounterStore _counter;
-  homeBannerData _banner;
+  final List<BannerItem> banner_lists = [];
+  final List<Widget> bannerWidgetLists = <Widget>[];
 
   @override
   void initState() {
     super.initState();
-    getBannerData();
-  }
-
-  void getBannerData() async{
-    try {
-      Map resData = await getHomeBannerData();
-      LogUtil.d(resData);
-      var imageData = [];
-      if (resData["success"] == 1){
-          resData["data"].forEach((value){
-            imageData.add(value);
-          });
-          _banner.changeBanner(imageData);
-      }
-    }catch(e){
-      LogUtil.d('---------');
-    }
+    HomeBannerRequest.requestHomeBannerAds().then((res){
+      setState(() {
+        banner_lists.addAll(res);
+        for (BannerItem bannerItem in banner_lists){
+          bannerWidgetLists.add(Container(color: Colors.amberAccent, child: Center(child: Text('${bannerItem.title}'))));
+          LogUtil.d('------${bannerItem}');
+        }
+      });
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    LogUtil.d("------a---------------");
     _counter = Provider.of<CounterStore>(context);
-    _banner = Provider.of<homeBannerData>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -66,13 +60,14 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   }
 
   Widget contextWidget() {
+
     return ListView(
       children: List.generate(1, (index) {
         return Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              new Carousel(carouselList: carouselList, tagWidth: 414.0),
+              new Carousel(carouselList: bannerWidgetLists.length>0?bannerWidgetLists:carouselList, tagWidth: 414.0),
               _button(
                 '点我去test页',
                 onPressed: () {
@@ -113,21 +108,10 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
 // mock 轮播列表
 List carouselList = <Widget>[
   Container(
-      color: Colors.amberAccent, child: Center(child: Text('222'))
+      color: Colors.amberAccent, child: Center(child: Text("111"))
   ),
-  Container(
-      color: Colors.amberAccent,child: Center(
-    child: Consumer<homeBannerData>(
-      builder: (_, homeBannerData, child) {
-        return Text('${homeBannerData.imageData[0]["title"]}');
-      },
-    ),
-  ),
-  ),
+
   Container(
       color: Colors.amberAccent, child: Center(child: Text('222'))
   ),
-  Container(
-      color: Colors.pink, child: Center(child: Text('333'))
-  )
 ];
