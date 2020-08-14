@@ -6,6 +6,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:nurseproject_flutter/pages/AppHomePage/Home/home_request/home_request.dart';
 import 'package:nurseproject_flutter/pages/AppHomePage/Home/home_request/home_model.dart';
 import 'package:nurseproject_flutter/utils/log_util.dart';
+import 'package:nurseproject_flutter/pages/AppHomePage/Home/HomeComponents/home_top_service_widget.dart';
 
 class Home extends StatefulWidget {
   Home({Key key, this.params}) : super(key: key);
@@ -62,13 +63,30 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              CarouselSlider(
-                options: CarouselOptions(height: 200,autoPlay: true,aspectRatio: 2.0,enlargeCenterPage: true,),
-                items: banner_lists.map((item) => Container(
-                  child: Center(
-                      child: Image.network(item.img, fit: BoxFit.cover, width: MediaQuery.of(context).size.width,height:200)
-                  ),
-                )).toList(),
+              Container(
+                padding: const EdgeInsets.only(top: 15),
+                child: CarouselSlider(
+                  options: CarouselOptions(height: 170,autoPlay: true,aspectRatio: 2.0,enlargeCenterPage: true,),
+                  items: banner_lists.map((item) => Container(
+                    child: Center(
+//                      child: Image.network(item.img, fit: BoxFit.fill, width: MediaQuery.of(context).size.width,height:200)
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: DecorationImage(
+                                image: NetworkImage(item.img),
+                                fit: BoxFit.cover
+                            )
+                        ),
+                      ),
+                    ),
+                  )).toList(),
+                ),
+              ),
+              Container(
+                height: 150,
+                child: home_top_service_widget(),
+
               ),
               _button(
                 '点我去test页',
