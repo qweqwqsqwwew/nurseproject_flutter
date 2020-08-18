@@ -22,6 +22,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   CounterStore _counter;
   final List<BannerItem> banner_lists = [];
   final List<HomeItem> home_items_list = [];
+  final List<HomeItem> home_set_list = [];
   @override
   void initState() {
     super.initState();
@@ -32,6 +33,11 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     });
     HomeItemsRequest.requestHomeItemsData().then((res){
       setState(() {
+        for (HomeItem item in res){
+          if (item.is_set == '1'){
+            home_set_list.add(item);
+          }
+        }
         home_items_list.addAll(res);
         LogUtil.d(home_items_list);
       });
@@ -72,7 +78,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
 
   Widget buildItemsWithHeader(BuildContext context,int index){
     if (index < 1){
-      return _buildheaderWidget(context, index);
+      return _buildheaderWidget(context, index,home_set_list);
     }else{
          int m = index - 1;
         return _buildHomeItemWidget(context, m, home_items_list[m]);
@@ -100,7 +106,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     return home_items_list.length + 1;
   }
 
-  Widget _buildheaderWidget(BuildContext context,int index){
+  Widget _buildheaderWidget(BuildContext context,int index,List home_set_list){
     return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -127,7 +133,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
           ),
           Container(
             height: 270,
-            child: home_top_service_widget(),
+            child: home_top_service_widget(home_set_list),
           ),
         ],
       ),

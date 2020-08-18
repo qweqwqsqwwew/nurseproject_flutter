@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class home_top_service_widget extends StatelessWidget{
+
+  final List home_set_list;
+  home_top_service_widget(this.home_set_list);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,9 +16,36 @@ class home_top_service_widget extends StatelessWidget{
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  buildSingleItem("上门体检","年卡优惠","asset/images/home/homeservicepc1.png"),
-                  buildSingleItem("慢病护理","季卡优惠","asset/images/home/homeservicepc2.png"),
-                  buildSingleItem("上门注射","10次套餐","asset/images/home/homeservicepc3.png")
+                  GestureDetector(
+                    child: buildSingleItem("上门体检","年卡优惠","asset/images/home/homeservicepc1.png"),
+                      onTap: (){
+                        Navigator.pushNamed(
+                          context,
+                          '/homeItemDetail',
+                          arguments: home_set_list[0], //　传递参数
+                        );
+                      },
+                  ),
+                  GestureDetector(
+                    child: buildSingleItem("慢病护理","季卡优惠","asset/images/home/homeservicepc2.png"),
+                    onTap: (){
+                      Navigator.pushNamed(
+                        context,
+                        '/homeItemDetail',
+                        arguments: home_set_list[1], //　传递参数
+                      );
+                    },
+                  ),
+                  GestureDetector(
+                    child: buildSingleItem("上门注射","10次套餐","asset/images/home/homeservicepc3.png"),
+                    onTap: (){
+                      Navigator.pushNamed(
+                        context,
+                        '/homeItemDetail',
+                        arguments: home_set_list[2], //　传递参数
+                      );
+                    },
+                  ),
                 ],
               ),
             ),
