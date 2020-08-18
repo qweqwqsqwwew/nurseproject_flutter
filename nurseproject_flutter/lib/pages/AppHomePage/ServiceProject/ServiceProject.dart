@@ -81,6 +81,6 @@ class _ServiceProjectState extends State<ServiceProject>  with AutomaticKeepAliv
 
 Widget _buildRightDetailWidget(){
   return Container(
-    
+
   );
 }
