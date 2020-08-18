@@ -4,6 +4,9 @@ import '../../../utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:nurseproject_flutter/provider/appCommenNetData.dart';
+import 'package:nurseproject_flutter/pages/AppHomePage/ServiceProject/service_project_request/service_project_cate_model.dart';
+import 'package:nurseproject_flutter/pages/AppHomePage/ServiceProject/service_project_request/service_project_request.dart';
+import 'package:nurseproject_flutter/pages/AppHomePage/ServiceProject/ServiceProjectComponents/service_project_title_item.dart';
 class ServiceProject extends StatefulWidget {
 
   ServiceProject({Key key, this.params}) : super(key: key);
@@ -16,6 +19,7 @@ class ServiceProject extends StatefulWidget {
 class _ServiceProjectState extends State<ServiceProject>  with AutomaticKeepAliveClientMixin {
   bool get wantKeepAlive => true;
   ServiceItemList _serviceItemListProvider;
+  List<ServiceCateItem> _cateList;
   @override
   void dispose() {
     super.dispose();
@@ -25,6 +29,11 @@ class _ServiceProjectState extends State<ServiceProject>  with AutomaticKeepAliv
   void initState() {
     super.initState();
     LogUtil.d(widget.params);
+    ServiceProjectCateRequest.requestServiceCateList().then((value){
+      setState(() {
+        _cateList = value;
+      });
+    });
   }
 
 
@@ -58,9 +67,20 @@ class _ServiceProjectState extends State<ServiceProject>  with AutomaticKeepAliv
     return Container(
       child: Row(
         children: [
-
+              ListView.builder(
+              itemCount: _cateList.length,
+                  itemBuilder: (ctx, index) {
+                    return ServiceProjectTitleItem(_cateList[index]);
+                  }),
+          _buildRightDetailWidget()
         ],
       ),
     );
   }
+}
+
+Widget _buildRightDetailWidget(){
+  return Container(
+    
+  );
 }

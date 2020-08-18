@@ -55,5 +55,14 @@ Future<Map> getHomeItemDetailData(String itemID,int locationID) async {
     options: Options(method: 'POST'),
   );
   return resData ?? {};
+}
 
+///获取项目服务左侧名列表
+Future<Map> getServiceCateList() async{
+  Map resData = await safeRequest(
+    serviceUrl['app_service_project_cate_list'],
+    data: {},
+    options: Options(method: 'GET'),
+  );
+  return resData ?? {};
 }
