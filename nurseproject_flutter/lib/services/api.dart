@@ -30,3 +30,30 @@ Future<Map> getHomeBannerData() async {
   );
   return resData ?? {};
 }
+
+///获取首页列表数据
+Future<Map> getHomeItemsData() async {
+  Map resData = await safeRequest(
+    serviceUrl['app_home_items'],
+    data: {
+      'cate_id':0,
+      'city_id':3205
+    },
+    options: Options(method: 'POST'),
+  );
+  return resData ?? {};
+
+}
+
+///获取首页item点击详情数据
+Future<Map> getHomeItemDetailData(String itemID,int locationID) async {
+  Map resData = await safeRequest(
+    serviceUrl['app_home_item_detail'] + itemID,
+    data: {
+      'city_id':locationID
+    },
+    options: Options(method: 'POST'),
+  );
+  return resData ?? {};
+
+}

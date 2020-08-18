@@ -10,7 +10,7 @@
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		Av+npnqYw2C67TFeEh8h4SDUnf4=
+		KZzbH4HgLIg7t/z9dVDVTN+C55g=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -18,7 +18,19 @@
 		</data>
 		<key>flutter_assets/NOTICES</key>
 		<data>
-		7376uUR3S3/fKQrEfrAqqHV2GHc=
+		eBWAODIyKbcWMprx4rZBxWOp5dM=
+		</data>
+		<key>flutter_assets/asset/images/home/homeservicepc1.png</key>
+		<data>
+		b3Ql7ryV1EqRlilENaZY8aS6+0g=
+		</data>
+		<key>flutter_assets/asset/images/home/homeservicepc2.png</key>
+		<data>
+		vpXBU+79/OhTlMfM43C7Xc0S45s=
+		</data>
+		<key>flutter_assets/asset/images/home/homeservicepc3.png</key>
+		<data>
+		z9sI7r6x52rlC10mAfZxGs6u6OQ=
 		</data>
 		<key>flutter_assets/asset/images/updateVersion/header/1.0x/up_header.png</key>
 		<data>
@@ -54,7 +66,7 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		8jQdRgBuFyM089vVu5klOff5VpM=
+		p7JmDJpJ5TWuKW52Ki4/sBDEoxk=
 		</data>
 		<key>flutter_assets/vm_snapshot_data</key>
 		<data>
@@ -67,11 +79,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Av+npnqYw2C67TFeEh8h4SDUnf4=
+			KZzbH4HgLIg7t/z9dVDVTN+C55g=
 			</data>
 			<key>hash2</key>
 			<data>
-			gAGZ60u1So7sPbpM3o2EbW/v8ukaDUMiYv0SfcC597o=
+			Z9Kdr8LSAMs6FbeVwraRUBOF6x9HX0rUqLHlt0qPfOw=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -89,11 +101,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			7376uUR3S3/fKQrEfrAqqHV2GHc=
+			eBWAODIyKbcWMprx4rZBxWOp5dM=
 			</data>
 			<key>hash2</key>
 			<data>
-			ymvtsE+Ssvm52hKDEhKrvspRw9lWvtKVWrOntavVbO0=
+			0ZQKVkA3ei3AU9eYKNuSRN+JC4ngDMGsILc9y+tUqps=
+			</data>
+		</dict>
+		<key>flutter_assets/asset/images/home/homeservicepc1.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			b3Ql7ryV1EqRlilENaZY8aS6+0g=
+			</data>
+			<key>hash2</key>
+			<data>
+			e4Q9/nzUTARclfu/ZyQ2vT3DNlll0E/kH2QA2nw7VXk=
+			</data>
+		</dict>
+		<key>flutter_assets/asset/images/home/homeservicepc2.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			vpXBU+79/OhTlMfM43C7Xc0S45s=
+			</data>
+			<key>hash2</key>
+			<data>
+			TXZFXk2wEQV2onWeqUUzXQhikgijmCjn9aNfX+EuE9Q=
+			</data>
+		</dict>
+		<key>flutter_assets/asset/images/home/homeservicepc3.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			z9sI7r6x52rlC10mAfZxGs6u6OQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			PE8qAOO+eEpSpzg36WMQVgdJvZrKvN8G0v+6k5HDNps=
 			</data>
 		</dict>
 		<key>flutter_assets/asset/images/updateVersion/header/1.0x/up_header.png</key>
@@ -188,11 +233,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			8jQdRgBuFyM089vVu5klOff5VpM=
+			p7JmDJpJ5TWuKW52Ki4/sBDEoxk=
 			</data>
 			<key>hash2</key>
 			<data>
-			2nMP7uj4kDgUqdNmzeYkZYA5YC9E3R9+rczou3CVkdQ=
+			H5jBsJdPAiTo8sV2UR/NbleIifT/C/qx1heWvMxQUUk=
 			</data>
 		</dict>
 		<key>flutter_assets/vm_snapshot_data</key>

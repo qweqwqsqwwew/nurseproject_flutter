@@ -29,3 +29,16 @@ class HomeBannerRequest {
       return imageData;
   }
 }
+
+class HomeItemsRequest {
+  static Future<List<HomeItem>> requestHomeItemsData() async {
+    Map resData = await getHomeItemsData();
+    LogUtil.d(resData);
+    final subjects = resData['data'];
+    List<HomeItem> itemsData = [];
+    for (var sub in subjects){
+      itemsData.add(HomeItem.fromMap(sub));
+    }
+    return itemsData;
+  }
+}

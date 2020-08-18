@@ -7,7 +7,7 @@ import 'package:nurseproject_flutter/pages/AppHomePage/Home/home_request/home_re
 import 'package:nurseproject_flutter/pages/AppHomePage/Home/home_request/home_model.dart';
 import 'package:nurseproject_flutter/utils/log_util.dart';
 import 'package:nurseproject_flutter/pages/AppHomePage/Home/HomeComponents/home_top_service_widget.dart';
-
+import 'package:nurseproject_flutter/pages/AppHomePage/Home/HomeComponents/home_item_widget.dart';
 class Home extends StatefulWidget {
   Home({Key key, this.params}) : super(key: key);
   final params;
@@ -21,13 +21,19 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   bool get wantKeepAlive => true;
   CounterStore _counter;
   final List<BannerItem> banner_lists = [];
-  final List<Widget> bannerWidgetLists = <Widget>[];
+  final List<HomeItem> home_items_list = [];
   @override
   void initState() {
     super.initState();
     HomeBannerRequest.requestHomeBannerAds().then((res){
       setState(() {
         banner_lists.addAll(res);
+      });
+    });
+    HomeItemsRequest.requestHomeItemsData().then((res){
+      setState(() {
+        home_items_list.addAll(res);
+        LogUtil.d(home_items_list);
       });
     });
   }
@@ -43,7 +49,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
         title: Text('首页',style: TextStyle(color: Colors.white),),
         automaticallyImplyLeading: false,
       ),
-      body: contextWidget(),
+        body: _buildListView(context),
       floatingActionButton: FloatingActionButton(
         heroTag: 'homeBtn1',
         onPressed: () async {
@@ -55,60 +61,79 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     );
   }
 
-  Widget contextWidget() {
-
-    return ListView(
-      children: List.generate(1, (index) {
-        return Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                padding: const EdgeInsets.only(top: 15),
-                child: CarouselSlider(
-                  options: CarouselOptions(height: 170,autoPlay: true,aspectRatio: 2.0,enlargeCenterPage: true,),
-                  items: banner_lists.map((item) => Container(
-                    child: Center(
-//                      child: Image.network(item.img, fit: BoxFit.fill, width: MediaQuery.of(context).size.width,height:200)
-                      child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                                image: NetworkImage(item.img),
-                                fit: BoxFit.cover
-                            )
-                        ),
-                      ),
-                    ),
-                  )).toList(),
-                ),
-              ),
-              Container(
-                height: 150,
-                child: home_top_service_widget(),
-
-              ),
-              _button(
-                '点我去test页',
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    '/testDemo',
-                    arguments: {'data': '别名路由传参666'},
-                  );
-                },
-              ),
-              Consumer<CounterStore>(
-                builder: (_, counterStore, child) {
-                  return Text('状态管理值：${counterStore.value}');
-                },
-              ),
-            ],
-          ),
-        );
-      }),
+  Widget _buildListView(BuildContext context){
+    return ListView.builder(
+      itemCount: _getHomeItemsCount(),
+      itemBuilder:(BuildContext context,int index){
+        return buildItemsWithHeader(context, index);
+      },
     );
   }
+
+  Widget buildItemsWithHeader(BuildContext context,int index){
+    if (index < 1){
+      return _buildheaderWidget(context, index);
+    }else{
+         int m = index - 1;
+        return _buildHomeItemWidget(context, m, home_items_list[m]);
+    }
+  }
+
+  Widget _buildHomeItemWidget(BuildContext context,int index,HomeItem homeItem){
+    return Container(
+
+      height: 120,
+        child: GestureDetector(
+          child: home_item_widget(homeItem),
+          onTap: (){
+            Navigator.pushNamed(
+              context,
+              '/homeItemDetail',
+              arguments: homeItem, //　传递参数
+            );
+          },
+        ),
+    );
+  }
+
+  int _getHomeItemsCount(){
+    return home_items_list.length + 1;
+  }
+
+  Widget _buildheaderWidget(BuildContext context,int index){
+    return Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Container(
+            padding: const EdgeInsets.only(top: 15),
+            child: CarouselSlider(
+              options: CarouselOptions(height: 170,autoPlay: true,aspectRatio: 2.0,enlargeCenterPage: true,),
+              items: banner_lists.map((item) => Container(
+                child: Center(
+//                      child: Image.network(item.img, fit: BoxFit.fill, width: MediaQuery.of(context).size.width,height:200)
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        image: DecorationImage(
+                            image: NetworkImage(item.img),
+                            fit: BoxFit.cover
+                        )
+                    ),
+                  ),
+                ),
+              )).toList(),
+            ),
+          ),
+          Container(
+            height: 270,
+            child: home_top_service_widget(),
+          ),
+        ],
+      ),
+    );
+  }
+
 
   Widget _button(String text, {Function onPressed}) {
     return Container(
@@ -123,15 +148,3 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     );
   }
 }
-
-
-// mock 轮播列表
-List carouselList = <Widget>[
-  Container(
-      color: Colors.amberAccent, child: Center(child: Text("111"))
-  ),
-
-  Container(
-      color: Colors.amberAccent, child: Center(child: Text('222'))
-  ),
-];

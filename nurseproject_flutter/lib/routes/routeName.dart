@@ -11,4 +11,7 @@ class RouteName {
 
   /// 测试页
   static String testDemo = '/testDemo';
+
+  /// 主页点击详情页
+  static String homeItemDetail = '/homeItemDetail';
 }

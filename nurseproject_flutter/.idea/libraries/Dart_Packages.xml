@@ -96,7 +96,7 @@
         <entry key="flutter_screenutil">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../../fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_screenutil-1.1.0/lib" />
+              <option value="$PROJECT_DIR$/../../fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_screenutil-2.3.1/lib" />
             </list>
           </value>
         </entry>
@@ -436,7 +436,7 @@
       <root url="file://$PROJECT_DIR$/../../fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/dio-3.0.10/lib" />
       <root url="file://$PROJECT_DIR$/../../fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/fake_async-1.1.0/lib" />
       <root url="file://$PROJECT_DIR$/../../fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/file-5.2.1/lib" />
-      <root url="file://$PROJECT_DIR$/../../fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_screenutil-1.1.0/lib" />
+      <root url="file://$PROJECT_DIR$/../../fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_screenutil-2.3.1/lib" />
       <root url="file://$PROJECT_DIR$/../../fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/fluttertoast-4.0.1/lib" />
       <root url="file://$PROJECT_DIR$/../../fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/get_it-4.0.4/lib" />
       <root url="file://$PROJECT_DIR$/../../fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/http-0.12.2/lib" />
