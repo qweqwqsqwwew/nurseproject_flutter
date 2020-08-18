@@ -84,9 +84,12 @@ class _HomeItemDetailState extends State<HomeItemDetail> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('购买数量',style: TextStyle(color: Colors.black45,fontSize: 16),),
                     Container(
-                      margin: EdgeInsets.only(right: 16),
+                      child: Text('购买数量',style: TextStyle(color: Colors.black45,fontSize: 16),),
+                      margin: EdgeInsets.only(top: 10),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(right: 16,top: 10),
                       child: Row(
                         children: [
                           Container(
@@ -110,9 +113,9 @@ class _HomeItemDetailState extends State<HomeItemDetail> {
                   margin: EdgeInsets.only(top: 30),
                   child: Row(
                     children: [
-                      Image.asset("asset/images/home/home_item_detail_group.png",width: 30,height: 30,),
+                      Image.asset("asset/images/home/home_item_detail_group.png",width: 20,height: 20,),
                       Container(
-                        child: Text('适宜人群',style: TextStyle(color: Colors.black,fontSize: 25),),
+                        child: Text('适宜人群',style: TextStyle(color: Colors.black,fontSize: 17),),
                       )
                     ],
                   ),
@@ -120,37 +123,37 @@ class _HomeItemDetailState extends State<HomeItemDetail> {
                 Container(
                   margin: EdgeInsets.only(top: 10,right: 10),
                   child:
-                  Text(_itemDetail != null?_itemDetail.crowd:'',style: TextStyle(color: Colors.black,fontSize: 19),textAlign:TextAlign.left),
+                  Text(_itemDetail != null?_itemDetail.crowd:'',style: TextStyle(color: Colors.black,fontSize: 15),textAlign:TextAlign.left),
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 30),
                   child: Row(
                     children: [
-                      Image.asset("asset/images/home/home_item_detail_service.png",width: 30,height: 30),
+                      Image.asset("asset/images/home/home_item_detail_service.png",width: 20,height: 20),
                       Container(
-                        child: Text('服务详情',style: TextStyle(color: Colors.black,fontSize: 25),),
+                        child: Text('服务详情',style: TextStyle(color: Colors.black,fontSize: 17),),
                       )
                     ],
                   ),
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 10,right: 10),
-                  child: Text(_itemDetail != null?_itemDetail.content:'',style: TextStyle(color: Colors.black,fontSize: 19),textAlign:TextAlign.left),
+                  child: Text(_itemDetail != null?_itemDetail.content:'',style: TextStyle(color: Colors.black,fontSize: 15),textAlign:TextAlign.left),
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 30),
                   child: Row(
                     children: [
-                      Image.asset("asset/images/home/home_item_detail_note.png",width: 30,height: 30),
+                      Image.asset("asset/images/home/home_item_detail_note.png",width: 20,height: 20),
                       Container(
-                        child: Text('注意事项',style: TextStyle(color: Colors.black,fontSize: 25),),
+                        child: Text('注意事项',style: TextStyle(color: Colors.black,fontSize: 17),),
                       )
                     ],
                   ),
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 10,right: 10,bottom: 40),
-                  child: Text(_itemDetail != null?_itemDetail.note:'',style: TextStyle(color: Colors.black,fontSize: 19,),textAlign:TextAlign.left,),
+                  child: Text(_itemDetail != null?_itemDetail.note:'',style: TextStyle(color: Colors.black,fontSize: 15,),textAlign:TextAlign.left,),
                 ),
               ],
             ),

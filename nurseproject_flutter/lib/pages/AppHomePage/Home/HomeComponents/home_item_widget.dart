@@ -29,7 +29,7 @@ class home_item_widget extends StatelessWidget{
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 5,left: 10),
-                        width: ScreenUtil().setWidth(550),
+                        width: ScreenUtil().setWidth(450),
                         height: 37,
                         child: Text(homeSingleItem.intro,style: TextStyle(color: Colors.black12,fontSize: 12),),
                       ),
@@ -44,7 +44,7 @@ class home_item_widget extends StatelessWidget{
                           child: Text('${homeSingleItem.price}元',style: TextStyle(color: Colors.orange,fontSize: 13),),
                         ),
                         Container(
-                          margin: EdgeInsets.only(left: 210),
+                          margin: EdgeInsets.only(left: 140),
                           child: Text('已服务${homeSingleItem.sale_num}次',style: TextStyle(color: Colors.black12,fontSize: 10),),
                         )
                       ],
