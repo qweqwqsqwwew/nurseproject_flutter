@@ -43,7 +43,7 @@ class _ServiceProjectState extends State<ServiceProject>  with AutomaticKeepAliv
         children: List.generate(1, (index) {
           return Container(
             child:Consumer<ServiceItemList>(
-                              builder: (_, counterStore, child) => Text(
+                              builder: (_, a, child) => Text(
                                 '状态共享值：${_serviceItemListProvider.getserviceList.length == 0?'wwwww':_serviceItemListProvider.getserviceList[0].name}',
                                 style: TextStyle(fontSize: 18),
                               ),

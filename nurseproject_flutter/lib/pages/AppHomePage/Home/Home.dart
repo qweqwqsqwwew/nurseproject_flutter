@@ -8,6 +8,7 @@ import 'package:nurseproject_flutter/pages/AppHomePage/Home/home_request/home_mo
 import 'package:nurseproject_flutter/utils/log_util.dart';
 import 'package:nurseproject_flutter/pages/AppHomePage/Home/HomeComponents/home_top_service_widget.dart';
 import 'package:nurseproject_flutter/pages/AppHomePage/Home/HomeComponents/home_item_widget.dart';
+import 'package:nurseproject_flutter/provider/appCommenNetData.dart';
 class Home extends StatefulWidget {
   Home({Key key, this.params}) : super(key: key);
   final params;
@@ -23,6 +24,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   final List<BannerItem> banner_lists = [];
   final List<HomeItem> home_items_list = [];
   final List<HomeItem> home_set_list = [];
+  ServiceItemList _serviceItemListProvider;
   @override
   void initState() {
     super.initState();
@@ -31,17 +33,17 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
         banner_lists.addAll(res);
       });
     });
-    HomeItemsRequest.requestHomeItemsData().then((res){
-      setState(() {
-        for (HomeItem item in res){
-          if (item.is_set == '1'){
-            home_set_list.add(item);
-          }
-        }
-        home_items_list.addAll(res);
-        LogUtil.d(home_items_list);
-      });
-    });
+//    HomeItemsRequest.requestHomeItemsData().then((res){
+//      setState(() {
+//        for (HomeItem item in res){
+//          if (item.is_set == '1'){
+//            home_set_list.add(item);
+//          }
+//        }
+//        home_items_list.addAll(res);
+//        LogUtil.d(home_items_list);
+//      });
+//    });
   }
 
   @override
@@ -49,7 +51,17 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     super.build(context);
     LogUtil.d("------a---------------");
     _counter = Provider.of<CounterStore>(context);
-
+    _serviceItemListProvider = Provider.of<ServiceItemList>(context);
+    if(_serviceItemListProvider.getserviceList.length == 0){
+      _serviceItemListProvider.getServiceItemsList();
+    }else{
+     List<HomeItem> m = _serviceItemListProvider.getserviceList;
+     for (HomeItem obj in m) {
+       if (obj.is_set == '1'){
+            home_set_list.add(obj);
+          }
+     }
+    }
     return Scaffold(
       appBar: AppBar(
         title: Text('首页',style: TextStyle(color: Colors.white),),
@@ -68,20 +80,23 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   }
 
   Widget _buildListView(BuildContext context){
-    return ListView.builder(
-      itemCount: _getHomeItemsCount(),
-      itemBuilder:(BuildContext context,int index){
-        return buildItemsWithHeader(context, index);
-      },
+    return Consumer<ServiceItemList>(
+      builder: (_, a, child) =>
+            ListView.builder(
+              itemCount: _getHomeItemsCount(),
+              itemBuilder:(BuildContext context,int index){
+                return buildItemsWithHeader(context, index);
+              },
+      ),
     );
   }
 
   Widget buildItemsWithHeader(BuildContext context,int index){
     if (index < 1){
-      return _buildheaderWidget(context, index,home_set_list);
+      return _buildheaderWidget(context, index,_serviceItemListProvider.getserviceList);
     }else{
          int m = index - 1;
-        return _buildHomeItemWidget(context, m, home_items_list[m]);
+        return _buildHomeItemWidget(context, m, _serviceItemListProvider.getserviceList[m]);
     }
   }
 
@@ -103,7 +118,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   }
 
   int _getHomeItemsCount(){
-    return home_items_list.length + 1;
+    return _serviceItemListProvider.getserviceList.length + 1;
   }
 
   Widget _buildheaderWidget(BuildContext context,int index,List home_set_list){
