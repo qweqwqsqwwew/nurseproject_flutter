@@ -52,73 +52,105 @@ class _HomeItemDetailState extends State<HomeItemDetail> {
     return Container(
 
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            margin: EdgeInsets.only(bottom: 10),
-            child: Image.network(this._itemDetail.banner,width: ScreenUtil.screenWidth,height: 200,fit: BoxFit.cover,),
+            child: Image.network(_itemDetail != null?_itemDetail.banner:"https://didi.depin.tech/storage/service/2020/02/26/5e561ce9c4a00.jpg",width: ScreenUtil.screenWidth,height: 200,fit: BoxFit.cover,),
           ),
           Container(
-            margin: EdgeInsets.only(left: 10),
+            margin: EdgeInsets.only(left: 20,top: 30),
             child: Column(
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
                         Container(
-                          child: Text('价格',style: TextStyle(color: Colors.black12,fontSize: 13),),
+                          child: Text('价格',style: TextStyle(color: Colors.black45,fontSize: 23),),
                         ),
                         Container(
-                          child: Text('¥${this._itemDetail.price}',),
+                          margin: EdgeInsets.only(left: 10),
+                          child: Text('¥${_itemDetail != null?this._itemDetail.price:'0'}',style: TextStyle(color: Colors.orange,fontSize: 25),),
                         )
                       ],
-
                     ),
                     Container(
-                      child: Text(this.widget.params.name,style: TextStyle(color: Colors.black12,fontSize: 15),),
+                      child: Text(this.widget.params.name,style: TextStyle(color: Colors.black45,fontSize: 15),),
+                      margin: EdgeInsets.only(right: 16,bottom: 15),
                     ),
                   ],
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('购买数量',style: TextStyle(color: Colors.black12,fontSize: 13),),
-                    Text("-",style: TextStyle(color: Colors.black12,fontSize: 13),),
-                    Text('1',style: TextStyle(color: Colors.black,fontSize: 15),),
-                    Text('+',style: TextStyle(color: Colors.black12,fontSize: 13),)
-                  ],
-                ),
-                Row(
-                  children: [
-                    Image.asset("asset/images/home/home_item_detail_group.png",width: 20,height: 20,),
+                    Text('购买数量',style: TextStyle(color: Colors.black45,fontSize: 16),),
                     Container(
-                      child: Text('适宜人群',style: TextStyle(color: Colors.black,fontSize: 16),),
+                      margin: EdgeInsets.only(right: 16),
+                      child: Row(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(right: 10),
+                            child: Text("-",style: TextStyle(color: Colors.black45,fontSize: 19,),),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(right: 10),
+                            child: Text('1',style: TextStyle(color: Colors.black,fontSize: 22),),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(right: 10),
+                            child: Text('+',style: TextStyle(color: Colors.black45,fontSize: 19),),
+                          )
+                        ],
+                      ),
                     )
                   ],
                 ),
                 Container(
-                  child: Text(this._itemDetail.crowd,style: TextStyle(color: Colors.black,fontSize: 14),),
-                ),
-                Row(
-                  children: [
-                    Image.asset("asset/images/home/home_item_detail_group.png",width: 20,height: 20),
-                    Container(
-                      child: Text('服务详情',style: TextStyle(color: Colors.black,fontSize: 16),),
-                    )
-                  ],
-                ),
-                Container(
-                  child: Text(this._itemDetail.content,style: TextStyle(color: Colors.black,fontSize: 14),),
-                ),
-                Row(
-                  children: [
-                    Image.asset("asset/images/home/home_item_detail_group.png",width: 20,height: 20),
-                    Container(
-                      child: Text('注意事项',style: TextStyle(color: Colors.black,fontSize: 16),),
-                    )
-                  ],
+                  margin: EdgeInsets.only(top: 30),
+                  child: Row(
+                    children: [
+                      Image.asset("asset/images/home/home_item_detail_group.png",width: 30,height: 30,),
+                      Container(
+                        child: Text('适宜人群',style: TextStyle(color: Colors.black,fontSize: 25),),
+                      )
+                    ],
+                  ),
                 ),
                 Container(
-                  child: Text(this._itemDetail.note,style: TextStyle(color: Colors.black,fontSize: 14),),
+                  margin: EdgeInsets.only(top: 10,right: 10),
+                  child:
+                  Text(_itemDetail != null?_itemDetail.crowd:'',style: TextStyle(color: Colors.black,fontSize: 19),textAlign:TextAlign.left),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 30),
+                  child: Row(
+                    children: [
+                      Image.asset("asset/images/home/home_item_detail_service.png",width: 30,height: 30),
+                      Container(
+                        child: Text('服务详情',style: TextStyle(color: Colors.black,fontSize: 25),),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 10,right: 10),
+                  child: Text(_itemDetail != null?_itemDetail.content:'',style: TextStyle(color: Colors.black,fontSize: 19),textAlign:TextAlign.left),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 30),
+                  child: Row(
+                    children: [
+                      Image.asset("asset/images/home/home_item_detail_note.png",width: 30,height: 30),
+                      Container(
+                        child: Text('注意事项',style: TextStyle(color: Colors.black,fontSize: 25),),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 10,right: 10,bottom: 40),
+                  child: Text(_itemDetail != null?_itemDetail.note:'',style: TextStyle(color: Colors.black,fontSize: 19,),textAlign:TextAlign.left,),
                 ),
               ],
             ),
