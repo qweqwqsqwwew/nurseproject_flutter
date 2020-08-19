@@ -10,10 +10,18 @@ class ServiceItemList with ChangeNotifier {
 
   void getServiceItemsList(){
     HomeItemsRequest.requestHomeItemsData().then((res){
+      _serviceList = [];
       _serviceList.addAll(res);
       notifyListeners();
     });
   }
-
 //  ServiceItemList get serviceList => _serviceList;
+
+  ///服务列表点击index
+  int _currenClickIndex = 0;
+  int get getCurrentCllickIndex => _currenClickIndex;
+  void setCurrentClickIndex(int index){
+    _currenClickIndex = index;
+    notifyListeners();
+  }
 }

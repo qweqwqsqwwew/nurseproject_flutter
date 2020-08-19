@@ -415,6 +415,13 @@
             </list>
           </value>
         </entry>
+        <entry key="webview_flutter">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../../fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/webview_flutter-0.3.22+1/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="xdg_directories">
           <value>
             <list>
@@ -479,6 +486,7 @@
       <root url="file://$PROJECT_DIR$/../../fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/url_launcher_platform_interface-1.0.7/lib" />
       <root url="file://$PROJECT_DIR$/../../fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/url_launcher_web-0.1.2/lib" />
       <root url="file://$PROJECT_DIR$/../../fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/vector_math-2.0.8/lib" />
+      <root url="file://$PROJECT_DIR$/../../fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/webview_flutter-0.3.22+1/lib" />
       <root url="file://$PROJECT_DIR$/../../fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/xdg_directories-0.1.0/lib" />
       <root url="file://$PROJECT_DIR$/../../fluttersdk/flutter/bin/cache/pkg/sky_engine/lib" />
       <root url="file://$PROJECT_DIR$/../../fluttersdk/flutter/packages/flutter/lib" />

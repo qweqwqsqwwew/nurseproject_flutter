@@ -122,6 +122,7 @@ class _HomeItemDetailState extends State<HomeItemDetail> {
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 10,right: 10),
+                  alignment: Alignment.centerLeft,
                   child:
                   Text(_itemDetail != null?_itemDetail.crowd:'',style: TextStyle(color: Colors.black,fontSize: 15),textAlign:TextAlign.left),
                 ),
@@ -138,6 +139,7 @@ class _HomeItemDetailState extends State<HomeItemDetail> {
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 10,right: 10),
+                  alignment: Alignment.centerLeft,
                   child: Text(_itemDetail != null?_itemDetail.content:'',style: TextStyle(color: Colors.black,fontSize: 15),textAlign:TextAlign.left),
                 ),
                 Container(
@@ -153,6 +155,7 @@ class _HomeItemDetailState extends State<HomeItemDetail> {
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 10,right: 10,bottom: 40),
+                  alignment: Alignment.centerLeft,
                   child: Text(_itemDetail != null?_itemDetail.note:'',style: TextStyle(color: Colors.black,fontSize: 15,),textAlign:TextAlign.left,),
                 ),
               ],

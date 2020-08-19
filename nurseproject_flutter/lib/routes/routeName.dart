@@ -14,4 +14,7 @@ class RouteName {
 
   /// 主页点击详情页
   static String homeItemDetail = '/homeItemDetail';
+
+  ///公共网页跳转
+  static String commmenWebview = '/commmenWebview';
 }

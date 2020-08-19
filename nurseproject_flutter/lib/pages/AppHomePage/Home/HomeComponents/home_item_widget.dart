@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nurseproject_flutter/ioc/locator.dart';
 import 'package:nurseproject_flutter/pages/AppHomePage/Home/home_request/home_model.dart';
+import 'package:nurseproject_flutter/utils/util.dart';
 class home_item_widget extends StatelessWidget{
   
   final HomeItem homeSingleItem;
@@ -16,7 +17,7 @@ class home_item_widget extends StatelessWidget{
           child: Row(
             children: [
               Container(
-                  child: Image.network(homeSingleItem.logo!=null?homeSingleItem.logo:"https://didi.depin.tech/storage/service/2020/02/26/5e561ce9c4a00.jpg",width: 80,)
+                  child: Image.network(homeSingleItem.logo!=null?homeSingleItem.logo:"https://didi.depin.tech/storage/service/2020/02/26/5e561ce9c4a00.jpg",width: ScreenAdaper.width(160),height: ScreenAdaper.height(160),)
               ),
               Column(
                 children: [
@@ -24,14 +25,14 @@ class home_item_widget extends StatelessWidget{
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        margin: EdgeInsets.only(top: 15,left: 10),
+                        margin: EdgeInsets.only(top: ScreenAdaper.height(25),left: ScreenAdaper.width(18)),
                         child: Text(homeSingleItem.name,style: TextStyle(color: Colors.black,fontSize: 15),textAlign:TextAlign.left),
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 5,left: 10),
-                        width: ScreenUtil().setWidth(450),
-                        height: 37,
-                        child: Text(homeSingleItem.intro,style: TextStyle(color: Colors.black12,fontSize: 12),),
+                        width: ScreenAdaper.width(520),
+                        height: ScreenAdaper.height(70),
+                        child: Text(homeSingleItem.intro,maxLines:2,style: TextStyle(color: Colors.black45,fontSize: 12,),),
                       ),
                     ],
                   ),
@@ -44,8 +45,8 @@ class home_item_widget extends StatelessWidget{
                           child: Text('${homeSingleItem.price}元',style: TextStyle(color: Colors.orange,fontSize: 13),),
                         ),
                         Container(
-                          margin: EdgeInsets.only(left: 140),
-                          child: Text('已服务${homeSingleItem.sale_num}次',style: TextStyle(color: Colors.black12,fontSize: 10),),
+                          margin: EdgeInsets.only(left: ScreenAdaper.width(330)),
+                          child: Text('已服务${homeSingleItem.sale_num}次',style: TextStyle(color: Colors.black45,fontSize: 10),),
                         )
                       ],
                     ),

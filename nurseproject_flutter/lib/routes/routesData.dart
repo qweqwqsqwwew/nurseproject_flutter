@@ -5,6 +5,7 @@ import '../pages/AppHomePage/AppHomePage.dart';
 import '../pages/SplashPage/SplashPage.dart';
 import '../pages/TestDemo/TestDemo.dart';
 import '../pages/AppHomePage/Home/HomeItemDetail.dart';
+import '../pages/AppHomePage/Commen/CommenWebview.dart';
 
 final String initialRoute = '/'; // 初始默认显示的路由
 final Map<String, WidgetBuilder> routesData = {
@@ -15,6 +16,8 @@ final Map<String, WidgetBuilder> routesData = {
       ErrorPage(params: params),
   RouteName.testDemo: (BuildContext context, {params}) =>
       TestDemo(params: params),
-  //主页点击详情页
+  ///主页点击详情页
   RouteName.homeItemDetail:(BuildContext context,{params}) =>  HomeItemDetail(params: params),
+  ///公共网页
+  RouteName.commmenWebview:(BuildContext context,{params}) => CommenWebview(params: params,)
 };

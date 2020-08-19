@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jh_debug/utils/logData_utls.dart';
+import 'package:nurseproject_flutter/utils/util.dart';
 import 'package:provider/provider.dart';
 import 'provider/counterStore.p.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -33,17 +34,6 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
         banner_lists.addAll(res);
       });
     });
-//    HomeItemsRequest.requestHomeItemsData().then((res){
-//      setState(() {
-//        for (HomeItem item in res){
-//          if (item.is_set == '1'){
-//            home_set_list.add(item);
-//          }
-//        }
-//        home_items_list.addAll(res);
-//        LogUtil.d(home_items_list);
-//      });
-//    });
   }
 
   @override
@@ -103,7 +93,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   Widget _buildHomeItemWidget(BuildContext context,int index,HomeItem homeItem){
     return Container(
 
-      height: 120,
+      height: ScreenAdaper.height(200),
         child: GestureDetector(
           child: home_item_widget(homeItem),
           onTap: (){
@@ -129,7 +119,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
           Container(
             padding: const EdgeInsets.only(top: 15),
             child: CarouselSlider(
-              options: CarouselOptions(height: 170,autoPlay: true,aspectRatio: 2.0,enlargeCenterPage: true,),
+              options: CarouselOptions(height: ScreenAdaper.height(300),autoPlay: true,aspectRatio: 2.0,enlargeCenterPage: true,),
               items: banner_lists.map((item) => Container(
                 child: Center(
 //                      child: Image.network(item.img, fit: BoxFit.fill, width: MediaQuery.of(context).size.width,height:200)
@@ -147,24 +137,10 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
             ),
           ),
           Container(
-            height: 270,
+            height: ScreenAdaper.height(500),
             child: home_top_service_widget(home_set_list),
           ),
         ],
-      ),
-    );
-  }
-
-
-  Widget _button(String text, {Function onPressed}) {
-    return Container(
-      margin: EdgeInsets.only(top: 10),
-      child: RaisedButton(
-        child: Text(
-          text,
-          style: TextStyle(fontSize: 22),
-        ),
-        onPressed: onPressed,
       ),
     );
   }

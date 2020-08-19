@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:nurseproject_flutter/utils/util.dart';
 class home_top_service_widget extends StatelessWidget{
 
   final List home_set_list;
@@ -11,7 +11,7 @@ class home_top_service_widget extends StatelessWidget{
       child: Column(
         children: [
               Container(
-              padding: const EdgeInsets.only(left: 10,right: 10,top: 10),
+              padding: const EdgeInsets.only(left: 30,right: 30,top: 10),
 
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -58,14 +58,14 @@ class home_top_service_widget extends StatelessWidget{
 
 Widget buildSingleItem(String topTitle,String bottomTitle,String imagePath){
   return Container(
-        child: Image.asset(imagePath,width: 110,height: 130,fit: BoxFit.cover,),
+        child: Image.asset(imagePath,width: ScreenAdaper.width(190),height: ScreenAdaper.height(250),fit: BoxFit.cover,),
   );
 }
 
 Widget buildBottomWidget(){
   return Container(
     padding: EdgeInsets.only(left: 20,right: 20,top: 10),
-    height: 120,
+    height: ScreenAdaper.height(210),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -77,19 +77,19 @@ Widget buildBottomWidget(){
           child: Row(
             children: [
               Container(
-                child: Text('护理头条',style: TextStyle(color: Colors.orange,fontSize: 20),),
+                child: Text('护理头条',style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(34)),),
                 padding: EdgeInsets.only(left: 10,top: 10),
               ),
               Container(
 //                padding: EdgeInsets.only(top: 20,left: 5,right: 10),
                 margin: EdgeInsets.only(top: 10,left: 5,right: 5),
-                height: 30,
+                height: ScreenAdaper.height(45),
                 color: Colors.grey,
                 width: 0.5,
               ),
               Container(
                 margin: EdgeInsets.only(left: 5,top: 10),
-                child: Text('不懂这一点，只会让你的孩...',style:  TextStyle(color:Colors.black,fontSize: 16),),
+                child: Text('不懂这一点，只会让你的孩子拉...',style:  TextStyle(color:Colors.black,fontSize: ScreenAdaper.sp(30)),),
               ),
             ],
           ),
@@ -100,7 +100,7 @@ Widget buildBottomWidget(){
           height: 0.5,
         ),
         Container(
-          height: 50,
+          height: ScreenAdaper.height(80),
           margin: EdgeInsets.only(top: 8),
           child: Row(
             children: [
@@ -110,7 +110,7 @@ Widget buildBottomWidget(){
                 width: 1,
               ),
               Container(
-                child: Text('热门服务',style: TextStyle(color: Colors.orange,fontSize: 20),),
+                child: Text('热门服务',style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(32)),),
               )
             ],
           ),

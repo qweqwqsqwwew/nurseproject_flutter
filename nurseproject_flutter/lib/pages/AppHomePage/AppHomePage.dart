@@ -7,13 +7,12 @@ import '../../components/UpdateAppVersion/UpdateAppVersion.dart'
     show getNewAppVer;
 import '../../config/app_config.dart';
 import '../../components/DoubleBackExitApp/DoubleBackExitApp.dart';
-import 'MyPersonal/MyPersonal.dart';
 import 'Search/Search.dart';
-import 'Hot/Hot.dart';
 import 'Home/Home.dart';
 import 'provider/appHomePageStore.p.dart';
 import 'Changhuxian/Changhuxian.dart';
 import 'ServiceProject/ServiceProject.dart';
+import 'MyPersonal/Mine.dart';
 
 /// [params] 别名路由传递的参数
 /// [params.pageId] 跳转到指定tab页面（0第一页），如果不是别名路由跳转的话，又想实现跳转到指定tab页面，推荐别名路由跳转方式。
@@ -68,14 +67,14 @@ class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
       'body': ServiceProject(),
     },
     {
-      'title': '服务项目',
+      'title': '一键呼叫',
       'icon': Icons.search,
       'body': Search(),
     },
     {
       'title': '个人中心',
       'icon': Icons.person,
-      'body': MyPersonal(),
+      'body': Mine(),
     },
   ];
 

@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 export 'sp_util.dart' show SpUtil;
 export 'perm_utils.dart' show PermUtils;
 export 'log_util.dart' show LogUtil;
+export 'screen_adaper.dart' show ScreenAdaper;
 
 class Util {
   /// 防抖函数

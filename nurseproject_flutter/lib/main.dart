@@ -6,13 +6,12 @@ import 'routes/onGenerateRoute.dart';
 import 'routes/routesData.dart'; // 路由配置
 import 'providers_config.dart'; // providers配置文件
 import 'provider/themeStore.p.dart'; // 全局主题
-import 'ioc/locator.dart' show setupLocator, locator, CommonService;
+import 'ioc/locator.dart' show setupLocator, locator, CommonService, LogUtil;
 import 'package:ana_page_loop/ana_page_loop.dart' show anaAllObs;
 import 'utils/myAppSetup/index.dart' show myAppSetup;
 
 void main() {
   setupLocator();
-
   jhDebugMain(
     appChild: MultiProvider(
       providers: providersConfig,
@@ -26,6 +25,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     jhDebug.setGlobalKey = locator.get<CommonService>().getGlobalKey;
+//    ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
     myAppSetup();
     return Consumer<ThemeStore>(
       builder: (context, themeStore, child) {
