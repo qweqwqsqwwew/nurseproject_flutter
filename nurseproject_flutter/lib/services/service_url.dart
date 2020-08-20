@@ -6,4 +6,5 @@ const serviceUrl = {
    'app_home_items': appurlPro + 'service/items',
    'app_home_item_detail' :appurlPro + 'service/item/',
    'app_service_project_cate_list':appurlPro + 'service/category',
+   'app_register':appurlPro + 'user/register',
 };

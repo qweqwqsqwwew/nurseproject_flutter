@@ -92,7 +92,16 @@ class _MineState extends State<Mine> with AutomaticKeepAliveClientMixin{
                                   height: ScreenAdaper.height(70),
                                   alignment: Alignment.center,
                                   color: Colors.orange,
-                                  child: Text('登陆',style: TextStyle(color: Colors.white,fontSize: ScreenAdaper.sp(35),),textAlign: TextAlign.center,),
+                                  child: GestureDetector(
+                                    child: Text('登陆',style: TextStyle(color: Colors.white,fontSize: ScreenAdaper.sp(35),),textAlign: TextAlign.center,),
+                                    onTap: (){
+                                      Navigator.pushNamed(
+                                        context,
+                                        '/login',
+                                        arguments: {}, //　传递参数
+                                      );
+                                    },
+                                  )
                               ),
                            ),
                         new ClipRRect(
@@ -109,7 +118,7 @@ class _MineState extends State<Mine> with AutomaticKeepAliveClientMixin{
                                 Navigator.pushNamed(
                                   context,
                                   '/registerv',
-                                  arguments: {'a':'v'}, //　传递参数
+                                  arguments: {}, //　传递参数
                                 );
                               },
                             )

@@ -51,7 +51,7 @@ class _RegisterPState extends State<RegisterP> {
     switch (index){
       case 0:{
         return  TextFormField(
-            autofocus: true,
+            autofocus: false,
             controller: _unameController,
             decoration: InputDecoration(
                 labelText: "手机号",
@@ -95,12 +95,11 @@ class _RegisterPState extends State<RegisterP> {
                 icon: Icon(Icons.assignment),
                 suffixIcon:Container(
                   child: RaisedButton(
-                    child: Text("注册"),
+                    child: Text("发送验证码"),
                     onPressed: () {},
                   ),
                 )
             ),
-            obscureText: true,
             //校验密码
             validator: (v) {
               return v
@@ -119,12 +118,11 @@ class _RegisterPState extends State<RegisterP> {
                 icon: Icon(Icons.movie_creation),
                 suffixIcon:Container(
                   child: RaisedButton(
-                    child: Text("注册"),
+                    child: Icon(Icons.tablet_mac),
                     onPressed: () {},
                   ),
                 )
             ),
-            obscureText: true,
             //校验密码
             validator: (v) {
               return v
@@ -136,16 +134,26 @@ class _RegisterPState extends State<RegisterP> {
       break;
       case 4:{
         return Container(
-          width: ScreenAdaper.screenWidth()- ScreenAdaper.width(100),
-          child: new ClipRRect(
-                      borderRadius: BorderRadius.circular(ScreenAdaper.width(35)),
-                      child: RaisedButton(
-                        child: Text("注册"),
-                        onPressed: () {
-                          FocusScope.of(context).requestFocus(FocusNode());
-                        },
-                      ),
-                    )
+          width: ScreenAdaper.screenWidth(),
+          child: Container(
+          margin: EdgeInsets.only(top: ScreenAdaper.height(100),bottom: ScreenAdaper.height(100)),
+            width: ScreenAdaper.width(100),
+            child: new ClipRRect(
+              borderRadius: BorderRadius.circular(ScreenAdaper.width(35)),
+              child: Container(
+                  width: ScreenAdaper.screenWidth() - ScreenAdaper.width(100),
+                  color: Colors.orange,
+                  height: ScreenAdaper.height(70),
+                  alignment: Alignment.center,
+                  child: GestureDetector(
+                    child: Text('注册',style: TextStyle(color: Colors.white,fontSize: ScreenAdaper.sp(35),),textAlign: TextAlign.center,),
+                    onTap: (){
+                      FocusScope.of(context).requestFocus(FocusNode());
+                    },
+                  )
+              ),
+            ),
+          ),
         );
       }
       break;

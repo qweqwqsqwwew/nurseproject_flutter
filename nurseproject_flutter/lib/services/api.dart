@@ -66,3 +66,18 @@ Future<Map> getServiceCateList() async{
   );
   return resData ?? {};
 }
+
+///注册
+Future<Map> register(String source_str,String code,String mobile,String password) async{
+  Map resData = await safeRequest(
+    serviceUrl['app_register'],
+    data: {
+      'app':source_str,
+      'code':code,
+      'mobile':mobile,
+      'password':password
+    },
+    options: Options(method: 'POST'),
+  );
+  return resData ?? {};
+}

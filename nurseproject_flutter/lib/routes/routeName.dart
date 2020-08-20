@@ -20,4 +20,7 @@ class RouteName {
 
   ///注册页面
   static String registerV = '/registerv';
+
+  ///登录界面
+  static String login = '/login';
 }

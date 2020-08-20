@@ -7,6 +7,7 @@ import '../pages/TestDemo/TestDemo.dart';
 import '../pages/AppHomePage/Home/HomeItemDetail.dart';
 import '../pages/AppHomePage/Commen/CommenWebview.dart';
 import '../pages/AppHomePage/LoginAndRegister/RegisterP.dart';
+import '../pages/AppHomePage/LoginAndRegister/Login.dart';
 
 final String initialRoute = '/'; // 初始默认显示的路由
 final Map<String, WidgetBuilder> routesData = {
@@ -22,5 +23,7 @@ final Map<String, WidgetBuilder> routesData = {
   ///公共网页
   RouteName.commmenWebview:(BuildContext context,{params}) => CommenWebview(params: params,),
   ///注册页面
-  RouteName.registerV:(BuildContext context,{params}) => RegisterP(params: params,)
+  RouteName.registerV:(BuildContext context,{params}) => RegisterP(params: params,),
+  ///登录页面
+  RouteName.login:(BuildContext context,{params}) => Login(params:params),
 };
