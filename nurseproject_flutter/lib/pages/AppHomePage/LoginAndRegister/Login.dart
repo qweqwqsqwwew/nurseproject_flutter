@@ -16,7 +16,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin{
   void initState() {
     super.initState();
     LogUtil.d(widget.params);
-    _tabController = TabController(length: 5, vsync: this);
+    _tabController = TabController(length: 2, vsync: this);
   }
 
   @override
@@ -35,45 +35,53 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin{
       body: Container(
         alignment: Alignment.topCenter,
         child: Container(
-          margin: EdgeInsets.only(top: ScreenAdaper.height(100)),
+          margin: EdgeInsets.only(top: ScreenAdaper.height(70)),
           child: Column(
               children: [
-                TabBar(controller: _tabController, tabs: [
-                  Tab(text: "鉴定",),
-                  Tab(text: "古玩",),
-                  Tab(text: "瓷器",),
-                  Tab(text: "收藏",),
-                  Tab(text: "乐趣",),
-                ],
-                  isScrollable: true,
-                  indicatorColor: Color(0xffff0000),
-                  indicatorWeight: 1,
-                  indicatorSize: TabBarIndicatorSize.label,
-                  indicatorPadding: EdgeInsets.only(bottom: 10.0),
-//                  labelPadding: EdgeInsets.only(left: 20),
-                  labelColor: Color(0xff333333),
-                  labelStyle: TextStyle(
-                    fontSize: 15.0,
-                  ),
-                  unselectedLabelColor: Colors.yellowAccent,
-                  unselectedLabelStyle: TextStyle(
-                    fontSize: 12.0,
-                  ),
-                ),
-                TabBarView(
-                  controller: _tabController,
-                  children: <Widget>[
-                    Text('鉴定'),
-                    Text('古玩'),
-                    Text('瓷器'),
-                    Text('收藏'),
-                    Text('乐趣'),
+                Container(
+                  height: ScreenAdaper.height(100),
+                  child: TabBar(controller: _tabController, tabs: [
+                    Tab(text: "验证码登录",),
+                    Tab(text: "密码登录",),
                   ],
+                    isScrollable: true,
+                    indicatorColor: Colors.orange,
+                    indicatorWeight: 2,
+                    indicatorSize: TabBarIndicatorSize.label,
+                    indicatorPadding: EdgeInsets.only(bottom: 10.0),
+//                  labelPadding: EdgeInsets.only(left: 20),
+                    labelColor: Colors.orange,
+                    labelStyle: TextStyle(
+                      fontSize: 18.0,
+                    ),
+                    unselectedLabelColor: Colors.black45,
+                    unselectedLabelStyle: TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
                 ),
+                Container(
+                  height: ScreenAdaper.height(600),
+                  child: TabBarView(
+                    controller: _tabController,
+                    children: <Widget>[
+                      Text('验证码登录'),
+                      Text('密码登录'),
+                    ],
+                  ),
+                )
               ],
           ),
         ),
       ),
     );
+  }
+
+  Widget _buildYanZhengLogin(BuildContext context){
+
+  }
+
+  Widget _buildPasswordLogin(BuildContext context){
+
   }
 }
