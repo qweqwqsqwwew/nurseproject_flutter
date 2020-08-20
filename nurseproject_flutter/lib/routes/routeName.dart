@@ -17,4 +17,7 @@ class RouteName {
 
   ///公共网页跳转
   static String commmenWebview = '/commmenWebview';
+
+  ///注册页面
+  static String registerV = './registerv';
 }

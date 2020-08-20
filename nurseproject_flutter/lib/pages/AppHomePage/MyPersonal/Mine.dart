@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nurseproject_flutter/utils/util.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../Commen/CommenWebview.dart';
 class Mine extends StatefulWidget {
   Mine({Key key, this.params}) : super(key: key);
   final params;
@@ -104,7 +103,16 @@ class _MineState extends State<Mine> with AutomaticKeepAliveClientMixin{
                             color: Colors.orange,
                             height: ScreenAdaper.height(70),
                             alignment: Alignment.center,
-                            child: Text('注册',style: TextStyle(color: Colors.white,fontSize: ScreenAdaper.sp(35),),textAlign: TextAlign.center,),
+                            child: GestureDetector(
+                              child: Text('注册',style: TextStyle(color: Colors.white,fontSize: ScreenAdaper.sp(35),),textAlign: TextAlign.center,),
+                              onTap: (){
+                                Navigator.pushNamed(
+                                  context,
+                                  '/register',
+                                  arguments: {'a':'v'}, //　传递参数
+                                );
+                              },
+                            )
                           ),
                         )
                     ],
