@@ -26,8 +26,40 @@ class _CommenWebviewState extends State<CommenWebview> {
       body: WebView(
         initialUrl: widget.params["url"],
         javascriptMode: JavascriptMode.unrestricted,
+        // 监听
+//        onWebViewCreated: (controller) {
+//          _controller = controller;
+//          _title = widget.navTtile;
+//        },
+//        onPageFinished: (url) {
+//          // js监听
+//          _controller.evaluateJavascript("document.title").then((result) {
+//            setState(() {
+//              _title = result;
+//            });
+//          });
+//        },
+        navigationDelegate: (NavigationRequest request) {
+          if (request.url.startsWith("gxmobile://")) {
+            // 拦截处理
+            return NavigationDecision.prevent;
+          }
+          // 不需要链接处理
+          return NavigationDecision.navigate;
+        },
+        onWebResourceError: (error) {
+          // 界面加载错误
+          print(error.description);
+        },
+        // 注入js
+        javascriptChannels: <JavascriptChannel>[
+          JavascriptChannel(
+              name: 'name',
+              onMessageReceived: (JavascriptMessage message) {
+                print("参数： ${message.message}");
+              })
+        ].toSet(),
       ),
     );
   }
-
 }

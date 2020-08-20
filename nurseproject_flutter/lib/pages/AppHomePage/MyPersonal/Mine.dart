@@ -157,7 +157,7 @@ class _MineState extends State<Mine> with AutomaticKeepAliveClientMixin{
           Navigator.pushNamed(
             context,
             '/commmenWebview',
-            arguments: {"url":"帮助","title":"https://didi.depin.tech/view-article/9f23f37fa9ced4dacd5f3df418ab9cf1"}, //　传递参数
+            arguments: {"url":"https://didi.depin.tech/view-article/9f23f37fa9ced4dacd5f3df418ab9cf1","title":"帮助"}, //　传递参数
           );
         }
       },
