@@ -6,8 +6,6 @@
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/5d252d778e7640a6c45eb19ddca00171/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/5d252d778e7640a6c45eb19ddca00171/app.dill" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/5d252d778e7640a6c45eb19ddca00171/debug_android_application.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/5d252d778e7640a6c45eb19ddca00171/debug_android_application.stamp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/5d252d778e7640a6c45eb19ddca00171/flutter_assets.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/5d252d778e7640a6c45eb19ddca00171/flutter_assets.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/5d252d778e7640a6c45eb19ddca00171/kernel_snapshot.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/5d252d778e7640a6c45eb19ddca00171/kernel_snapshot.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/5d252d778e7640a6c45eb19ddca00171/kernel_snapshot.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/5d252d778e7640a6c45eb19ddca00171/kernel_snapshot.stamp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/5.6.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/5.6.2/executionHistory/executionHistory.bin" afterDir="false" />
@@ -15,10 +13,9 @@
       <change beforePath="$PROJECT_DIR$/android/.gradle/5.6.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/5.6.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/5.6.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/5.6.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/AppHomePage/LoginAndRegister/Register.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/AppHomePage/LoginAndRegister/Register.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/AppHomePage/LoginAndRegister/RegisterP.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/AppHomePage/LoginAndRegister/RegisterP.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/AppHomePage/MyPersonal/Mine.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/AppHomePage/MyPersonal/Mine.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/routes/routeName.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/routeName.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/routesData.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/routesData.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

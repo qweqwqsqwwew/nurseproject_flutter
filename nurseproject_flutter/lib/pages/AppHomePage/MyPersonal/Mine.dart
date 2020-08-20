@@ -108,7 +108,7 @@ class _MineState extends State<Mine> with AutomaticKeepAliveClientMixin{
                               onTap: (){
                                 Navigator.pushNamed(
                                   context,
-                                  '/register',
+                                  '/registerv',
                                   arguments: {'a':'v'}, //　传递参数
                                 );
                               },

@@ -19,5 +19,5 @@ class RouteName {
   static String commmenWebview = '/commmenWebview';
 
   ///注册页面
-  static String registerV = './registerv';
+  static String registerV = '/registerv';
 }
