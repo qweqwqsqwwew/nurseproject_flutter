@@ -53,6 +53,13 @@ class _MyTextFieldState extends State<MyTextField> {
   int _seconds;
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _cancelTimer();
+  }
+
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -63,6 +70,7 @@ class _MyTextFieldState extends State<MyTextField> {
     });
     _seconds = widget.countdown;
   }
+
 
   _startTimer() {
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {

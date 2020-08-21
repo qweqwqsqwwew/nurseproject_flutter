@@ -13,121 +13,18 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin{
   // 选项卡控制器
   TabController _tabController;
 
-
-  TextEditingController _nameYanController = TextEditingController();
-  TextEditingController _namePassController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
-  TextEditingController _vcodeController = TextEditingController();
-
-
-  //分别定义两个输入框的焦点 用于切换焦点
-  final FocusNode _nodeName = FocusNode();
-  final FocusNode _nodePwd = FocusNode();
-  final FocusNode _nodeVCode = FocusNode();
-  bool _isClickYan = false;
-  bool _isClickPass = false;
-
   @override
   void initState() {
     super.initState();
     LogUtil.d(widget.params);
     _tabController = TabController(length: 2, vsync: this);
-
-    _namePassController.addListener(_verifyPass);
-    _passwordController.addListener(_verifyPass);
-
-    _nameYanController.addListener(_verifyYan);
-    _vcodeController.addListener(_verifyYan);
   }
 
-  void _verifyYan() {
-    String name = _nameYanController.text;
-    print('name $name');
-    String vcord = _vcodeController.text;
-    print('验证码 $vcord');
-    if (name.isEmpty || name.length < 11) {
-      if(mounted) {
-        LogUtil.d('-------7');
-        setState(() {
-          LogUtil.d('-------8');
-          _isClickYan = false;
-        });
-      }
-      return;
-    }
-
-    if (name.isEmpty || vcord.length < 4) {
-      if(mounted) {
-        LogUtil.d('-------9');
-        setState(() {
-          LogUtil.d('-------10');
-          _isClickYan = false;
-        });
-      }
-      return;
-    }
-    if(mounted) {
-      LogUtil.d('-------11');
-      setState(() {
-        LogUtil.d('-------12');
-        _isClickYan = true;
-      });
-    }
-  }
-
-  void _verifyPass() {
-    String name = _namePassController.text;
-    print('name $name');
-    String password = _passwordController.text;
-    print('password $password');
-    if (name.isEmpty || name.length < 11) {
-      if(mounted) {
-        LogUtil.d('-------6');
-        setState(() {
-          _isClickPass = false;
-          LogUtil.d('-------5');
-        });
-      }
-      return;
-    }
-
-    if (password.isEmpty || password.length < 6) {
-      if(mounted) {
-        LogUtil.d('-------4');
-        setState(() {
-          LogUtil.d('-------3');
-          _isClickPass = false;
-        });
-      }
-      return;
-    }
-    if(mounted) {
-      LogUtil.d('-------2');
-      setState(() {
-        LogUtil.d('-------1');
-        _isClickPass = true;
-      });
-    }
-  }
-
-  _loginYan() {
-    print('login action');
-  }
-
-  _loginPass() {
-    print('login action');
-  }
 
   @override
   void dispose() {
     super.dispose();
     _tabController.dispose();
-
-
-    _nameYanController.dispose();
-    _passwordController.dispose();
-    _namePassController.dispose();
-    _vcodeController.dispose();
   }
 
 
@@ -175,8 +72,8 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin{
                        child: TabBarView(
                          controller: _tabController,
                          children: <Widget>[
-                           _buildYanZhengLogin(context),
-                           _buildPasswordLogin(context),
+                           yanzheng(),
+                           password(),
                          ],
                        ),
                      )
@@ -189,6 +86,91 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin{
   }
 
 
+
+}
+
+
+class yanzheng extends StatefulWidget {
+  @override
+  _yanzhengState createState() => _yanzhengState();
+}
+
+class _yanzhengState extends State<yanzheng>  with AutomaticKeepAliveClientMixin{
+  @override
+  bool get wantKeepAlive => true;
+
+  TextEditingController _nameYanController = TextEditingController();
+  TextEditingController _vcodeController = TextEditingController();
+  //分别定义两个输入框的焦点 用于切换焦点
+  final FocusNode _nodeYanName = FocusNode();
+  final FocusNode _nodeVCode = FocusNode();
+  bool _isClickYan = false;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _nameYanController.addListener(_verifyYan);
+    _vcodeController.addListener(_verifyYan);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _nameYanController.dispose();
+    _vcodeController.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return _buildYanZhengLogin(context);
+  }
+
+  Widget _buildYanZhengLogin(BuildContext context){
+    return Container(
+        child: _buildYanZhengBody()
+    );
+  }
+
+  _loginYan() {
+    print('login action');
+  }
+
+  void _verifyYan() {
+    String name = _nameYanController.text;
+    print('name $name');
+    String vcord = _vcodeController.text;
+    print('验证码 $vcord');
+    if (name.isEmpty || name.length < 11) {
+      if(mounted) {
+        LogUtil.d('-------7');
+        setState(() {
+          LogUtil.d('-------8');
+          _isClickYan = false;
+        });
+      }
+      return;
+    }
+
+    if (name.isEmpty || vcord.length < 4) {
+      if(mounted) {
+        LogUtil.d('-------9');
+        setState(() {
+          LogUtil.d('-------10');
+          _isClickYan = false;
+        });
+      }
+      return;
+    }
+    if(mounted) {
+      LogUtil.d('-------11');
+      setState(() {
+        LogUtil.d('-------12');
+        _isClickYan = true;
+      });
+    }
+  }
+
   _buildYanZhengBody() {
     return Padding(
       padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 20.0),
@@ -196,7 +178,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin{
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           MyTextField(
-            focusNode: _nodeName,
+            focusNode: _nodeYanName,
             placeHolder: '请输入账号',
             maxLength: 11,
             keyboardType: TextInputType.phone,
@@ -274,6 +256,91 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin{
       ),
     );
   }
+}
+
+class password extends StatefulWidget {
+  @override
+  _passwordState createState() => _passwordState();
+}
+
+class _passwordState extends State<password>  with AutomaticKeepAliveClientMixin{
+  @override
+  bool get wantKeepAlive => true;
+
+  TextEditingController _namePassController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  final FocusNode _nodePassName = FocusNode();
+  final FocusNode _nodePwd = FocusNode();
+  bool _isClickPass = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _namePassController.addListener(_verifyPass);
+    _passwordController.addListener(_verifyPass);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _passwordController.dispose();
+    _namePassController.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return _buildPasswordLogin(context);
+  }
+
+  Widget _buildPasswordLogin(BuildContext context){
+    return Container(
+        child:_buildPassBody()
+    );
+  }
+
+
+  void _verifyPass() {
+    String name = _namePassController.text;
+    print('name $name');
+    String password = _passwordController.text;
+    print('password $password');
+    if (name.isEmpty || name.length < 11) {
+      if(mounted) {
+        LogUtil.d('-------6');
+        setState(() {
+          _isClickPass = false;
+          LogUtil.d('-------5');
+        });
+      }
+      return;
+    }
+
+    if (password.isEmpty || password.length < 6) {
+      if(mounted) {
+        LogUtil.d('-------4');
+        setState(() {
+          LogUtil.d('-------3');
+          _isClickPass = false;
+        });
+      }
+      return;
+    }
+    if(mounted) {
+      LogUtil.d('-------2');
+      setState(() {
+        LogUtil.d('-------1');
+        _isClickPass = true;
+      });
+    }
+  }
+
+
+  _loginPass() {
+    print('login action');
+  }
+
 
   _buildPassBody() {
     return Padding(
@@ -282,7 +349,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin{
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           MyTextField(
-            focusNode: _nodeName,
+            focusNode: _nodePassName,
             placeHolder: '请输入账号',
             maxLength: 11,
             keyboardType: TextInputType.phone,
@@ -357,16 +424,5 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin{
       ),
     );
   }
-
-  Widget _buildYanZhengLogin(BuildContext context){
-      return Container(
-        child: _buildYanZhengBody()
-      );
-  }
-
-  Widget _buildPasswordLogin(BuildContext context){
-      return Container(
-          child:_buildPassBody()
-      );
-  }
 }
+
