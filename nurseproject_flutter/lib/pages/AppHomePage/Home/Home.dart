@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jh_debug/utils/logData_utls.dart';
 import 'package:nurseproject_flutter/utils/util.dart';
 import 'package:provider/provider.dart';
 import 'provider/counterStore.p.dart';
@@ -103,7 +102,9 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
 
   Future<Null> _handleRefresh() async {
     _serviceItemListProvider.getServiceItemsList();
-    ToasrShow.show('加载成功');
+    Future.delayed(Duration(seconds: 1), () {
+      ToasrShow.show('加载成功');
+    });
   }
 
   Widget _buildListView(BuildContext context){
