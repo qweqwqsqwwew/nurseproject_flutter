@@ -4,11 +4,6 @@ import 'service_url.dart';
 
 /// 获取APP最新版本号, 演示更新APP组件
 Future<Map> getNewVersion([String version]) async {
-  // TODO: 替换为你的真实请求接口，并返回数据，此处演示直接返回数据
-  // Map resData = await safeRequest(
-  //   'url',
-  //   options: Options(method: 'GET'), // 请求类型
-  // );
   Map resData = {
     "code": "0",
     "message": "success",
@@ -80,4 +75,33 @@ Future<Map> register(String source_str,String code,String mobile,String password
     options: Options(method: 'POST'),
   );
   return resData ?? {};
+}
+
+///发送登录短信
+Future<Map> loginSendSms(String phone_str) async {
+  Map resData = await safeRequest(
+    serviceUrl['app_login_sendSMS'],
+    data: {
+      'appid':2,
+      'mobild':phone_str,
+      'scope':'login'
+    },
+    options: Options(method: 'POST'),
+  );
+  return resData ?? {};
+}
+
+///登录接口
+Future<Map> loginBySMS(String mobild_str,String vcode) async{
+  Map resData = await safeRequest(
+    serviceUrl['app_login_bySMS'],
+    data: {
+      'code':vcode,
+      'mobild':mobild_str,
+      'app':'user'
+    },
+    options: Options(method: 'POST'),
+  );
+  return resData ?? {};
+
 }

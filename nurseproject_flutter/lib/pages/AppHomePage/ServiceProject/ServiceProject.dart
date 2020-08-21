@@ -16,8 +16,10 @@ class ServiceProject extends StatefulWidget {
   _ServiceProjectState createState() => _ServiceProjectState();
 }
 
-class _ServiceProjectState extends State<ServiceProject>  with AutomaticKeepAliveClientMixin {
+class _ServiceProjectState extends State<ServiceProject> with AutomaticKeepAliveClientMixin {
+  @override
   bool get wantKeepAlive => true;
+
   ServiceItemList _serviceItemListProvider;
   List<HomeItem> _serviceRealList = [];
   List<ServiceCateItem> _cateList = [];

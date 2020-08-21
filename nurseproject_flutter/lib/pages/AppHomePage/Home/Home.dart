@@ -20,6 +20,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
+
   CounterStore _counter;
   final List<BannerItem> banner_lists = [];
   final List<HomeItem> home_items_list = [];

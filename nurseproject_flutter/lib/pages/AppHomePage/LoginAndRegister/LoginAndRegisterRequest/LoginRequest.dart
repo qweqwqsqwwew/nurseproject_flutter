@@ -16,3 +16,21 @@ class RegisterRequest{
   }
 }
 
+class LoginSendSMS{
+  static Future<Map> requestLoginSendSms(String phone_str) async {
+    Map resData = await loginSendSms(phone_str);
+    LogUtil.d(resData);
+    final subject = resData;
+    return subject;
+  }
+}
+
+class LoginBySMS{
+  static Future<UserModel> requestLoginBySMS(String mobile_str,String vcode) async{
+    Map resData = await loginBySMS(mobile_str, vcode);
+    LogUtil.d(resData);
+    final subject = resData['data'];
+    return UserModel.fromMap(subject);  
+  }
+}
+

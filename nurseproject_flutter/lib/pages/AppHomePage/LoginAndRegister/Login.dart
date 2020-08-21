@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../utils/util.dart';
 import '../Commen/text_field.dart';
+import './LoginAndRegisterRequest/LoginRequest.dart';
 class Login extends StatefulWidget {
   Login({Key key, this.params}) : super(key: key);
   final params;
@@ -20,13 +21,11 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin{
     _tabController = TabController(length: 2, vsync: this);
   }
 
-
   @override
   void dispose() {
     super.dispose();
     _tabController.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -84,11 +83,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin{
       ),
     );
   }
-
-
-
 }
-
 
 class yanzheng extends StatefulWidget {
   @override
@@ -136,39 +131,38 @@ class _yanzhengState extends State<yanzheng>  with AutomaticKeepAliveClientMixin
     print('login action');
   }
 
+  _sendSms(){
+    LoginSendSMS.requestLoginSendSms(_nameYanController.text).then((value){
+      LogUtil.d(value);
+      if(value["success"] == 1){
+        ToasrShow.show('短信发送成功');
+      }else{
+        ToasrShow.show('短信发送失败');
+      }
+    });
+  }
+
   void _verifyYan() {
     String name = _nameYanController.text;
     print('name $name');
     String vcord = _vcodeController.text;
     print('验证码 $vcord');
     if (name.isEmpty || name.length < 11) {
-      if(mounted) {
-        LogUtil.d('-------7');
         setState(() {
-          LogUtil.d('-------8');
           _isClickYan = false;
         });
-      }
       return;
     }
 
     if (name.isEmpty || vcord.length < 4) {
-      if(mounted) {
-        LogUtil.d('-------9');
         setState(() {
-          LogUtil.d('-------10');
           _isClickYan = false;
         });
-      }
       return;
     }
-    if(mounted) {
-      LogUtil.d('-------11');
       setState(() {
-        LogUtil.d('-------12');
         _isClickYan = true;
       });
-    }
   }
 
   _buildYanZhengBody() {
@@ -195,6 +189,7 @@ class _yanzhengState extends State<yanzheng>  with AutomaticKeepAliveClientMixin
             keyboardType: TextInputType.phone,
             getVCode: () {
               print('获取验证码');
+              _sendSms();
             },
           ),
           Container(
@@ -249,7 +244,13 @@ class _yanzhengState extends State<yanzheng>  with AutomaticKeepAliveClientMixin
                   color: Color(0xFF4688FA),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  '/registerv',
+                  arguments: {}, //　传递参数
+                );
+              },
             ),
           )
         ],
@@ -300,47 +301,32 @@ class _passwordState extends State<password>  with AutomaticKeepAliveClientMixin
     );
   }
 
-
   void _verifyPass() {
     String name = _namePassController.text;
     print('name $name');
     String password = _passwordController.text;
     print('password $password');
     if (name.isEmpty || name.length < 11) {
-      if(mounted) {
-        LogUtil.d('-------6');
         setState(() {
           _isClickPass = false;
-          LogUtil.d('-------5');
         });
-      }
       return;
     }
 
     if (password.isEmpty || password.length < 6) {
-      if(mounted) {
-        LogUtil.d('-------4');
         setState(() {
-          LogUtil.d('-------3');
           _isClickPass = false;
         });
-      }
       return;
     }
-    if(mounted) {
-      LogUtil.d('-------2');
       setState(() {
-        LogUtil.d('-------1');
         _isClickPass = true;
       });
-    }
   }
-
 
   _loginPass() {
     print('login action');
   }
-
 
   _buildPassBody() {
     return Padding(
@@ -417,7 +403,13 @@ class _passwordState extends State<password>  with AutomaticKeepAliveClientMixin
                   color: Color(0xFF4688FA),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  '/registerv',
+                  arguments: {}, //　传递参数
+                );
+              },
             ),
           )
         ],
