@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd158dda-6711-4c0d-89a7-3c39eb7842d2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/pages/AppHomePage/Commen/demoList.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/utils/toast_show.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/AppHomePage/Home/Home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/AppHomePage/Home/Home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/AppHomePage/Home/HomeComponents/home_item_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/AppHomePage/Home/HomeComponents/home_item_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/AppHomePage/Home/HomeComponents/home_top_service_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/AppHomePage/Home/HomeComponents/home_top_service_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/provider/appCommenNetData.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/provider/appCommenNetData.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils/util.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/util.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,6 +19,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Gradle Kotlin DSL Build Script" />
         <option value="Dart File" />
       </list>
     </option>

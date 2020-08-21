@@ -25,6 +25,11 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   final List<BannerItem> banner_lists = [];
   final List<HomeItem> home_items_list = [];
   final List<HomeItem> home_set_list = [];
+
+  ///下拉刷新
+  ScrollController _scrollController;
+  bool isLoading = false;
+
   ServiceItemList _serviceItemListProvider;
   @override
   void initState() {
@@ -34,6 +39,27 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
         banner_lists.addAll(res);
       });
     });
+
+    ///初始化下拉加载
+    _scrollController = ScrollController();
+    // 监听ListView是否滚动到底部
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels >=
+          _scrollController.position.maxScrollExtent) {
+        // 滑动到了底部
+        print('滑动到了底部');
+        // 这里可以执行上拉加载逻辑
+//        _loadMore();
+      }
+    });
+  }
+
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _scrollController.dispose();
   }
 
   @override
@@ -57,7 +83,13 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
         title: Text('首页',style: TextStyle(color: Colors.white),),
         automaticallyImplyLeading: false,
       ),
-        body: _buildListView(context),
+        body: Container(
+          child: RefreshIndicator(
+            child: _buildListView(context),
+            onRefresh: _handleRefresh,
+          ),
+        ),
+//        _buildListView(context),
       floatingActionButton: FloatingActionButton(
         heroTag: 'homeBtn1',
         onPressed: () async {
@@ -67,6 +99,11 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
         child: Icon(Icons.add),
       ),
     );
+  }
+
+  Future<Null> _handleRefresh() async {
+    _serviceItemListProvider.getServiceItemsList();
+    ToasrShow.show('加载成功');
   }
 
   Widget _buildListView(BuildContext context){

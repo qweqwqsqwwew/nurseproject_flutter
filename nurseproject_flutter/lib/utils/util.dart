@@ -5,6 +5,7 @@ export 'sp_util.dart' show SpUtil;
 export 'perm_utils.dart' show PermUtils;
 export 'log_util.dart' show LogUtil;
 export 'screen_adaper.dart' show ScreenAdaper;
+export 'toast_show.dart' show ToasrShow;
 
 class Util {
   /// 防抖函数
