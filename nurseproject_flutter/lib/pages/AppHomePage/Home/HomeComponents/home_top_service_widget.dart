@@ -58,7 +58,11 @@ class home_top_service_widget extends StatelessWidget{
 
 Widget buildSingleItem(String topTitle,String bottomTitle,String imagePath){
   return Container(
-        child: Image.asset(imagePath,width: ScreenAdaper.width(180),height: ScreenAdaper.height(200),fit: BoxFit.cover,),
+        decoration: BoxDecoration(
+//            borderRadius: BorderRadius.circular(17),///圆角
+            border: Border.all(color: Colors.black12,width: 1)///边框颜色、宽
+        ),
+        child: Image.asset(imagePath,width: ScreenAdaper.width(150),height: ScreenAdaper.height(180),fit: BoxFit.cover,),
   );
 }
 
@@ -89,7 +93,7 @@ Widget buildBottomWidget(){
               ),
               Container(
                 margin: EdgeInsets.only(left: 5,top: 10),
-                child: Text('不懂这一点，只会让你的孩子拉...',style:  TextStyle(color:Colors.black,fontSize: ScreenAdaper.sp(30)),),
+                child: Text('不懂这一点，只会让你的孩子拉大街上看...',style:  TextStyle(color:Colors.black,fontSize: ScreenAdaper.sp(23)),),
               ),
             ],
           ),

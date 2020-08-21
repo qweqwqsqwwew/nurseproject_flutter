@@ -93,7 +93,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   Widget _buildHomeItemWidget(BuildContext context,int index,HomeItem homeItem){
     return Container(
 
-      height: ScreenAdaper.height(200),
+      height: ScreenAdaper.height(220),
         child: GestureDetector(
           child: home_item_widget(homeItem),
           onTap: (){
@@ -137,7 +137,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
             ),
           ),
           Container(
-            height: ScreenAdaper.height(500),
+            height: ScreenAdaper.height(430),
             child: home_top_service_widget(home_set_list),
           ),
         ],

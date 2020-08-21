@@ -11,8 +11,12 @@ class home_item_widget extends StatelessWidget{
   Widget build(BuildContext context) {
       return Container(
 //        height: 70,
-        padding: EdgeInsets.only(left: 10,right: 10),
-
+          margin: EdgeInsets.only(left: 10,right: 10,bottom: 10),
+          padding: EdgeInsets.only(left: 10),
+          decoration: BoxDecoration(
+//            borderRadius: BorderRadius.circular(17),///圆角
+              border: Border.all(color: Colors.black12,width: 1)///边框颜色、宽
+          ),
         child: Container(
           child: Row(
             children: [
@@ -30,7 +34,7 @@ class home_item_widget extends StatelessWidget{
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 5,left: 10),
-                        width: ScreenAdaper.width(520),
+                        width: ScreenAdaper.width(500),
                         height: ScreenAdaper.height(70),
                         child: Text(homeSingleItem.intro,maxLines:2,style: TextStyle(color: Colors.black45,fontSize: 12,),),
                       ),
@@ -45,7 +49,7 @@ class home_item_widget extends StatelessWidget{
                           child: Text('${homeSingleItem.price}元',style: TextStyle(color: Colors.orange,fontSize: 13),),
                         ),
                         Container(
-                          margin: EdgeInsets.only(left: ScreenAdaper.width(330)),
+                          margin: EdgeInsets.only(left: ScreenAdaper.width(300)),
                           child: Text('已服务${homeSingleItem.sale_num}次',style: TextStyle(color: Colors.black45,fontSize: 10),),
                         )
                       ],
