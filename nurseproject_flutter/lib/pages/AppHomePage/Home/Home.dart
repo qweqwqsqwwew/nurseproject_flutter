@@ -117,9 +117,9 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
-            padding: const EdgeInsets.only(top: 15),
+            padding: const EdgeInsets.only(top: 15,left: 15,right:15),
             child: CarouselSlider(
-              options: CarouselOptions(height: ScreenAdaper.height(300),autoPlay: true,aspectRatio: 2.0,enlargeCenterPage: true,),
+              options: CarouselOptions(height: ScreenAdaper.height(200),autoPlay: true,aspectRatio: 2,enlargeCenterPage: true,autoPlayInterval:Duration(seconds: 2)),
               items: banner_lists.map((item) => Container(
                 child: Center(
 //                      child: Image.network(item.img, fit: BoxFit.fill, width: MediaQuery.of(context).size.width,height:200)

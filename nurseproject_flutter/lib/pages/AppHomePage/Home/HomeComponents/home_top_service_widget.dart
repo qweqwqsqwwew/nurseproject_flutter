@@ -58,7 +58,7 @@ class home_top_service_widget extends StatelessWidget{
 
 Widget buildSingleItem(String topTitle,String bottomTitle,String imagePath){
   return Container(
-        child: Image.asset(imagePath,width: ScreenAdaper.width(190),height: ScreenAdaper.height(250),fit: BoxFit.cover,),
+        child: Image.asset(imagePath,width: ScreenAdaper.width(180),height: ScreenAdaper.height(200),fit: BoxFit.cover,),
   );
 }
 

@@ -109,18 +109,20 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin{
                   }
               ),
             ),
-            TextFormField(
-                controller: _unameController,
-                decoration: InputDecoration(
+            Container(
+              child: TextFormField(
+                  controller: _unameController,
+                  decoration: InputDecoration(
                     labelText: "验证码",
                     hintText: "请输入验证码",
-                ),
-                //校验密码
-                validator: (v) {
-                  return v
-                      .trim()
-                      .length > 5 ? null : "密码不能少于6位";
-                }
+                  ),
+                  //校验密码
+                  validator: (v) {
+                    return v
+                        .trim()
+                        .length > 5 ? null : "密码不能少于6位";
+                  }
+              ),
             ),
             Container(
               margin: EdgeInsets.only(top: ScreenAdaper.height(90)),
