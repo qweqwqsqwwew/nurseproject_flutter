@@ -3,3 +3,4 @@
 *.js linguist-language=Dart 
 *.xml linguist-language=Dart
 *.css linguist-language=Dart 
+*.assembly linguist-language=Dart
