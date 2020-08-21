@@ -1,5 +1,3 @@
-//import 'dart:html';
-
 import '../../../utils/util.dart';
 import 'package:flutter/material.dart';
 
@@ -47,16 +45,16 @@ class _HotState extends State<Changhuxian> with AutomaticKeepAliveClientMixin {
                 ),
                 Container(
                   margin: EdgeInsets.only(top: ScreenAdaper.height(30),left: ScreenAdaper.width(30),right: ScreenAdaper.width(30)),
-                  child: Text('本单位对提供的材料进行了认真审核，保证所填写的信息和提供的资料真实有效，无任何虚假申报情况，若因本单位未履行审查职责造成申报材料虚假的，本单位愿意接受行政处罚，并承担由此带来的法律后果。'),
+                  child: Text('本单位对提供的材料进行了认真审核，保证所填写的信息和提供的资料真实有效，无任何虚假申报情况，若因本单位未履行审查职责造成申报材料虚假的，本单位愿意接受行政处罚，并承担由此带来的法律后果。',style:TextStyle(fontSize: ScreenAdaper.sp(30)),),
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: ScreenAdaper.height(500)),
+                  margin: EdgeInsets.only(top: ScreenAdaper.height(600)),
                   child: new ClipRRect(
                     borderRadius: BorderRadius.circular(ScreenAdaper.width(35)),
                     child: Container(
                         width: ScreenAdaper.screenWidth() - ScreenAdaper.width(100),
                         color: Colors.orange,
-                        height: ScreenAdaper.height(70),
+                        height: ScreenAdaper.height(80),
                         alignment: Alignment.center,
                         child: GestureDetector(
                           child: Text('申请评估',style: TextStyle(color: Colors.white,fontSize: ScreenAdaper.sp(35),),textAlign: TextAlign.center,),

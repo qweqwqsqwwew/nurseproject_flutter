@@ -20,6 +20,10 @@ class _RegisterPState extends State<RegisterP> {
   @override
   void dispose() {
     super.dispose();
+    _unameController.dispose();
+    _pwdController.dispose();
+    _yanzhengController.dispose();
+    _tuiguangController.dispose();
   }
 
   @override
