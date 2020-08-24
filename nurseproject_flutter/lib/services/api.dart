@@ -105,3 +105,18 @@ Future<Map> loginBySMS(String mobild_str,String vcode) async{
   return resData ?? {};
 
 }
+
+///通过密码登录
+Future<Map> loginByPass(String mobild_str,String password) async{
+  Map resData = await safeRequest(
+    serviceUrl['app_login_byPASS'],
+    data: {
+      'password':password,
+      'mobile':mobild_str,
+      'app':'user'
+    },
+    options: Options(method: 'POST'),
+  );
+  return resData ?? {};
+
+}

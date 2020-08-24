@@ -50,13 +50,15 @@ class _MineState extends State<Mine> with AutomaticKeepAliveClientMixin{
         ),
         preferredSize: Size.fromHeight(MediaQuery.of(context).size.height * 0.07),
       ),
-      body:Consumer<GainUserModel>(
-        builder: (_, a, child) =>
-        _currentUserModel == 0?ListView(
-          children: List.generate(3, (index) {
-            return _judegeUnLoginBackWidget(context, index);
-          }),
-        ):MineLogin(_currentUserModel),
+      body:Container(
+        child: Consumer<GainUserModel>(
+          builder: (_, a, child) =>
+          _currentUserModel == 0||_currentUserModel == null?ListView(
+            children: List.generate(3, (index) {
+              return _judegeUnLoginBackWidget(context, index);
+            }),
+          ):MineLogin(_currentUserModel),
+        ),
       )
     );
   }

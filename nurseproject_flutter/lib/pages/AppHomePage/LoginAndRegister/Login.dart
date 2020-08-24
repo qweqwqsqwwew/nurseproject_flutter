@@ -139,13 +139,12 @@ class _yanzhengState extends State<yanzheng>  with AutomaticKeepAliveClientMixin
     print('login action');
     LoginBySMS.requestLoginBySMS(_nameYanController.text, _vcodeController.text).then((value){
       LogUtil.d(value);
-//      Future.delayed(Duration(seconds: 10), () {
-//        ToasrShow.show('加载存储数据');
-//        var m = StorageUtil().getUserModel();
-//        LogUtil.d(m);
-//      });
-      _userModelProvider.setCurrenUserModel();
-      Navigator.pop(context);
+      if (value != null){
+        _userModelProvider.setCurrenUserModel();
+        Navigator.pop(context);
+      }else{
+        ToasrShow.show('登录失败');
+      }
     });
   }
 
@@ -286,6 +285,9 @@ class _passwordState extends State<password>  with AutomaticKeepAliveClientMixin
   @override
   bool get wantKeepAlive => true;
 
+  GainUserModel _userModelProvider;
+
+
   TextEditingController _namePassController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   final FocusNode _nodePassName = FocusNode();
@@ -310,6 +312,8 @@ class _passwordState extends State<password>  with AutomaticKeepAliveClientMixin
 
   @override
   Widget build(BuildContext context) {
+    _userModelProvider = Provider.of<GainUserModel>(context);
+
     return _buildPasswordLogin(context);
   }
 
@@ -344,6 +348,15 @@ class _passwordState extends State<password>  with AutomaticKeepAliveClientMixin
 
   _loginPass() {
     print('login action');
+    LoginByPass.requestLoginByPASS(_namePassController.text, _passwordController.text).then((value){
+      LogUtil.d(value);
+      if (value != null){
+        _userModelProvider.setCurrenUserModel();
+        Navigator.pop(context);
+      }else{
+        ToasrShow.show('登录失败');
+      }
+    });
   }
 
   _buildPassBody() {

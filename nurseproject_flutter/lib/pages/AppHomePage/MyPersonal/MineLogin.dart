@@ -134,65 +134,89 @@ class MineLogin extends StatelessWidget {
                         child: Image.asset("asset/images/mine/saomiao.png",width: ScreenAdaper.width(40),height: ScreenAdaper.height(40),),
                       ),
                       Container(
-                        child: Text(_userModelData.realname,style: TextStyle(color: Colors.white,fontSize: ScreenAdaper.sp(40)),),
+                        child: Text(_userModelData!=null?_userModelData.realname:'名字',style: TextStyle(color: Colors.white,fontSize: ScreenAdaper.sp(40)),),
                       ),
                       Image.asset("asset/images/mine/erweima.png",width: ScreenAdaper.width(40),height: ScreenAdaper.height(40),),
                     ],
                   ),
-                  margin: EdgeInsets.only(top: ScreenAdaper.height(80)),
+                  margin: EdgeInsets.only(top: ScreenAdaper.height(100)),
                   padding: EdgeInsets.only(left: ScreenAdaper.width(30),right: ScreenAdaper.width(30)),
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 20),
-                  child: Image.asset("asset/images/mine/men.png",width: ScreenAdaper.width(130),height: ScreenAdaper.height(130),),
+                  margin: EdgeInsets.only(top: 40),
+                    child: ClipOval(
+                        child: _userModelData.avatar.length == 0?Image.asset("asset/images/mine/men.png",width: ScreenAdaper.width(130),height: ScreenAdaper.height(130),):Image.network(_userModelData.avatar,width: ScreenAdaper.width(130),height: ScreenAdaper.height(130),)
+                    ),
                 ),
               ],
             ),
           ),
           Container(
-            child: Text("我的订单"),
+            alignment: Alignment.centerLeft,
+            height: ScreenAdaper.height(90),
+            child: Container(
+              margin:EdgeInsets.only(left: ScreenAdaper.width(30)),
+              child: Text("我的订单",style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(35)),),
+            ),
           ),
           Container(
+            margin: EdgeInsets.only(top: ScreenAdaper.height(10),bottom: ScreenAdaper.height(20)),
+            padding:EdgeInsets.only(left: ScreenAdaper.width(20),right: ScreenAdaper.width(20)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
                   child:  Column(
                     children: [
-                      Image.asset("asset/images/mine/jiantou.png",width: ScreenAdaper.width(130),height: ScreenAdaper.height(130),),
-                      Text("全部"),
+                      Image.asset("asset/images/mine/Order_all.png",width: ScreenAdaper.width(40),height: ScreenAdaper.height(50),),
+                      Container(
+                        margin: EdgeInsets.only(top: ScreenAdaper.height(10)),
+                        child: Text("全部",style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(23)),)
+                      ),
                     ],
                   ),
                 ),
                 Container(
                   child:  Column(
                     children: [
-                      Image.asset("asset/images/mine/jiantou.png",width: ScreenAdaper.width(130),height: ScreenAdaper.height(130),),
-                      Text("待付款"),
+                      Image.asset("asset/images/mine/Order_Payment.png",width: ScreenAdaper.width(40),height: ScreenAdaper.height(50),),
+                      Container(
+                          margin: EdgeInsets.only(top: ScreenAdaper.height(10)),
+                          child: Text("待付款",style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(23)),)
+                      ),
                     ],
                   ),
                 ),
                 Container(
                   child:  Column(
                     children: [
-                      Image.asset("asset/images/mine/jiantou.png",width: ScreenAdaper.width(130),height: ScreenAdaper.height(130),),
-                      Text("待服务"),
+                      Image.asset("asset/images/mine/Order_served.png",width: ScreenAdaper.width(40),height: ScreenAdaper.height(50),),
+                      Container(
+                          margin: EdgeInsets.only(top: ScreenAdaper.height(10)),
+                          child: Text("待服务",style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(23)),)
+                      ),
                     ],
                   ),
                 ),
                 Container(
                   child:  Column(
                     children: [
-                      Image.asset("asset/images/mine/jiantou.png",width: ScreenAdaper.width(130),height: ScreenAdaper.height(130),),
-                      Text("待评价"),
+                      Image.asset("asset/images/mine/Order_evaluate.png",width: ScreenAdaper.width(40),height: ScreenAdaper.height(50),),
+                      Container(
+                          margin: EdgeInsets.only(top: ScreenAdaper.height(10)),
+                          child: Text("待评价",style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(23)),)
+                      ),
                     ],
                   ),
                 ),
                 Container(
                   child:  Column(
                     children: [
-                      Image.asset("asset/images/mine/jiantou.png",width: ScreenAdaper.width(130),height: ScreenAdaper.height(130),),
-                      Text("已完成"),
+                      Image.asset("asset/images/mine/Order_complete.png",width: ScreenAdaper.width(40),height: ScreenAdaper.height(50),),
+                      Container(
+                          margin: EdgeInsets.only(top: ScreenAdaper.height(10)),
+                          child: Text("已完成",style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(23)),)
+                      ),
                     ],
                   ),
                 ),

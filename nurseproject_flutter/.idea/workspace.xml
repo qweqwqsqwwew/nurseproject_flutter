@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd158dda-6711-4c0d-89a7-3c39eb7842d2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/asset/images/mine/erweima.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asset/images/mine/saomiao.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/AppHomePage/MyPersonal/MineLogin.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/AppHomePage/MyPersonal/PersonalSetting.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/asset/images/mine/Order_Payment.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/asset/images/mine/Order_all.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/asset/images/mine/Order_complete.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/asset/images/mine/Order_evaluate.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/asset/images/mine/Order_served.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/5.6.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/5.6.2/executionHistory/executionHistory.bin" afterDir="false" />
@@ -13,19 +14,15 @@
       <change beforePath="$PROJECT_DIR$/android/.gradle/5.6.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/5.6.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/5.6.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/5.6.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/App.framework/flutter_assets/AssetManifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/App.framework/flutter_assets/AssetManifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Flutter/App.framework/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/App.framework/flutter_assets/kernel_blob.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ioc/locator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ioc/locator.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/AppHomePage/LoginAndRegister/Login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/AppHomePage/LoginAndRegister/Login.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/AppHomePage/LoginAndRegister/LoginAndRegisterRequest/LoginModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/AppHomePage/LoginAndRegister/LoginAndRegisterRequest/LoginModel.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/AppHomePage/LoginAndRegister/LoginAndRegisterRequest/LoginRequest.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/AppHomePage/LoginAndRegister/LoginAndRegisterRequest/LoginRequest.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/AppHomePage/MyPersonal/Mine.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/AppHomePage/MyPersonal/Mine.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/AppHomePage/MyPersonal/MineLogin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/AppHomePage/MyPersonal/MineLogin.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/provider/appCommenNetData.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/provider/appCommenNetData.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/providers_config.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/providers_config.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/routeName.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/routeName.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/routesData.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/routesData.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/services/api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/api.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utils/storage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/storage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utils/util.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/util.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/services/service_url.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/service_url.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,17 +53,17 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/asset/images/mine" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/asset/images/mine" />
       <recent name="$PROJECT_DIR$/lib" />
       <recent name="$PROJECT_DIR$/lib/utils" />
       <recent name="$PROJECT_DIR$/asset/images" />
       <recent name="$PROJECT_DIR$/lib/pages/AppHomePage/Commen" />
-      <recent name="$PROJECT_DIR$/asset/images/mine" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/asset/images/mine" />

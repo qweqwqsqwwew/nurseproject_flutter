@@ -10,4 +10,5 @@ const serviceUrl = {
    'app_register':appurlPro + 'user/register',
    'app_login_sendSMS':appurlProExcept + 'sms/send',
    'app_login_bySMS':appurlPro + 'user/loginBySms',
+   'app_login_byPASS':appurlPro + 'user/login',
 };
