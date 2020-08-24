@@ -172,15 +172,24 @@ class MineLogin extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
-                  child:  Column(
-                    children: [
-                      Image.asset("asset/images/mine/Order_all.png",width: ScreenAdaper.width(40),height: ScreenAdaper.height(50),),
-                      Container(
-                        margin: EdgeInsets.only(top: ScreenAdaper.height(10)),
-                        child: Text("全部",style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(23)),)
-                      ),
-                    ],
-                  ),
+                  child:  GestureDetector(
+                    child: Column(
+                      children: [
+                        Image.asset("asset/images/mine/Order_all.png",width: ScreenAdaper.width(40),height: ScreenAdaper.height(50),),
+                        Container(
+                            margin: EdgeInsets.only(top: ScreenAdaper.height(10)),
+                            child: Text("全部",style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(23)),)
+                        ),
+                      ],
+                    ),
+                    onTap: (){
+                      Navigator.pushNamed(
+                        context,
+                        '/order',
+                        arguments: {}, //　传递参数
+                      );
+                    },
+                  )
                 ),
                 Container(
                   child:  Column(

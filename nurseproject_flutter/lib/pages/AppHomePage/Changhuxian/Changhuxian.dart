@@ -1,6 +1,7 @@
 import '../../../utils/util.dart';
 import 'package:flutter/material.dart';
 
+
 class Changhuxian extends StatefulWidget {
   Changhuxian({Key key, this.params}) : super(key: key);
   final params;
@@ -59,11 +60,20 @@ class _HotState extends State<Changhuxian> with AutomaticKeepAliveClientMixin {
                         child: GestureDetector(
                           child: Text('申请评估',style: TextStyle(color: Colors.white,fontSize: ScreenAdaper.sp(35),),textAlign: TextAlign.center,),
                           onTap: (){
-                            Navigator.pushNamed(
-                              context,
-                              '/login',
-                              arguments: {}, //　传递参数
-                            );
+                            var m = StorageUtil().getUserModel();
+                            if(m!=null){
+                              Navigator.pushNamed(
+                                context,
+                                '/orderEvaluate',    ///进预约页面
+                                arguments: {}, //　传递参数
+                              );
+                            }else{
+                              Navigator.pushNamed(
+                                context,
+                                '/login',
+                                arguments: {}, //　传递参数
+                              );
+                            }
                           },
                         )
                     ),

@@ -29,4 +29,10 @@ class RouteName {
 
   ///关联对象界面
   static String relatedObject = '/relatedObject';
-}
+
+  ///预约评估界面
+  static String orderEvaluate = '/orderEvaluate';
+
+  ///订单页面
+  static String order = '/order';
+ }

@@ -10,6 +10,8 @@ import '../pages/AppHomePage/LoginAndRegister/RegisterP.dart';
 import '../pages/AppHomePage/LoginAndRegister/Login.dart';
 import '../pages/AppHomePage/MyPersonal/PersonalSetting.dart';
 import '../pages/AppHomePage/MyPersonal/RelatedObject.dart';
+import '../pages/AppHomePage/Changhuxian/OrderEvaluate.dart';
+import '../pages/AppHomePage/MyPersonal/Order/Order.dart';
 
 final String initialRoute = '/'; // 初始默认显示的路由
 final Map<String, WidgetBuilder> routesData = {
@@ -32,4 +34,8 @@ final Map<String, WidgetBuilder> routesData = {
   RouteName.personalSetting:(BuildContext context,{params}) => PersonalSetting(params:params),
   ///关联对象界面
   RouteName.relatedObject:(BuildContext context,{params}) => RelatedObject(params:params),
+  ///预约评估界面
+  RouteName.orderEvaluate:(BuildContext context,{params}) => OrderEvaluate(params:params),
+  ///订单页面
+  RouteName.order:(BuildContext context,{params}) => Order(params:params),
 };

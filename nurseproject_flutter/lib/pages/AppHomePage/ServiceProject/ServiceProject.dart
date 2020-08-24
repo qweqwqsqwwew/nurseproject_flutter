@@ -97,7 +97,6 @@ class _ServiceProjectState extends State<ServiceProject> with AutomaticKeepAlive
         for (HomeItem item in totalData){
           if (item.cate_id == cateItem.id){
             _serviceRealList.add(item);
-            LogUtil.d('---------------d------------${item.cate_id}');
           }
         }
       }
