@@ -74,6 +74,12 @@ class MineLogin extends StatelessWidget {
             '/personalSetting',
             arguments: {}, //　传递参数
           );
+        }else if(index == 1){
+          Navigator.pushNamed(
+            context,
+            '/relatedObject',
+            arguments: _userModelData, //　传递参数
+          );
         }
       },
     );

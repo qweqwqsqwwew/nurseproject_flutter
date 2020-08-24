@@ -11,4 +11,5 @@ const serviceUrl = {
    'app_login_sendSMS':appurlProExcept + 'sms/send',
    'app_login_bySMS':appurlPro + 'user/loginBySms',
    'app_login_byPASS':appurlPro + 'user/login',
+   'app_relatedObject':appurlPro + 'person/list',
 };

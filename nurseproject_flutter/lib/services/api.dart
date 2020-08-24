@@ -118,5 +118,16 @@ Future<Map> loginByPass(String mobild_str,String password) async{
     options: Options(method: 'POST'),
   );
   return resData ?? {};
+}
 
+///获取关联对象列表
+Future<Map> requestRelateddObjectList(String token) async{
+  Map resData = await safeRequest(
+    serviceUrl['app_relatedObject'],
+    data: {
+      'token':token
+    },
+    options: Options(method: 'POST'),
+  );
+  return resData ?? {};
 }

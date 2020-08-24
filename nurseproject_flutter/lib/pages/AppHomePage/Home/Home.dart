@@ -90,14 +90,6 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
           ),
         ),
 //        _buildListView(context),
-      floatingActionButton: FloatingActionButton(
-        heroTag: 'homeBtn1',
-        onPressed: () async {
-          _counter.increment();
-        },
-        tooltip: '加加store值',
-        child: Icon(Icons.add),
-      ),
     );
   }
 

@@ -26,4 +26,7 @@ class RouteName {
 
   ///个人设置页面
   static String personalSetting = '/personalSetting';
+
+  ///关联对象界面
+  static String relatedObject = '/relatedObject';
 }
