@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:nurseproject_flutter/pages/AppHomePage/LoginAndRegister/LoginAndRegisterRequest/LoginModel.dart';
 import 'package:nurseproject_flutter/utils/util.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:nurseproject_flutter/provider/appCommenNetData.dart';
+import 'package:provider/provider.dart';
+import './MineLogin.dart';
 class Mine extends StatefulWidget {
   Mine({Key key, this.params}) : super(key: key);
   final params;
@@ -12,6 +16,9 @@ class _MineState extends State<Mine> with AutomaticKeepAliveClientMixin{
   @override
   bool get wantKeepAlive => true;
 
+  dynamic _currentUserModel = null;
+
+  GainUserModel _userModelProvider;
   @override
   void initState() {
     super.initState();
@@ -26,6 +33,13 @@ class _MineState extends State<Mine> with AutomaticKeepAliveClientMixin{
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    LogUtil.d("------a---------------");
+    _userModelProvider = Provider.of<GainUserModel>(context);
+    if(_userModelProvider.getuserModel == null){
+      _userModelProvider.setCurrenUserModel();
+    }else{
+      _currentUserModel = _userModelProvider.getuserModel;
+    }
     return Scaffold(
       appBar: PreferredSize(
         child: Offstage(
@@ -36,11 +50,14 @@ class _MineState extends State<Mine> with AutomaticKeepAliveClientMixin{
         ),
         preferredSize: Size.fromHeight(MediaQuery.of(context).size.height * 0.07),
       ),
-      body:  ListView(
-        children: List.generate(3, (index) {
-          return _judegeUnLoginBackWidget(context, index);
-        }),
-      ),
+      body:Consumer<GainUserModel>(
+        builder: (_, a, child) =>
+        _currentUserModel == 0?ListView(
+          children: List.generate(3, (index) {
+            return _judegeUnLoginBackWidget(context, index);
+          }),
+        ):MineLogin(_currentUserModel),
+      )
     );
   }
 

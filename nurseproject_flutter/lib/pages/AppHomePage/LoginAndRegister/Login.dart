@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:nurseproject_flutter/pages/AppHomePage/LoginAndRegister/LoginAndRegisterRequest/LoginModel.dart';
+import 'package:nurseproject_flutter/utils/storage.dart';
 import '../../../utils/util.dart';
 import '../Commen/text_field.dart';
 import './LoginAndRegisterRequest/LoginRequest.dart';
+import 'package:nurseproject_flutter/provider/appCommenNetData.dart';
+import 'package:provider/provider.dart';
 class Login extends StatefulWidget {
   Login({Key key, this.params}) : super(key: key);
   final params;
@@ -94,6 +98,8 @@ class _yanzhengState extends State<yanzheng>  with AutomaticKeepAliveClientMixin
   @override
   bool get wantKeepAlive => true;
 
+  GainUserModel _userModelProvider;
+
   TextEditingController _nameYanController = TextEditingController();
   TextEditingController _vcodeController = TextEditingController();
   //分别定义两个输入框的焦点 用于切换焦点
@@ -118,6 +124,8 @@ class _yanzhengState extends State<yanzheng>  with AutomaticKeepAliveClientMixin
 
   @override
   Widget build(BuildContext context) {
+    _userModelProvider = Provider.of<GainUserModel>(context);
+
     return _buildYanZhengLogin(context);
   }
 
@@ -129,6 +137,16 @@ class _yanzhengState extends State<yanzheng>  with AutomaticKeepAliveClientMixin
 
   _loginYan() {
     print('login action');
+    LoginBySMS.requestLoginBySMS(_nameYanController.text, _vcodeController.text).then((value){
+      LogUtil.d(value);
+//      Future.delayed(Duration(seconds: 10), () {
+//        ToasrShow.show('加载存储数据');
+//        var m = StorageUtil().getUserModel();
+//        LogUtil.d(m);
+//      });
+      _userModelProvider.setCurrenUserModel();
+      Navigator.pop(context);
+    });
   }
 
   _sendSms(){

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'pages/AppHomePage/Home/provider/counterStore.p.dart';
@@ -11,4 +12,5 @@ List<SingleChildWidget> providersConfig = [
   ChangeNotifierProvider<ServiceItemList>.value(value: ServiceItemList()),//全局服务列表
   ChangeNotifierProvider<AppHomePageStore>.value(value: AppHomePageStore()),
   ChangeNotifierProvider<CounterStore>.value(value: CounterStore()),
+  ChangeNotifierProvider<GainUserModel>.value(value: GainUserModel()),
 ];

@@ -23,4 +23,7 @@ class RouteName {
 
   ///登录界面
   static String login = '/login';
+
+  ///个人设置页面
+  static String personalSetting = '/personalSetting';
 }

@@ -83,7 +83,7 @@ Future<Map> loginSendSms(String phone_str) async {
     serviceUrl['app_login_sendSMS'],
     data: {
       'appid':2,
-      'mobild':phone_str,
+      'mobile':phone_str,
       'scope':'login'
     },
     options: Options(method: 'POST'),
@@ -97,7 +97,7 @@ Future<Map> loginBySMS(String mobild_str,String vcode) async{
     serviceUrl['app_login_bySMS'],
     data: {
       'code':vcode,
-      'mobild':mobild_str,
+      'mobile':mobild_str,
       'app':'user'
     },
     options: Options(method: 'POST'),

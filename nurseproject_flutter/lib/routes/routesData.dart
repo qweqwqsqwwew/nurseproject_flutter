@@ -8,6 +8,7 @@ import '../pages/AppHomePage/Home/HomeItemDetail.dart';
 import '../pages/AppHomePage/Commen/CommenWebview.dart';
 import '../pages/AppHomePage/LoginAndRegister/RegisterP.dart';
 import '../pages/AppHomePage/LoginAndRegister/Login.dart';
+import '../pages/AppHomePage/MyPersonal/PersonalSetting.dart';
 
 final String initialRoute = '/'; // 初始默认显示的路由
 final Map<String, WidgetBuilder> routesData = {
@@ -26,4 +27,6 @@ final Map<String, WidgetBuilder> routesData = {
   RouteName.registerV:(BuildContext context,{params}) => RegisterP(params: params,),
   ///登录页面
   RouteName.login:(BuildContext context,{params}) => Login(params:params),
+  ///个人设置页面
+  RouteName.personalSetting:(BuildContext context,{params}) => PersonalSetting(params:params),
 };

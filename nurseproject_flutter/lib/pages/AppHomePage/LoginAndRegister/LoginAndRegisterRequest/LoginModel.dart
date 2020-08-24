@@ -5,14 +5,14 @@ class UserModel{
   String avatar;
   String username;
   String uid;
-  String token;
+  String token = "";
   UserModel.fromMap(Map<String, dynamic> json) {
-    this.nickname = json["nickname"];
-    this.mobile = json["mobile"];
-    this.realname = json["realname"];
-    this.avatar = json["avatar"];
-    this.username = json["username"];
-    this.uid = json["uid"];
-    this.token = json["token"];
+    this.nickname = json["nickname"].toString();
+    this.mobile = json["mobile"].toString();
+    this.realname = json["realname"].toString();
+    this.avatar = json["avatar"].toString();
+    this.username = json["username"].toString();
+    this.uid = json["uid"].toString();
+    this.token = json["token"].toString();
   }
 }

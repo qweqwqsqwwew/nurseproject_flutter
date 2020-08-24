@@ -1,8 +1,12 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:nurseproject_flutter/pages/AppHomePage/LoginAndRegister/LoginAndRegisterRequest/LoginModel.dart';
+import '../utils/log_util.dart';
 /// 本地存储
 class StorageUtil {
+
+  final userToken = 'userToken';
+
   static StorageUtil _instance = new StorageUtil._();
   factory StorageUtil() => _instance;
   static SharedPreferences _prefs;
@@ -30,5 +34,28 @@ class StorageUtil {
   /// 删除 json 对象
   Future<bool> remove(String key) {
     return _prefs.remove(key);
+  }
+
+  ///获取用户对象
+  dynamic getUserModel(){
+    String jsonString = _prefs.getString(userToken);
+     if (jsonString != null){
+       Map<String, dynamic> user = jsonDecode(jsonString);
+       return UserModel.fromMap(user);
+     }else{
+       return null;
+     }
+  }
+
+  /// 设置 json 对象
+  Future<bool> setUserJSON(dynamic jsonVal) {
+    String jsonString = jsonEncode(jsonVal);
+    LogUtil.d(jsonString);
+    return _prefs.setString(userToken, jsonString);
+  }
+
+  /// 删除登录对象对象
+  Future<bool> removeLogin() {
+    return _prefs.remove(userToken);
   }
 }
