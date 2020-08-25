@@ -23,8 +23,10 @@ class HomeBannerRequest {
     LogUtil.d(resData);
     final subjects = resData['data'];
      List<BannerItem> imageData = [];
-     for (var sub in subjects){
-       imageData.add(BannerItem.fromMap(sub));
+     if(resData['success'] == 1){
+       for (var sub in subjects){
+         imageData.add(BannerItem.fromMap(sub));
+       }
      }
       return imageData;
   }
@@ -36,9 +38,13 @@ class HomeItemsRequest {
     LogUtil.d(resData);
     final subjects = resData['data'];
     List<HomeItem> itemsData = [];
-    for (var sub in subjects){
-      itemsData.add(HomeItem.fromMap(sub));
+    if (resData['success'] == 1){
+      for (var sub in subjects){
+        itemsData.add(HomeItem.fromMap(sub));
+      }
+      return itemsData;
+    }else{
+      return itemsData;
     }
-    return itemsData;
   }
 }
