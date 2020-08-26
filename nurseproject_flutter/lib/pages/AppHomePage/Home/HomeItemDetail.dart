@@ -37,14 +37,28 @@ class _HomeItemDetailState extends State<HomeItemDetail> {
       appBar: AppBar(
         title: Text(widget.params.name),
       ),
-      body: ListView.builder(
-          itemCount: 1,
-          itemBuilder: (ctx, index) {
-            return Container(
-              child: _buildItemPage(context),
-            );
-          })
-    );
+      body: Stack(
+        children: [
+          Positioned(
+              child: ListView.builder(
+                  itemCount: 1,
+                  itemBuilder: (ctx, index) {
+                    return Container(
+                      child: _buildItemPage(context),
+                    );
+                  }),
+              left: 0,
+              bottom: 20,
+              right: 0,
+              top: 0),
+          Positioned(
+              child: Text('dsdssddssddsddssddsds'),
+              left: 0,
+              bottom: 0,),
+        ],
+        alignment: Alignment.center,
+      )
+      );
   }
 
 
