@@ -151,7 +151,15 @@ class MineLogin extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.only(top: 40),
                     child: ClipOval(
-                        child: _userModelData.avatar.length == 0?Image.asset("asset/images/mine/men.png",width: ScreenAdaper.width(130),height: ScreenAdaper.height(130),):Image.network(_userModelData.avatar,width: ScreenAdaper.width(130),height: ScreenAdaper.height(130),)
+                        child: _userModelData.avatar.length == 0?
+                        Image.asset("asset/images/mine/men.png",width: ScreenAdaper.height(130),height: ScreenAdaper.height(130),):
+                        new FadeInImage.assetNetwork(
+                          placeholder: "asset/images/mine/men.png",//预览图
+                          fit: BoxFit.cover,
+                          image:_userModelData.avatar,
+                          width: ScreenAdaper.height(130),
+                          height: ScreenAdaper.height(130),
+                        ),
                     ),
                 ),
               ],

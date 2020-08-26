@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import '../../../../utils/util.dart';
+import './AllOrder.dart';
+import './WaitPayOrder.dart';
+import './WaitServiceOrder.dart';
+import './CompleteOrder.dart';
+import './WaitCommentOrder.dart';
+import './BackMoneyOrder.dart';
 
 class Order extends StatefulWidget {
   Order({Key key, this.params}) : super(key: key);
@@ -7,7 +14,28 @@ class Order extends StatefulWidget {
   _OrderState createState() => _OrderState();
 }
 
-class _OrderState extends State<Order> {
+class _OrderState extends State<Order> with SingleTickerProviderStateMixin {
+
+
+  // 选项卡控制器
+  TabController _tabController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _tabController = TabController(length: 6, vsync: this);
+  }
+
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _tabController.dispose();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +43,55 @@ class _OrderState extends State<Order> {
         title: Text('订单列表',style: TextStyle(color: Colors.white),),
       ),
       body: Container(
-        child: Text('订单列表页面'),
+        child: Container(
+          alignment: Alignment.topCenter,
+          child: Container(
+            child: Column(
+              children: [
+                Container(
+                  height: ScreenAdaper.height(90),
+                  child: TabBar(controller: _tabController, tabs: [
+                    Tab(text: "全部",),
+                    Tab(text: "待付款",),
+                    Tab(text: "待服务",),
+                    Tab(text: "已完成",),
+                    Tab(text: "待评论",),
+                    Tab(text: "退款",),
+                  ],
+                    isScrollable: true,
+                    indicatorColor: Colors.orange,
+                    indicatorWeight: 2,
+                    indicatorSize: TabBarIndicatorSize.label,
+                    indicatorPadding: EdgeInsets.only(bottom: 11.0),
+                    labelColor: Colors.orange,
+                    labelStyle: TextStyle(
+                      fontSize: 18.0,
+                    ),
+
+                    unselectedLabelColor: Colors.black45,
+                    unselectedLabelStyle: TextStyle(
+                      fontSize: 18.0,
+                    ),
+                  ),
+                ),
+                Container(
+                  height: ScreenAdaper.height(800),
+                  child: TabBarView(
+                    controller: _tabController,
+                    children: <Widget>[
+                      AllOrder(),
+                      WaitPayOrder(),
+                      WaitServiceOrder(),
+                      CompleteOrder(),
+                      WaitCommentOrder(),
+                      BackMoneyOrder(),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

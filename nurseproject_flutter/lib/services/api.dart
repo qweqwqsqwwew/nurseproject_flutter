@@ -131,3 +131,17 @@ Future<Map> requestRelateddObjectList(String token) async{
   );
   return resData ?? {};
 }
+
+///获取全部订单列表
+Future<Map> requestOrderList(String token,int page,String tab_string) async{
+  Map resData = await safeRequest(
+    serviceUrl['app_order'],
+    data: {
+      'token':token,
+      'page':page,
+      'tab':tab_string
+    },
+    options: Options(method: 'POST'),
+  );
+  return resData ?? {};
+}

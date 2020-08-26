@@ -14,7 +14,7 @@ class RelatedObjectItem extends StatelessWidget {
         child: Row(
           children: [
             ClipOval(
-                child: _model.avatar.length == 0?Image.asset("asset/images/mine/men.png",width: ScreenAdaper.width(90),height: ScreenAdaper.height(90),):Image.network(_model.avatar,width: ScreenAdaper.width(90),height: ScreenAdaper.height(90),)
+                child: _model.avatar.length == 0?Image.asset("asset/images/mine/men.png",width: ScreenAdaper.height(70),height: ScreenAdaper.height(70),):Image.network(_model.avatar,width: ScreenAdaper.height(70),height: ScreenAdaper.height(70),)
             ),
             Container(
               margin: EdgeInsets.only(left: ScreenAdaper.width(20)),
@@ -28,8 +28,8 @@ class RelatedObjectItem extends StatelessWidget {
                         margin: EdgeInsets.only(top: ScreenAdaper.height(10)),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: ScreenAdaper.width(40)),
-                        child: Text('年   龄：${_model.birthday}'),
+                        margin: EdgeInsets.only(left: ScreenAdaper.width(50)),
+                        child: Text('出生日期：${_model.birthday}'),
                       ),
                     ],
                   ),
