@@ -3,10 +3,15 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 import '../../../utils/util.dart';
 import './MyPersonal.dart';
+import 'dart:async';
+import 'package:flutter/services.dart';
+//import 'package:flutter_plugin_qrcode/flutter_plugin_qrcode.dart';
+import 'package:nurseproject_flutter/components/Qrcode/flutter_plugin_qrcode.dart';
 
 class MineLogin extends StatelessWidget {
   final UserModel _userModelData;
   MineLogin(this._userModelData);
+  String _qrcode = '二维码扫描';
 
   @override
   Widget build(BuildContext context) {
@@ -117,6 +122,21 @@ class MineLogin extends StatelessWidget {
         });
   }
 
+    Future<void> getQrcodeState() async {
+      String qrcode;
+      try {
+        qrcode = await FlutterPluginQrcode.getQRCode;
+      } on PlatformException {
+        qrcode = 'Failed to get platform version.';
+      }
+
+//      if (!mounted) return;
+      //获取到扫描的结果进行页面更新
+//      setState(() {
+        _qrcode = qrcode;
+//      });
+    }
+
   Widget _topHeader(BuildContext context){
     return Container(
       child: Column(
@@ -136,8 +156,14 @@ class MineLogin extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        child: Image.asset("asset/images/mine/saomiao.png",width: ScreenAdaper.width(40),height: ScreenAdaper.height(40),),
+                      GestureDetector(
+                        child: Container(
+                          child: Image.asset("asset/images/mine/saomiao.png",width: ScreenAdaper.width(40),height: ScreenAdaper.height(40),),
+                        ),
+                        onTap: (){
+                          LogUtil.d('----------dddd');
+                          getQrcodeState();
+                        },
                       ),
                       Container(
                         child: Text(_userModelData!=null?_userModelData.realname:'名字',style: TextStyle(color: Colors.white,fontSize: ScreenAdaper.sp(40)),),

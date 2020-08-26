@@ -40,6 +40,7 @@ dependencies:
   fluttertoast: ^4.0.1
   carousel_slider: ^2.2.1
   webview_flutter: ^0.3.7+1
+#  flutter_plugin_qrcode: ^1.0.1   #二维码扫描
 
 dev_dependencies:
   flutter_test:
