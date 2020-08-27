@@ -49,7 +49,7 @@ class _OrderState extends State<Order> with SingleTickerProviderStateMixin {
             child: Column(
               children: [
                 Container(
-                  height: ScreenAdaper.height(90),
+                  height: ScreenAdaper.height(100),
                   child: TabBar(controller: _tabController, tabs: [
                     Tab(text: "全部",),
                     Tab(text: "待付款",),
@@ -62,20 +62,20 @@ class _OrderState extends State<Order> with SingleTickerProviderStateMixin {
                     indicatorColor: Colors.orange,
                     indicatorWeight: 2,
                     indicatorSize: TabBarIndicatorSize.label,
-                    indicatorPadding: EdgeInsets.only(bottom: 11.0),
+                    indicatorPadding: EdgeInsets.only(bottom: 10.0),
                     labelColor: Colors.orange,
                     labelStyle: TextStyle(
-                      fontSize: 18.0,
+                      fontSize: ScreenAdaper.sp(30),
                     ),
 
                     unselectedLabelColor: Colors.black45,
                     unselectedLabelStyle: TextStyle(
-                      fontSize: 18.0,
+                      fontSize: ScreenAdaper.sp(30),
                     ),
                   ),
                 ),
                 Container(
-                  height: ScreenAdaper.height(800),
+                  height: ScreenAdaper.screenHeight(),
                   child: TabBarView(
                     controller: _tabController,
                     children: <Widget>[
