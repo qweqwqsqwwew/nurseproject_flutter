@@ -4,6 +4,7 @@ import './OrderItemModel.dart';
 import './OrderRequest.dart';
 import '../../../../utils/util.dart';
 import './OrderItemWidget.dart';
+import '../Order/order_model_entity.dart';
 
 class AllOrder extends StatefulWidget {
   @override
@@ -14,7 +15,7 @@ class _AllOrderState extends State<AllOrder> with AutomaticKeepAliveClientMixin{
   @override
   bool get wantKeepAlive => true;
 
-  List<OrderItemModel> _dataList = [];
+  List<OrderModelList> _dataList = [];
 
   @override
   void initState() {
@@ -26,7 +27,7 @@ class _AllOrderState extends State<AllOrder> with AutomaticKeepAliveClientMixin{
         _dataList = [];
         LogUtil.d(value);
         setState(() {
-          _dataList.addAll(value);
+          _dataList.addAll((value as OrderModelEntity).xList);
         });
       });
     }

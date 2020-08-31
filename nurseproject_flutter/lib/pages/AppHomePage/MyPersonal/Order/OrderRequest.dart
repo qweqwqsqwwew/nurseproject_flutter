@@ -1,18 +1,17 @@
+import 'package:nurseproject_flutter/generated/json/base/json_convert_content.dart';
 import 'package:nurseproject_flutter/services/api.dart';
 import '../../../../utils/util.dart';
-import './OrderItemModel.dart';
+//import './OrderItemModel.dart';
+import 'package:nurseproject_flutter/generated/json/order_model_entity_helper.dart';
+import 'package:nurseproject_flutter/generated/json/base/json_convert_content.dart';
+import '../Order/order_model_entity.dart';
 class OrderRequest{
-    static Future<List<OrderItemModel>> requestAllOrderList(String token,int page) async {
+    static Future<dynamic> requestAllOrderList(String token,int page) async {
     Map resData = await requestOrderList(token, page, 'all');
     LogUtil.d(resData);
-//    final subjects = resData['data'];
-//    return subjects;
-    List<OrderItemModel> subjects = [];
     if(resData["success"] == 1){
-      for(var item in resData["data"]["list"]){
-        subjects.add(OrderItemModel.fromMap(item));
-      }
-      return subjects;
+    LogUtil.d("--------${JsonConvert.fromJsonAsT<OrderModelEntity>(resData["data"])}");
+    return JsonConvert.fromJsonAsT<OrderModelEntity>(resData["data"]);
     }else{
       return null;
     }

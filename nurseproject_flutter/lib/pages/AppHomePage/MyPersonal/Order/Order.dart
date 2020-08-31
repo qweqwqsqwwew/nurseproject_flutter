@@ -75,7 +75,7 @@ class _OrderState extends State<Order> with SingleTickerProviderStateMixin {
                   ),
                 ),
                 Container(
-                  height: ScreenAdaper.screenHeight(),
+                  height: ScreenAdaper.height(800),
                   child: TabBarView(
                     controller: _tabController,
                     children: <Widget>[
