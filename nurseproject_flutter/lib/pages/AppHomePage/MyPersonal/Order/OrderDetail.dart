@@ -1,5 +1,4 @@
 
-
 import 'package:flutter/material.dart';
 import '../Order/order_detail_entity.dart';
 import 'order_model_entity.dart';
@@ -47,14 +46,53 @@ class _OrderDetailState extends State<OrderDetail> {
       appBar: AppBar(
         title: Text('订单详情'),
       ),
-      body: Container(
-          child: ListView.builder(
-              itemCount: _detailParams == null?0:1,
-              itemBuilder: (ctx, index) {
-                return _buildItem();
-              })
+      body:
+        Stack(
+          children: [
+            Positioned(
+                child: Container(
+                        child: ListView.builder(
+                              itemCount: _detailParams == null?0:1,
+                              itemBuilder: (ctx, index) {
+                                return _buildItem();
+                              })
+                      ),
+                left: 0,
+                bottom: ScreenAdaper.height(100),
+                right: 0,
+                top: 0),
+            Positioned(
+              child: _detailParams == null?Container():_detailParams.statusText!="未付款"?Container():_buildWaittingPay(),
+              left: 0,
+              bottom: 0,),
+          ],
+          alignment: Alignment.center,
+        )
+    );
+  }
+
+  Widget _buildWaittingPay(){
+    return Container(
+      child: Row(
+        children: [
+          Container(
+            height: ScreenAdaper.height(100),
+            width: ScreenAdaper.screenWidth()/2.0,
+            alignment: Alignment.center,
+            color: Colors.white54,
+            child: Text("再想想",style: TextStyle(color: Colors.orange),),
+          ),
+          Container(
+            height: ScreenAdaper.height(100),
+            width: ScreenAdaper.screenWidth()/2.0,
+            alignment: Alignment.center,
+            color: Colors.orange,
+            child: Text("确认预约",style: TextStyle(color: Colors.white),),
+          )
+        ],
       ),
     );
+
   }
 
   Widget _buildItem() {
