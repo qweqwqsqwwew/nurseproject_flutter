@@ -145,3 +145,16 @@ Future<Map> requestOrderList(String token,int page,String tab_string) async{
   );
   return resData ?? {};
 }
+
+///获取订单详情
+Future<Map> requestOrderDetail(String token,String trade_no) async{
+  Map resData = await safeRequest(
+    serviceUrl['app_order_detail'],
+    data: {
+      'token':token,
+      'trade_no':trade_no,
+    },
+    options: Options(method: 'POST'),
+  );
+  return resData ?? {};
+}

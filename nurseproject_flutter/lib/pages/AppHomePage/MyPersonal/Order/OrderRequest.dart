@@ -2,6 +2,7 @@ import 'package:nurseproject_flutter/generated/json/base/json_convert_content.da
 import 'package:nurseproject_flutter/services/api.dart';
 import '../../../../utils/util.dart';
 import '../Order/order_model_entity.dart';
+import '../Order/order_detail_entity.dart';
 class OrderRequest{
     static Future<dynamic> requestAllOrderList(String token,int page) async {
       Map resData = await requestOrderList(token, page, 'all');
@@ -64,6 +65,18 @@ class OrderRequest{
       if(resData["success"] == 1){
         LogUtil.d("--------${JsonConvert.fromJsonAsT<OrderModelEntity>(resData["data"])}");
         return JsonConvert.fromJsonAsT<OrderModelEntity>(resData["data"]);
+      }else{
+        return null;
+      }
+    }
+
+    ///订单详情
+    static Future<dynamic> requestOrderdetail(String token,String trade_no) async {
+      Map resData = await requestOrderDetail(token, trade_no);
+      LogUtil.d(resData);
+      if(resData["success"] == 1){
+        LogUtil.d("--------${JsonConvert.fromJsonAsT<OrderDetailEntity>(resData["data"])}");
+        return JsonConvert.fromJsonAsT<OrderDetailEntity>(resData["data"]);
       }else{
         return null;
       }

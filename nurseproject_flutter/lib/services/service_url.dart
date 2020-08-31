@@ -13,4 +13,5 @@ const serviceUrl = {
    'app_login_byPASS':appurlPro + 'user/login',
    'app_relatedObject':appurlPro + 'person/list',
    'app_order':appurlPro + 'order/list',
+   'app_order_detail':appurlPro + 'order/detail',
 };
