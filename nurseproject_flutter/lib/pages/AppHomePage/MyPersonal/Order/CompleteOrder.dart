@@ -30,10 +30,14 @@ class _CompleteOrderState extends State<CompleteOrder> with AutomaticKeepAliveCl
         OrderRequest.requestCompleteOrderList((model as UserModel).token, 1).then((value){
           _dataList = [];
           LogUtil.d(value);
-          currentPageIndex = currentPageIndex + 1;
-          setState(() {
-            _dataList.addAll((value as OrderModelEntity).xList);
-          });
+          if(((value as OrderModelEntity).xList).length > 0) {
+            currentPageIndex = currentPageIndex + 1;
+            setState(() {
+              _dataList.addAll((value as OrderModelEntity).xList);
+            });
+          }else{
+            ToasrShow.show('暂无更多数据');
+          }
         });
       }
     }else{

@@ -220,54 +220,90 @@ class MineLogin extends StatelessWidget {
                       Navigator.pushNamed(
                         context,
                         '/order',
-                        arguments: {}, //　传递参数
+                        arguments: {"index":0}, //　传递参数
                       );
                     },
                   )
                 ),
                 Container(
-                  child:  Column(
-                    children: [
-                      Image.asset("asset/images/mine/Order_Payment.png",width: ScreenAdaper.width(40),height: ScreenAdaper.height(50),),
-                      Container(
-                          margin: EdgeInsets.only(top: ScreenAdaper.height(10)),
-                          child: Text("待付款",style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(23)),)
-                      ),
-                    ],
-                  ),
+                  child:  GestureDetector(
+                    child: Column(
+                      children: [
+                        Image.asset("asset/images/mine/Order_Payment.png",width: ScreenAdaper.width(40),height: ScreenAdaper.height(50),),
+                        Container(
+                            margin: EdgeInsets.only(top: ScreenAdaper.height(10)),
+                            child: Text("待付款",style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(23)),)
+                        ),
+                      ],
+                    ),
+                    onTap: (){
+                      Navigator.pushNamed(
+                        context,
+                        '/order',
+                        arguments: {"index":1}, //　传递参数
+                      );
+                    },
+                  )
                 ),
                 Container(
-                  child:  Column(
-                    children: [
-                      Image.asset("asset/images/mine/Order_served.png",width: ScreenAdaper.width(40),height: ScreenAdaper.height(50),),
-                      Container(
-                          margin: EdgeInsets.only(top: ScreenAdaper.height(10)),
-                          child: Text("待服务",style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(23)),)
-                      ),
-                    ],
-                  ),
+                  child:  GestureDetector(
+                    child: Column(
+                      children: [
+                        Image.asset("asset/images/mine/Order_served.png",width: ScreenAdaper.width(40),height: ScreenAdaper.height(50),),
+                        Container(
+                            margin: EdgeInsets.only(top: ScreenAdaper.height(10)),
+                            child: Text("待服务",style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(23)),)
+                        ),
+                      ],
+                    ),
+                    onTap: (){
+                      Navigator.pushNamed(
+                        context,
+                        '/order',
+                        arguments: {"index":2}, //　传递参数
+                      );
+                    },
+                  )
                 ),
                 Container(
-                  child:  Column(
-                    children: [
-                      Image.asset("asset/images/mine/Order_evaluate.png",width: ScreenAdaper.width(40),height: ScreenAdaper.height(50),),
-                      Container(
-                          margin: EdgeInsets.only(top: ScreenAdaper.height(10)),
-                          child: Text("待评价",style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(23)),)
-                      ),
-                    ],
-                  ),
+                  child: GestureDetector(
+                    child:  Column(
+                      children: [
+                        Image.asset("asset/images/mine/Order_evaluate.png",width: ScreenAdaper.width(40),height: ScreenAdaper.height(50),),
+                        Container(
+                            margin: EdgeInsets.only(top: ScreenAdaper.height(10)),
+                            child: Text("待评价",style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(23)),)
+                        ),
+                      ],
+                    ),
+                    onTap: (){
+                      Navigator.pushNamed(
+                        context,
+                        '/order',
+                        arguments: {"index":4}, //　传递参数
+                      );
+                    },
+                  )
                 ),
                 Container(
-                  child:  Column(
-                    children: [
-                      Image.asset("asset/images/mine/Order_complete.png",width: ScreenAdaper.width(40),height: ScreenAdaper.height(50),),
-                      Container(
-                          margin: EdgeInsets.only(top: ScreenAdaper.height(10)),
-                          child: Text("已完成",style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(23)),)
-                      ),
-                    ],
-                  ),
+                  child:  GestureDetector(
+                    child: Column(
+                      children: [
+                        Image.asset("asset/images/mine/Order_complete.png",width: ScreenAdaper.width(40),height: ScreenAdaper.height(50),),
+                        Container(
+                            margin: EdgeInsets.only(top: ScreenAdaper.height(10)),
+                            child: Text("已完成",style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(23)),)
+                        ),
+                      ],
+                    ),
+                    onTap: (){
+                      Navigator.pushNamed(
+                        context,
+                        '/order',
+                        arguments: {"index":3}, //　传递参数
+                      );
+                    },
+                  )
                 ),
               ],
             ),

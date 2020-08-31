@@ -24,7 +24,7 @@ class _OrderState extends State<Order> with SingleTickerProviderStateMixin {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _tabController = TabController(length: 6, vsync: this);
+    _tabController = TabController(initialIndex: widget.params["index"],length: 6, vsync: this,);
   }
 
 
