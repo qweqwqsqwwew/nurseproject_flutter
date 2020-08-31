@@ -45,6 +45,8 @@ class _AllOrderState extends State<AllOrder> with AutomaticKeepAliveClientMixin{
             setState(() {
               _dataList.addAll((value as OrderModelEntity).xList);
             });
+          }else{
+            ToasrShow.show('没有数据，不要再滑了');
           }
         });
       }

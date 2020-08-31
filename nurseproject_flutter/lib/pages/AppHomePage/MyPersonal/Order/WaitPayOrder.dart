@@ -46,6 +46,8 @@ class _WaitPayOrderState extends State<WaitPayOrder> with AutomaticKeepAliveClie
             setState(() {
               _dataList.addAll((value as OrderModelEntity).xList);
             });
+          }else{
+            ToasrShow.show('没有数据，不要再滑了');
           }
         });
       }

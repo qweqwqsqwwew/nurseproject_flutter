@@ -46,6 +46,8 @@ class _WaitCommentOrderState extends State<WaitCommentOrder> with AutomaticKeepA
             setState(() {
               _dataList.addAll((value as OrderModelEntity).xList);
             });
+          }else{
+            ToasrShow.show('没有数据，不要再滑了');
           }
         });
       }
