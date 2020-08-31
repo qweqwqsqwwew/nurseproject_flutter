@@ -51,7 +51,7 @@ class OrderItemWidget extends StatelessWidget {
                           Text(this._model.itemName,style: TextStyle(color: Colors.black87,fontSize: ScreenAdaper.sp(30),fontWeight: FontWeight.bold),),
                           Container(
                             margin: EdgeInsets.only(left: ScreenAdaper.width(80)),
-                            child: Text("¥${this._model.price}元",style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(50)),),
+                            child: Text("¥${this._model.price}元",style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(45)),),
                           )
                         ],
                       ),

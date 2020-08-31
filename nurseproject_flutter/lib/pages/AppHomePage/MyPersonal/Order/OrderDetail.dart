@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import '../Order/order_detail_entity.dart';
 import 'order_model_entity.dart';
@@ -47,7 +49,7 @@ class _OrderDetailState extends State<OrderDetail> {
       ),
       body: Container(
           child: ListView.builder(
-              itemCount: 1,
+              itemCount: _detailParams == null?0:1,
               itemBuilder: (ctx, index) {
                 return _buildItem();
               })
@@ -57,9 +59,14 @@ class _OrderDetailState extends State<OrderDetail> {
 
   Widget _buildItem() {
     return Container(
+      padding: EdgeInsets.only(left: ScreenAdaper.width(20),right: ScreenAdaper.width(20),top: ScreenAdaper.height(20)),
       child: Column(
         children: [
-          Text("商品信息"),
+          Container(
+            alignment: Alignment.centerLeft,
+            height: ScreenAdaper.height(60),
+            child: Text("商品信息",style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(30)),),
+          ),
           DottedLineWidget(axis: Axis.horizontal,
             width: ScreenAdaper.screenWidth() - ScreenAdaper.width(70),
             height: 10.0,
@@ -70,23 +77,41 @@ class _OrderDetailState extends State<OrderDetail> {
           Row(
             children: [
               Image.network(
-                this._detailParams.logo, width: ScreenAdaper.width(100),
-                height: ScreenAdaper.height(100),),
+                this._detailParams.logo, width: ScreenAdaper.width(150),
+                height: ScreenAdaper.height(170),),
               Column(
+//                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Row(
+//                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(this._detailParams.itemName),
-                      Text("¥${this._detailParams.price}元"),
+                      Container(
+                        child: Text(this._detailParams.itemName,style:TextStyle(color: Colors.black54,fontWeight: FontWeight.bold,fontSize: ScreenAdaper.sp(30)),),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: ScreenAdaper.width(70)),
+                        child: Text("¥${this._detailParams.price}元",style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(50)),),
+                      )
                     ],
                   ),
-                  Row(
-                    children: [
-                      Text(this._detailParams.intro),
-                      Text("x${this._detailParams.itemNum}"),
-                    ],
+                  Container(
+                    margin: EdgeInsets.only(top: ScreenAdaper.height(10)),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: ScreenAdaper.width(500),
+                          child: Text(this._detailParams.intro,style: TextStyle(color: Colors.black54),overflow: TextOverflow.ellipsis,maxLines: 1,),
+                        ),
+                        Text("x${this._detailParams.itemNum}"),
+                      ],
+                    ),
                   ),
-                  Text("此服务包含基础服务费${this._detailParams.trafficFee}元"),
+                  Container(
+                    margin: EdgeInsets.only(top: ScreenAdaper.height(10)),
+                    alignment: Alignment.centerRight,
+                    child: Text("此服务包含基础服务费${this._detailParams.trafficFee}元",style: TextStyle(color: Colors.black54),),
+                  )
                 ],
               ),
             ],
@@ -99,9 +124,16 @@ class _OrderDetailState extends State<OrderDetail> {
             count: 40,
             color: Colors.black45,),
           Container(
-
+            margin: EdgeInsets.only(top: ScreenAdaper.height(10)),
+            height: ScreenAdaper.height(10),
+            color: Color(0xFFFFE0B2),
           ),
-          Text("费用明细"),
+          Container(
+            height: ScreenAdaper.height(60),
+            margin: EdgeInsets.only(top: ScreenAdaper.height(15)),
+            alignment: Alignment.centerLeft,
+            child: Text("费用明细",style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(35),fontWeight: FontWeight.bold),),
+          ),
           DottedLineWidget(axis: Axis.horizontal,
             width: ScreenAdaper.screenWidth() - ScreenAdaper.width(70),
             height: 10.0,
@@ -110,9 +142,10 @@ class _OrderDetailState extends State<OrderDetail> {
             count: 40,
             color: Colors.black45,),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("优惠费用：${this._detailParams.discountFee}元"),
-              Text("交通费用：${this._detailParams.trafficFee}元"),
+              Text("优惠费用：${this._detailParams.discountFee}元",style: TextStyle(color: Colors.black54),),
+              Text("交通费用：${this._detailParams.trafficFee}元",style: TextStyle(color: Colors.black54),),
             ],
           ),
           DottedLineWidget(axis: Axis.horizontal,
@@ -123,9 +156,10 @@ class _OrderDetailState extends State<OrderDetail> {
             count: 40,
             color: Colors.black45,),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("上门费用：${this._detailParams.homeFee}元"),
-              Text("耗材费用：${this._detailParams.materialFee}元"),
+              Text("上门费用：${this._detailParams.homeFee}元",style: TextStyle(color: Colors.black54),),
+              Text("耗材费用：${this._detailParams.materialFee}元",style: TextStyle(color: Colors.black54),),
             ],
           ),
           DottedLineWidget(axis: Axis.horizontal,
@@ -136,13 +170,20 @@ class _OrderDetailState extends State<OrderDetail> {
             count: 40,
             color: Colors.black45,),
           Container(
-
+            margin: EdgeInsets.only(top: ScreenAdaper.height(10)),
+              height: ScreenAdaper.height(10),
+              color: Color(0xFFFFE0B2),
           ),
-          Row(
-            children: [
-              Text("订单信息"),
-              Text(this._detailParams.statusText)
-            ],
+          Container(
+            margin: EdgeInsets.only(top: ScreenAdaper.height(10)),
+            height: ScreenAdaper.height(60),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("订单信息",style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(35),fontWeight: FontWeight.bold),),
+                Text(this._detailParams.statusText)
+              ],
+            ),
           ),
           DottedLineWidget(axis: Axis.horizontal,
             width: ScreenAdaper.screenWidth() - ScreenAdaper.width(70),
@@ -151,7 +192,10 @@ class _OrderDetailState extends State<OrderDetail> {
             lineWidth: 3,
             count: 40,
             color: Colors.black45,),
-          Text("订单编号：${widget.params.tradeNo}"),
+          Container(
+            alignment: Alignment.centerLeft,
+            child: Text("订单编号：${widget.params.tradeNo}",style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(30)),),
+          ),
           DottedLineWidget(axis: Axis.horizontal,
             width: ScreenAdaper.screenWidth() - ScreenAdaper.width(70),
             height: 10.0,
@@ -159,7 +203,10 @@ class _OrderDetailState extends State<OrderDetail> {
             lineWidth: 3,
             count: 40,
             color: Colors.black45,),
-          Text("下单时间：${this._detailParams.createdAt}"),
+          Container(
+            alignment: Alignment.centerLeft,
+            child: Text("下单时间：${this._detailParams.createdAt}",style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(30)),),
+          ),
           DottedLineWidget(axis: Axis.horizontal,
             width: ScreenAdaper.screenWidth() - ScreenAdaper.width(70),
             height: 10.0,
@@ -167,7 +214,10 @@ class _OrderDetailState extends State<OrderDetail> {
             lineWidth: 3,
             count: 40,
             color: Colors.black45,),
-          Text("服务时间：${this._detailParams.serviceAt}"),
+          Container(
+            alignment: Alignment.centerLeft,
+            child: Text("服务时间：${this._detailParams.serviceAt}",style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(30)),),
+          ),
           DottedLineWidget(axis: Axis.horizontal,
             width: ScreenAdaper.screenWidth() - ScreenAdaper.width(70),
             height: 10.0,
@@ -176,8 +226,9 @@ class _OrderDetailState extends State<OrderDetail> {
             count: 40,
             color: Colors.black45,),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("服务机构：${this._detailParams.hospitalName}"),
+              Text("服务机构：${this._detailParams.hospitalName}",style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(30)),),
               Container(
                 child: Column(
                   children: <Widget>[
@@ -197,8 +248,9 @@ class _OrderDetailState extends State<OrderDetail> {
             count: 40,
             color: Colors.black45,),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("服务人员：${this._detailParams.nurseName}"),
+              Text("服务人员：${this._detailParams.nurseName}",style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(30)),),
               Container(
                 child: Column(
                   children: <Widget>[
