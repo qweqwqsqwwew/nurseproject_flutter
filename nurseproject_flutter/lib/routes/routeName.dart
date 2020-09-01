@@ -41,4 +41,7 @@ class RouteName {
 
   ///预付订单页面
   static String payPreOrder = '/payPreOrder';
+
+  ///服务对象信息界面 HomeServiceInformation
+  static String homeServiceInformation = '/homeServiceInformation';
  }

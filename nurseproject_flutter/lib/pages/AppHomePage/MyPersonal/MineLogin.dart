@@ -7,6 +7,7 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 //import 'package:flutter_plugin_qrcode/flutter_plugin_qrcode.dart';
 import 'package:nurseproject_flutter/components/Qrcode/flutter_plugin_qrcode.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class MineLogin extends StatelessWidget {
   final UserModel _userModelData;
@@ -179,10 +180,10 @@ class MineLogin extends StatelessWidget {
                     child: ClipOval(
                         child: _userModelData.avatar.length == 0?
                         Image.asset("asset/images/mine/men.png",width: ScreenAdaper.height(130),height: ScreenAdaper.height(130),):
-                        new FadeInImage.assetNetwork(
-                          placeholder: "asset/images/mine/men.png",//预览图
+                        CachedNetworkImage(
+//                          placeholder: Image.asset("asset/images/mine/men.png"),//预览图
                           fit: BoxFit.cover,
-                          image:_userModelData.avatar,
+                          imageUrl:_userModelData.avatar,
                           width: ScreenAdaper.height(130),
                           height: ScreenAdaper.height(130),
                         ),

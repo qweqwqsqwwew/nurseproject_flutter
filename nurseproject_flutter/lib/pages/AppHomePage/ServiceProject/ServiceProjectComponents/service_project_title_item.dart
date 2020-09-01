@@ -3,6 +3,7 @@ import 'package:nurseproject_flutter/pages/AppHomePage/ServiceProject/service_pr
 import 'package:nurseproject_flutter/utils/util.dart';
 import 'package:provider/provider.dart';
 import 'package:nurseproject_flutter/provider/appCommenNetData.dart';
+
 class ServiceProjectTitleItem extends StatelessWidget {
   
   final ServiceCateItem item;

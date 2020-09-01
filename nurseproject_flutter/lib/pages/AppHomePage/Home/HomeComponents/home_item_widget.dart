@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nurseproject_flutter/ioc/locator.dart';
 import 'package:nurseproject_flutter/pages/AppHomePage/Home/home_request/home_model.dart';
 import 'package:nurseproject_flutter/utils/util.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 class home_item_widget extends StatelessWidget{
   
   final HomeItem homeSingleItem;
@@ -21,7 +22,7 @@ class home_item_widget extends StatelessWidget{
           child: Row(
             children: [
               Container(
-                  child: Image.network(homeSingleItem.logo!=null?homeSingleItem.logo:"https://didi.depin.tech/storage/service/2020/02/26/5e561ce9c4a00.jpg",width: ScreenAdaper.width(160),height: ScreenAdaper.height(160),)
+                  child: CachedNetworkImage(errorWidget: (context, url, error) => Icon(Icons.error),fit: BoxFit.fill,imageUrl: homeSingleItem.logo!=null?homeSingleItem.logo:"https://didi.depin.tech/storage/service/2020/02/26/5e561ce9c4a00.jpg",width: ScreenAdaper.width(160),height: ScreenAdaper.height(160),)
               ),
               Column(
                 children: [

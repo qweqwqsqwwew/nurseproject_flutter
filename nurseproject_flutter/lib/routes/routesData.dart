@@ -5,6 +5,7 @@ import '../pages/AppHomePage/AppHomePage.dart';
 import '../pages/SplashPage/SplashPage.dart';
 import '../pages/TestDemo/TestDemo.dart';
 import '../pages/AppHomePage/Home/HomeItemDetail.dart';
+import '../pages/AppHomePage/Home/ServiceObject/HomeServiceInformation.dart';
 import '../pages/AppHomePage/Commen/CommenWebview.dart';
 import '../pages/AppHomePage/LoginAndRegister/RegisterP.dart';
 import '../pages/AppHomePage/LoginAndRegister/Login.dart';
@@ -44,4 +45,6 @@ final Map<String, WidgetBuilder> routesData = {
   RouteName.orderDetail:(BuildContext context,{params}) => OrderDetail(params:params),
   ///预付订单页面
   RouteName.payPreOrder:(BuildContext context,{params}) => PayPreOrder(params:params),
+  ///服务对象信息界面 HomeServiceInformation
+  RouteName.homeServiceInformation:(BuildContext context,{params}) => HomeServiceInformation(params:params),
 };

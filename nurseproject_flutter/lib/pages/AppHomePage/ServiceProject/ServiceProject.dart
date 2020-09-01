@@ -7,6 +7,7 @@ import 'package:nurseproject_flutter/provider/appCommenNetData.dart';
 import 'package:nurseproject_flutter/pages/AppHomePage/ServiceProject/service_project_request/service_project_cate_model.dart';
 import 'package:nurseproject_flutter/pages/AppHomePage/ServiceProject/service_project_request/service_project_request.dart';
 import 'package:nurseproject_flutter/pages/AppHomePage/ServiceProject/ServiceProjectComponents/service_project_title_item.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 class ServiceProject extends StatefulWidget {
 
   ServiceProject({Key key, this.params}) : super(key: key);
@@ -112,7 +113,7 @@ class _ServiceProjectState extends State<ServiceProject> with AutomaticKeepAlive
             margin: EdgeInsets.only(left: ScreenAdaper.width(15)),
             width: ScreenAdaper.screenWidth()-ScreenAdaper.width(250),
             height: ScreenAdaper.height(230),
-            child: Image.network(_cateList.length == 0?"https://didi.depin.tech/storage/service/2020/02/26/5e561ce9c4a00.jpg":_cateList[_currentClickIndex].banner),
+            child: CachedNetworkImage(imageUrl:_cateList.length == 0?"https://didi.depin.tech/storage/service/2020/02/26/5e561ce9c4a00.jpg":_cateList[_currentClickIndex].banner),
           ),
           Container(
             width: ScreenAdaper.screenWidth()-ScreenAdaper.width(250),
@@ -155,7 +156,7 @@ class _ServiceProjectState extends State<ServiceProject> with AutomaticKeepAlive
       child: GestureDetector(
         child: Column(
           children: [
-            Image.network(item.logo,width: ScreenAdaper.width(120),height: ScreenAdaper.height(120),),
+            CachedNetworkImage(imageUrl:item.logo,width: ScreenAdaper.width(120),height: ScreenAdaper.height(120),),
             Container(
               margin: EdgeInsets.only(top: ScreenAdaper.height(10)),
               child: Text(item.name,style: TextStyle(color: Colors.black,fontSize: ScreenAdaper.sp(20)),),
