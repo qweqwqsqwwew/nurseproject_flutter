@@ -158,3 +158,20 @@ Future<Map> requestOrderDetail(String token,String trade_no) async{
   );
   return resData ?? {};
 }
+
+///获取支付宝付款链接
+Future<Map> requestAliPayStr(String token,String trade_no) async{
+  Map resData = await safeRequest(
+    serviceUrl['app_order_pay'],
+    data: {
+      'token':token,
+      'trade_no':trade_no,
+      'channel':'alipay',
+      'open_id':'',
+      'way':'app'
+
+    },
+    options: Options(method: 'POST'),
+  );
+  return resData ?? {};
+}

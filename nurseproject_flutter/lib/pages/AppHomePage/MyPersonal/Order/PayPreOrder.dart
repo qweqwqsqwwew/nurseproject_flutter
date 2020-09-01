@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'order_detail_entity.dart';
 import '../../../../utils/util.dart';
 import '../RelatedObject_request/DottedLineWidget.dart';
-
+import 'OrderRequest.dart';
+import 'package:nurseproject_flutter/pages/AppHomePage/LoginAndRegister/LoginAndRegisterRequest/LoginModel.dart';
+import 'pay_model_entity.dart';
+import 'package:tobias/tobias.dart';
 
 class PayPreOrder extends StatefulWidget {
   PayPreOrder({Key key, this.params}) : super(key: key);
@@ -14,6 +17,25 @@ class PayPreOrder extends StatefulWidget {
 }
 
 class _PayPreOrderState extends State<PayPreOrder> {
+
+  String _payInfo = "";
+  Map _payResult;
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    isAliPayInstalled().then((data){
+      print("支付宝是否安装installed $data");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -161,6 +183,13 @@ class _PayPreOrderState extends State<PayPreOrder> {
                     child: Text('立即付款',style: TextStyle(color: Colors.white,fontSize: ScreenAdaper.sp(35),),textAlign: TextAlign.center,),
                     onTap: (){
                       LogUtil.d("付款");
+                      final model = StorageUtil().getUserModel();
+                      if (model != null) {
+                        OrderRequest.requestAliPay( (model as UserModel).token, widget.params.trade_number).then((value){
+                            _payInfo = (value as PayModelEntity).parameters;
+                            callAlipay();
+                        });
+                      }
                     },
                   )
               ),
@@ -170,6 +199,23 @@ class _PayPreOrderState extends State<PayPreOrder> {
 
       ),
     );
+  }
+
+  callAlipay() async {
+    Map payResult;
+    try {
+      print("The pay info is : " + _payInfo);
+      payResult = await aliPay(_payInfo);
+      print("--->$payResult");
+    } on Exception catch (e) {
+      payResult = {};
+    }
+
+    if (!mounted) return;
+
+    setState(() {
+      _payResult = payResult;
+    });
   }
 
 }

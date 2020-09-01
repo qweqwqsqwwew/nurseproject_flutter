@@ -124,6 +124,9 @@ orderDetailEntityFromJson(OrderDetailEntity data, Map<String, dynamic> json) {
 	if (json['caregiver_mobile'] != null) {
 		data.caregiverMobile = json['caregiver_mobile']?.toString();
 	}
+	if (json['trade_number'] != null) {
+		data.trade_number = json['trade_number']?.toString();
+	}
 	return data;
 }
 
@@ -170,5 +173,6 @@ Map<String, dynamic> orderDetailEntityToJson(OrderDetailEntity entity) {
 	data['nurse_star'] = entity.nurseStar;
 	data['caregiver_name'] = entity.caregiverName;
 	data['caregiver_mobile'] = entity.caregiverMobile;
+	data['trade_number'] = entity.trade_number;
 	return data;
 }

@@ -14,4 +14,5 @@ const serviceUrl = {
    'app_relatedObject':appurlPro + 'person/list',
    'app_order':appurlPro + 'order/list',
    'app_order_detail':appurlPro + 'order/detail',
+   'app_order_pay':appurlProExcept + 'pay/prepay',
 };
