@@ -13,6 +13,7 @@ import 'provider/appHomePageStore.p.dart';
 import 'Changhuxian/Changhuxian.dart';
 import 'ServiceProject/ServiceProject.dart';
 import 'MyPersonal/Mine.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 /// [params] 别名路由传递的参数
 /// [params.pageId] 跳转到指定tab页面（0第一页），如果不是别名路由跳转的话，又想实现跳转到指定tab页面，推荐别名路由跳转方式。
@@ -71,6 +72,35 @@ class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
       'icon': Icons.search,
       'body': Search(),
     },
+    {
+      'title': '个人中心',
+      'icon': Icons.person,
+      'body': Mine(),
+    },
+  ];
+
+  // 导航菜单渲染数据源
+  static List<Map<String, dynamic>> barPageData = [
+    {
+      'title': '首页',
+      'icon': Icons.home,
+      'body': Home(),
+    },
+    {
+      'title': '长护险',
+      'icon': Icons.weekend,
+      'body': Changhuxian(),
+    },
+    {
+      'title': '服务项目',
+      'icon': Icons.whatshot,
+      'body': ServiceProject(),
+    },
+//    {
+//      'title': '一键呼叫',
+//      'icon': Icons.search,
+//      'body': Search(),
+//    },
     {
       'title': '个人中心',
       'icon': Icons.person,
@@ -179,9 +209,16 @@ class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
             children: bodyWidget(), // tab页面主体
             // 监听滑动
             onPageChanged: (index) {
-              setState(() {
-                currentIndex = index;
-              });
+              if (index ==3){
+                index = index + 1;
+                setState(() {
+                  currentIndex = index;
+                });
+              }else{
+                setState(() {
+                  currentIndex = index;
+                });
+              }
             },
           ),
           Positioned(
@@ -199,20 +236,65 @@ class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
         selectedFontSize: 26.sp, // 选中的字体大小
         unselectedFontSize: 26.sp, // 未选中的字体大小
         onTap: (int idx) async {
-          setState(() {
-            currentIndex = idx;
-          });
-          pageController.jumpToPage(idx); // 跳转
+          if(idx == 3){
+            showAlertDialog(context);
+          }else{
+            setState(() {
+              currentIndex = idx;
+            });
+            pageController.jumpToPage(idx); // 跳转
+          }
         },
         items: _generateBottomBars(), // 底部菜单导航
       ),
     );
   }
 
+  void showAlertDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        barrierDismissible: true,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Text('拨打电话：0512-66568030'),
+            title: Center(
+                child: Text(
+                  '联系客服',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold),
+                )),
+            actions: <Widget>[
+              FlatButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    _launchPhone();
+                  },
+                  child: Text('确定')),
+              FlatButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('取消')),
+            ],
+          );
+        });
+  }
+
+  _launchPhone() async {
+    const url = 'tel:0512-66568030';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   /// tab视图内容区域
   List<Widget> bodyWidget() {
     try {
-      return barData.map((itemData) => itemData['body'] as Widget).toList();
+      return barPageData.map((itemData) => itemData['body'] as Widget).toList();
     } catch (e) {
       throw Exception('barData导航菜单数据缺少body参数，errorMsg:$e');
     }
