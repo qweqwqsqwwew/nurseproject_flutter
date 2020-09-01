@@ -31,9 +31,9 @@ class _PayPreOrderState extends State<PayPreOrder> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    isAliPayInstalled().then((data){
-      print("支付宝是否安装installed $data");
-    });
+//    isAliPayInstalled().then((data){
+//      print("支付宝是否安装installed $data");
+//    });
   }
 
   @override
