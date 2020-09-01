@@ -79,9 +79,26 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
      }
     }
     return Scaffold(
-      appBar: AppBar(
-        title: Text('首页',style: TextStyle(color: Colors.white),),
-        automaticallyImplyLeading: false,
+      appBar: PreferredSize(
+        child: Container(
+          child: AppBar(
+            title: Text('首页',style: TextStyle(color: Colors.white),),
+            automaticallyImplyLeading: false,
+            backgroundColor: Colors.transparent,
+            elevation: 0.0,
+          ),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color(0xFFFF8C40),
+                Color(0xFFFFB347),
+              ],
+            ),
+          ),
+        ),
+        preferredSize: Size(MediaQuery.of(context).size.width, ScreenAdaper.height(120)),
       ),
         body: Container(
           child: RefreshIndicator(

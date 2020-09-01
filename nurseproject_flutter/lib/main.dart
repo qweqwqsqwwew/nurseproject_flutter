@@ -9,7 +9,8 @@ import 'provider/themeStore.p.dart'; // 全局主题
 import 'ioc/locator.dart' show setupLocator, locator, CommonService, LogUtil;
 import 'package:ana_page_loop/ana_page_loop.dart' show anaAllObs;
 import 'utils/myAppSetup/index.dart' show myAppSetup;
-
+import 'package:flutter/services.dart';
+import 'dart:io';
 void main() {
   setupLocator();
   jhDebugMain(
@@ -19,6 +20,11 @@ void main() {
     ),
     debugMode: DebugMode.inConsole,
   );
+  if (Platform.isAndroid) {
+    SystemUiOverlayStyle systemUiOverlayStyle =
+    SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+    SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
+  }
 }
 
 class MyApp extends StatelessWidget {
