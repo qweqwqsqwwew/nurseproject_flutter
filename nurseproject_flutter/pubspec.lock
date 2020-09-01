@@ -355,6 +355,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.2.19-nullsafety"
+  tobias:
+    dependency: "direct main"
+    description:
+      name: tobias
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.7.1+1"
   typed_data:
     dependency: transitive
     description:

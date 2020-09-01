@@ -13,6 +13,7 @@ import '../pages/AppHomePage/MyPersonal/RelatedObject.dart';
 import '../pages/AppHomePage/Changhuxian/OrderEvaluate.dart';
 import '../pages/AppHomePage/MyPersonal/Order/Order.dart';
 import '../pages/AppHomePage/MyPersonal/Order/OrderDetail.dart';
+import '../pages/AppHomePage/MyPersonal/Order/PayPreOrder.dart';
 
 final String initialRoute = '/'; // 初始默认显示的路由
 final Map<String, WidgetBuilder> routesData = {
@@ -41,4 +42,6 @@ final Map<String, WidgetBuilder> routesData = {
   RouteName.order:(BuildContext context,{params}) => Order(params:params),
   ///订单详情页面
   RouteName.orderDetail:(BuildContext context,{params}) => OrderDetail(params:params),
+  ///预付订单页面
+  RouteName.payPreOrder:(BuildContext context,{params}) => PayPreOrder(params:params),
 };

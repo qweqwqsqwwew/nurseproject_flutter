@@ -75,19 +75,34 @@ class _OrderDetailState extends State<OrderDetail> {
     return Container(
       child: Row(
         children: [
-          Container(
-            height: ScreenAdaper.height(100),
-            width: ScreenAdaper.screenWidth()/2.0,
-            alignment: Alignment.center,
-            color: Colors.white54,
-            child: Text("再想想",style: TextStyle(color: Colors.orange),),
+          GestureDetector(
+            child: Container(
+              height: ScreenAdaper.height(100),
+              width: ScreenAdaper.screenWidth()/2.0,
+              alignment: Alignment.center,
+              color: Colors.white54,
+              child: Text("再想想",style: TextStyle(color: Colors.orange),),
+              ///Navigator.pop(context);
+            ),
+            onTap: (){
+              Navigator.pop(context);
+            },
           ),
-          Container(
-            height: ScreenAdaper.height(100),
-            width: ScreenAdaper.screenWidth()/2.0,
-            alignment: Alignment.center,
-            color: Colors.orange,
-            child: Text("确认预约",style: TextStyle(color: Colors.white),),
+          GestureDetector(
+            child: Container(
+              height: ScreenAdaper.height(100),
+              width: ScreenAdaper.screenWidth()/2.0,
+              alignment: Alignment.center,
+              color: Colors.orange,
+              child: Text("确认预约",style: TextStyle(color: Colors.white),),
+            ),
+            onTap: (){
+              Navigator.pushNamed(
+                context,
+                '/payPreOrder',
+                arguments: this._detailParams, //　传递参数
+              );
+            },
           )
         ],
       ),

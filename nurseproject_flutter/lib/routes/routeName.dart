@@ -38,4 +38,7 @@ class RouteName {
 
   ///订单详情页面
   static String orderDetail = '/orderDetail';
+
+  ///预付订单页面
+  static String payPreOrder = '/payPreOrder';
  }
