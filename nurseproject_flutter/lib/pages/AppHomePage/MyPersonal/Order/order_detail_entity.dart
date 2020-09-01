@@ -75,4 +75,5 @@ class OrderDetailEntity with JsonConvert<OrderDetailEntity> {
 	String caregiverName;
 	@JSONField(name: "caregiver_mobile")
 	String caregiverMobile;
+	String trade_number;
 }

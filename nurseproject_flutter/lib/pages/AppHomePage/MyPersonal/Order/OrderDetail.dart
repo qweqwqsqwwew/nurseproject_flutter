@@ -35,6 +35,7 @@ class _OrderDetailState extends State<OrderDetail> {
         LogUtil.d(value);
         setState(() {
           _detailParams = value;
+          _detailParams.trade_number = widget.params.tradeNo;
         });
       });
     }
