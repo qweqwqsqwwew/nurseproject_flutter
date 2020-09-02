@@ -1,5 +1,4 @@
 
-
 import 'package:flutter/material.dart';
 import '../../../../utils/util.dart';
 import '../home_item_request/home_item_detail_model.dart';
@@ -55,28 +54,34 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
       appBar: AppBar(
         title: Text("服务对象信息"),
       ),
-      body:
-      Stack(
-        children: [
-          Positioned(
-              child: Container(
-                  child: ListView.builder(
-                            itemCount: 1,
-                            itemBuilder: (ctx, index) {
-                              return _buildServiceObjectInfomationItem(context);
-                            })
-              ),
-              left: 0,
-              bottom: ScreenAdaper.height(100),
-              right: 0,
-              top: 0),
-          Positioned(
-            child: _buildBottomTool(),
-            left: 0,
-            bottom: 0,),
-        ],
-        alignment: Alignment.center,
-      )
+      body:GestureDetector(
+              behavior: HitTestBehavior.translucent,
+              onTap: () {
+              FocusScope.of(context).requestFocus(FocusNode());
+              },
+          child:
+                Stack(
+                  children: [
+                    Positioned(
+                        child: Container(
+                            child: ListView.builder(
+                                      itemCount: 1,
+                                      itemBuilder: (ctx, index) {
+                                        return _buildServiceObjectInfomationItem(context);
+                                      })
+                        ),
+                        left: 0,
+                        bottom: ScreenAdaper.height(100),
+                        right: 0,
+                        top: 0),
+                    Positioned(
+                      child: _buildBottomTool(),
+                      left: 0,
+                      bottom: 0,),
+                  ],
+                  alignment: Alignment.center,
+                )
+             )
     );
   }
 
@@ -237,8 +242,8 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
           MyTextField(
             focusNode: _nodeName,
             placeHolder: '请输入关联人姓名',
-            maxLength: 11,
-            keyboardType: TextInputType.phone,
+            maxLength: 5,
+            keyboardType: TextInputType.text,
             controller: _nameController,
           ),
           DottedLineWidget(axis: Axis.horizontal,
@@ -262,11 +267,24 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
             lineWidth: 3,
             count: 40,
             color: Colors.black45,),
-          Container(),
+          Container(
+            margin: EdgeInsets.only(top: ScreenAdaper.height(20),bottom: ScreenAdaper.height(20)),
+            height: ScreenAdaper.height(10),
+            color: Color(0xFFFCE4EC),
+          ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("订单信息"),
-              Text("待预约"),
+              Container(
+                alignment: Alignment.centerLeft,
+                margin: EdgeInsets.only(bottom: ScreenAdaper.height(10)),
+                child: Text("订单信息",style: TextStyle(color: Colors.black87,fontSize: ScreenAdaper.sp(30)),),
+              ),
+              Container(
+                alignment: Alignment.centerLeft,
+                margin: EdgeInsets.only(bottom: ScreenAdaper.height(10)),
+                child: Text("待预约",style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(23)),),
+              ),
             ],
           ),
           DottedLineWidget(axis: Axis.horizontal,
@@ -276,11 +294,30 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
             lineWidth: 3,
             count: 40,
             color: Colors.black45,),
-          Row(
-            children: [
-              Text("服务机构"),
-              Text("苏州第一附属医院"),
-            ],
+          Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: Text("服务机构",style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(23)),),
+                ),
+                FlatButton(
+                    onPressed: (){
+                      LogUtil.d("点击了选择医院");
+                    },
+                    child: Row(
+                      children: [
+                        Container(
+                          alignment: Alignment.centerLeft,
+                          child: Text("苏州第一附属医院",style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(23)),),
+                        ),
+                        Image.asset("asset/images/mine/jiantou.png",width: ScreenAdaper.width(25),height: ScreenAdaper.height(25),fit: BoxFit.fill,),
+                      ],
+                    )
+                ),
+              ],
+            ),
           ),
           DottedLineWidget(axis: Axis.horizontal,
             width: ScreenAdaper.screenWidth() - ScreenAdaper.width(70),
