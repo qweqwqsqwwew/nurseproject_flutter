@@ -26,6 +26,8 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
 
   RelatedObjectListData _selectRelationPersion;
 
+  bool _isJiaJi = false;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -327,16 +329,64 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
             count: 40,
             color: Colors.black45,),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("加急费（自选）"),
-              FlatButton(
-                  onPressed: (){
-                      LogUtil.d("点击了加急按钮");
-                  },
-                  child: Text("0.01元")),
+              Text("加急费（自选）",style: TextStyle(color: Colors.black87,fontSize: ScreenAdaper.sp(30)),),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  new Checkbox(
+                    value: _isJiaJi,
+                    activeColor: Colors.orange,
+                    onChanged: (bool val) {
+                      // val 是布尔值
+                      setState(() {
+                        _isJiaJi = !_isJiaJi;
+                      });
+                    },
+                  ),
+                  Text("¥0.01元",style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(23)),),
+                ],
+              ),
             ],
           ),
-          Text("注：如未按约定时间上门服务，可退还加急费"),
+          Container(
+            alignment: Alignment.centerLeft,
+            child: Text("注：如未按约定时间上门服务，可退还加急费",style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(23)),),
+          ),
+          SizedBox(height: ScreenAdaper.height(20),),
+          DottedLineWidget(axis: Axis.horizontal,
+            width: ScreenAdaper.screenWidth() - ScreenAdaper.width(70),
+            height: 10.0,
+            lineHeight: 0.5,
+            lineWidth: 3,
+            count: 40,
+            color: Colors.black45,),
+          Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: Text("服务时间",style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(23)),),
+                ),
+                FlatButton(
+                    onPressed: (){
+                      LogUtil.d("点击了选择时间");
+                    },
+                    child: Row(
+                      children: [
+                        Container(
+                          alignment: Alignment.centerLeft,
+                          child: Text("2020-09-03 10:00:00",style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(23)),),
+                        ),
+                        Image.asset("asset/images/mine/jiantou.png",width: ScreenAdaper.width(25),height: ScreenAdaper.height(25),fit: BoxFit.fill,),
+                      ],
+                    )
+                ),
+              ],
+            ),
+          ),
           DottedLineWidget(axis: Axis.horizontal,
             width: ScreenAdaper.screenWidth() - ScreenAdaper.width(70),
             height: 10.0,
@@ -346,32 +396,37 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
             color: Colors.black45,),
           Row(
             children: [
-              Text("服务时间"),
-              Text("2020-09-03 10:00:00"),
+              Container(
+                child: Text("*注",style: TextStyle(color: Colors.red,fontSize: ScreenAdaper.sp(30)),),
+              ),
+              Container(
+                width: ScreenAdaper.width(650),
+                margin: EdgeInsets.only(left: ScreenAdaper.width(10)),
+                child: Text("此机构包含基础服务费，服务费0.01元,起步价0.01元（5公里内），每公里增加0.01元",style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(23)),maxLines: 2,),
+              ),
             ],
           ),
-          DottedLineWidget(axis: Axis.horizontal,
-            width: ScreenAdaper.screenWidth() - ScreenAdaper.width(70),
-            height: 10.0,
-            lineHeight: 0.5,
-            lineWidth: 3,
-            count: 40,
-            color: Colors.black45,),
+          Container(
+            margin: EdgeInsets.only(top: ScreenAdaper.height(20),bottom: ScreenAdaper.height(20)),
+            height: ScreenAdaper.height(10),
+            color: Color(0xFFFCE4EC),
+          ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text("*注",style: TextStyle(color: Colors.red),),
-              Text("此机构包含基础服务费，服务费0.01元,起步价0.01元（5公里内），每公里增加0.01元"),
+              Text("保险信息",style: TextStyle(color: Colors.black87,fontSize: ScreenAdaper.sp(30)),),
+              Container(
+                margin: EdgeInsets.only(left: ScreenAdaper.width(10)),
+                child: Text("免费为服务对象投保中国人保意外保险",style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(23)),),
+              ),
             ],
           ),
-          Container(),
-          Row(
-            children: [
-              Text("保险信息"),
-              Text("免费为服务对象投保中国人保意外保险")
-            ],
+          Container(
+            margin: EdgeInsets.only(top: ScreenAdaper.height(20),bottom: ScreenAdaper.height(20)),
+            height: ScreenAdaper.height(10),
+            color: Color(0xFFFCE4EC),
           ),
-          Container(),
-          Text("情况描述"),
+          Text("情况描述",style: TextStyle(color: Colors.black87,fontSize: ScreenAdaper.sp(30)),),
           Container(
             child: MyTextField(
               focusNode: _nodeMobile,
@@ -381,15 +436,25 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
               controller: _mobileController,
             ),
           ),
-          Text("最多输入一百字"),
           Container(
-
+            alignment: Alignment.centerRight,
+            child: Text("最多输入一百字",style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(23)),),
           ),
-          Text("上传辅助资料"),
+          Container(
+            margin: EdgeInsets.only(top: ScreenAdaper.height(20),bottom: ScreenAdaper.height(20)),
+            height: ScreenAdaper.height(10),
+            color: Color(0xFFFCE4EC),
+          ),
+          Container(
+            child: Text("上传辅助资料",style: TextStyle(color: Colors.black87,fontSize: ScreenAdaper.sp(30)),),
+            alignment: Alignment.centerLeft,
+          ),
+          SizedBox(height: ScreenAdaper.height(10),),
           Container(
             child: Text("此处为图片上传"),
           ),
-          Text("请上传近期医嘱，病历。检验单，以便医护人员全面了解情况。"),
+          SizedBox(height: ScreenAdaper.height(10),),
+          Text("请上传近期医嘱，病历。检验单，以便医护人员全面了解情况。",style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(23)),),
           Row(
             children: [
               FlatButton(onPressed: (){
@@ -404,7 +469,9 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
             ],
           ),
           Container(
-
+            margin: EdgeInsets.only(top: ScreenAdaper.height(20),bottom: ScreenAdaper.height(20)),
+            height: ScreenAdaper.height(10),
+            color: Color(0xFFFCE4EC),
           ),
           Row(
             children: [
