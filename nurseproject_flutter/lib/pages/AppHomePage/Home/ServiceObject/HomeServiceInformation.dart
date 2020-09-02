@@ -411,6 +411,7 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
             height: ScreenAdaper.height(10),
             color: Color(0xFFFCE4EC),
           ),
+          SizedBox(height: ScreenAdaper.height(10),),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -421,12 +422,16 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
               ),
             ],
           ),
+          SizedBox(height: ScreenAdaper.height(10),),
           Container(
             margin: EdgeInsets.only(top: ScreenAdaper.height(20),bottom: ScreenAdaper.height(20)),
             height: ScreenAdaper.height(10),
             color: Color(0xFFFCE4EC),
           ),
-          Text("情况描述",style: TextStyle(color: Colors.black87,fontSize: ScreenAdaper.sp(30)),),
+          Container(
+            alignment: Alignment.centerLeft,
+            child: Text("情况描述",style: TextStyle(color: Colors.black87,fontSize: ScreenAdaper.sp(30)),),
+          ),
           Container(
             child: MyTextField(
               focusNode: _nodeMobile,
@@ -482,7 +487,9 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
               Text("签字确认"),
             ],
           ),
+          SizedBox(height: ScreenAdaper.height(50),),
           Text("此处为签字"),
+          SizedBox(height: ScreenAdaper.height(50),),
         ],
       ),
     );

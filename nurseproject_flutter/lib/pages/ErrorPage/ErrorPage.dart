@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nurseproject_flutter/utils/util.dart';
 
 // 错误页面
 class ErrorPage extends StatefulWidget {
@@ -38,7 +39,7 @@ class _ErrorPageState extends State<ErrorPage> {
             ),
             SelectableText(
               widget.errorText ?? '错误：未定义的路由',
-              style: TextStyle(fontSize: 22),
+              style: TextStyle(fontSize: ScreenAdaper.sp(40)),
             ),
           ],
         ),

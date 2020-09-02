@@ -123,7 +123,7 @@ class _HomeItemDetailState extends State<HomeItemDetail> {
                   '联系客服',
                   style: TextStyle(
                       color: Colors.black,
-                      fontSize: 20.0,
+                      fontSize: ScreenAdaper.sp(40),
                       fontWeight: FontWeight.bold),
                 )),
             actions: <Widget>[
@@ -162,7 +162,7 @@ class _HomeItemDetailState extends State<HomeItemDetail> {
                     Row(
                       children: [
                         Container(
-                          child: Text('价格',style: TextStyle(color: Colors.black45,fontSize: 23),),
+                          child: Text('价格',style: TextStyle(color: Colors.black45,fontSize: ScreenAdaper.sp(46)),),
                         ),
                         Container(
                           margin: EdgeInsets.only(left: 10),
@@ -171,7 +171,7 @@ class _HomeItemDetailState extends State<HomeItemDetail> {
                       ],
                     ),
                     Container(
-                      child: Text(this.widget.params.name,style: TextStyle(color: Colors.black45,fontSize: 15),),
+                      child: Text(this.widget.params.name,style: TextStyle(color: Colors.black45,fontSize: ScreenAdaper.sp(30)),),
                       margin: EdgeInsets.only(right: 16,bottom: 15),
                     ),
                   ],
@@ -180,7 +180,7 @@ class _HomeItemDetailState extends State<HomeItemDetail> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      child: Text('购买数量',style: TextStyle(color: Colors.black45,fontSize: 16),),
+                      child: Text('购买数量',style: TextStyle(color: Colors.black45,fontSize: ScreenAdaper.sp(32)),),
                       margin: EdgeInsets.only(top: 10),
                     ),
                     Container(
@@ -189,15 +189,15 @@ class _HomeItemDetailState extends State<HomeItemDetail> {
                         children: [
                           Container(
                             margin: EdgeInsets.only(right: 10),
-                            child: Text("-",style: TextStyle(color: Colors.black45,fontSize: 19,),),
+                            child: Text("-",style: TextStyle(color: Colors.black45,fontSize: ScreenAdaper.sp(38),),),
                           ),
                           Container(
                             margin: EdgeInsets.only(right: 10),
-                            child: Text('1',style: TextStyle(color: Colors.black,fontSize: 22),),
+                            child: Text('1',style: TextStyle(color: Colors.black,fontSize: ScreenAdaper.sp(44)),),
                           ),
                           Container(
                             margin: EdgeInsets.only(right: 10),
-                            child: Text('+',style: TextStyle(color: Colors.black45,fontSize: 19),),
+                            child: Text('+',style: TextStyle(color: Colors.black45,fontSize: ScreenAdaper.sp(38)),),
                           )
                         ],
                       ),
@@ -210,7 +210,7 @@ class _HomeItemDetailState extends State<HomeItemDetail> {
                     children: [
                       Image.asset("asset/images/home/home_item_detail_group.png",width: 20,height: 20,),
                       Container(
-                        child: Text('适宜人群',style: TextStyle(color: Colors.black,fontSize: 17),),
+                        child: Text('适宜人群',style: TextStyle(color: Colors.black,fontSize: ScreenAdaper.sp(34)),),
                       )
                     ],
                   ),
@@ -219,7 +219,7 @@ class _HomeItemDetailState extends State<HomeItemDetail> {
                   margin: EdgeInsets.only(top: 10,right: 10),
                   alignment: Alignment.centerLeft,
                   child:
-                  Text(_itemDetail != null?_itemDetail.crowd:'',style: TextStyle(color: Colors.black,fontSize: 15),textAlign:TextAlign.left),
+                  Text(_itemDetail != null?_itemDetail.crowd:'',style: TextStyle(color: Colors.black,fontSize: ScreenAdaper.sp(30)),textAlign:TextAlign.left),
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 30),
@@ -227,7 +227,7 @@ class _HomeItemDetailState extends State<HomeItemDetail> {
                     children: [
                       Image.asset("asset/images/home/home_item_detail_service.png",width: 20,height: 20),
                       Container(
-                        child: Text('服务详情',style: TextStyle(color: Colors.black,fontSize: 17),),
+                        child: Text('服务详情',style: TextStyle(color: Colors.black,fontSize: ScreenAdaper.sp(34)),),
                       )
                     ],
                   ),
@@ -235,7 +235,7 @@ class _HomeItemDetailState extends State<HomeItemDetail> {
                 Container(
                   margin: EdgeInsets.only(top: 10,right: 10),
                   alignment: Alignment.centerLeft,
-                  child: Text(_itemDetail != null?_itemDetail.content:'',style: TextStyle(color: Colors.black,fontSize: 15),textAlign:TextAlign.left),
+                  child: Text(_itemDetail != null?_itemDetail.content:'',style: TextStyle(color: Colors.black,fontSize: ScreenAdaper.sp(30)),textAlign:TextAlign.left),
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 30),
@@ -243,7 +243,7 @@ class _HomeItemDetailState extends State<HomeItemDetail> {
                     children: [
                       Image.asset("asset/images/home/home_item_detail_note.png",width: 20,height: 20),
                       Container(
-                        child: Text('注意事项',style: TextStyle(color: Colors.black,fontSize: 17),),
+                        child: Text('注意事项',style: TextStyle(color: Colors.black,fontSize: ScreenAdaper.sp(35)),),
                       )
                     ],
                   ),
@@ -251,7 +251,7 @@ class _HomeItemDetailState extends State<HomeItemDetail> {
                 Container(
                   margin: EdgeInsets.only(top: 10,right: 10,bottom: 40),
                   alignment: Alignment.centerLeft,
-                  child: Text(_itemDetail != null?_itemDetail.note:'',style: TextStyle(color: Colors.black,fontSize: 15,),textAlign:TextAlign.left,),
+                  child: Text(_itemDetail != null?_itemDetail.note:'',style: TextStyle(color: Colors.black,fontSize: ScreenAdaper.sp(30),),textAlign:TextAlign.left,),
                 ),
               ],
             ),

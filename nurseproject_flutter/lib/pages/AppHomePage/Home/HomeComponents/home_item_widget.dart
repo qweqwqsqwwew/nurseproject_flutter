@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:nurseproject_flutter/ioc/locator.dart';
 import 'package:nurseproject_flutter/pages/AppHomePage/Home/home_request/home_model.dart';
@@ -31,13 +32,13 @@ class home_item_widget extends StatelessWidget{
                     children: [
                       Container(
                         margin: EdgeInsets.only(top: ScreenAdaper.height(25),left: ScreenAdaper.width(18)),
-                        child: Text(homeSingleItem.name,style: TextStyle(color: Colors.black,fontSize: 15),textAlign:TextAlign.left),
+                        child: Text(homeSingleItem.name,style: TextStyle(color: Colors.black,fontSize: ScreenAdaper.sp(30)),textAlign:TextAlign.left),
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 5,left: 10),
                         width: ScreenAdaper.width(500),
                         height: ScreenAdaper.height(70),
-                        child: Text(homeSingleItem.intro,maxLines:2,style: TextStyle(color: Colors.black45,fontSize: 12,),),
+                        child: Text(homeSingleItem.intro,maxLines:2,style: TextStyle(color: Colors.black45,fontSize: ScreenAdaper.sp(24),),),
                       ),
                     ],
                   ),
@@ -47,11 +48,11 @@ class home_item_widget extends StatelessWidget{
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Container(
-                          child: Text('${homeSingleItem.price}元',style: TextStyle(color: Colors.orange,fontSize: 13),),
+                          child: Text('${homeSingleItem.price}元',style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(26)),),
                         ),
                         Container(
                           margin: EdgeInsets.only(left: ScreenAdaper.width(300)),
-                          child: Text('已服务${homeSingleItem.sale_num}次',style: TextStyle(color: Colors.black45,fontSize: 10),),
+                          child: Text('已服务${homeSingleItem.sale_num}次',style: TextStyle(color: Colors.black45,fontSize: ScreenAdaper.sp(24)),),
                         )
                       ],
                     ),
