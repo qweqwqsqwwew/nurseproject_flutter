@@ -51,12 +51,68 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
       appBar: AppBar(
         title: Text("服务对象信息"),
       ),
-      body: ListView.builder(
-          itemCount: 1,
-          itemBuilder: (ctx, index) {
-            return _buildServiceObjectInfomationItem(context);
-          })
+      body:
+      Stack(
+        children: [
+          Positioned(
+              child: Container(
+                  child: ListView.builder(
+                            itemCount: 1,
+                            itemBuilder: (ctx, index) {
+                              return _buildServiceObjectInfomationItem(context);
+                            })
+              ),
+              left: 0,
+              bottom: ScreenAdaper.height(100),
+              right: 0,
+              top: 0),
+          Positioned(
+            child: _buildBottomTool(),
+            left: 0,
+            bottom: 0,),
+        ],
+        alignment: Alignment.center,
+      )
     );
+  }
+
+  Widget _buildBottomTool(){
+    return Container(
+      child: Row(
+        children: [
+          GestureDetector(
+            child: Container(
+              height: ScreenAdaper.height(100),
+              width: ScreenAdaper.screenWidth()/2.0,
+              alignment: Alignment.center,
+              color: Colors.white54,
+              child: Text("费用:${widget.params.price}",style: TextStyle(color: Colors.orange),),
+              ///Navigator.pop(context);
+            ),
+            onTap: (){
+//              Navigator.pop(context);
+            },
+          ),
+          GestureDetector(
+            child: Container(
+              height: ScreenAdaper.height(100),
+              width: ScreenAdaper.screenWidth()/2.0,
+              alignment: Alignment.center,
+              color: Colors.orange,
+              child: Text("确认预约",style: TextStyle(color: Colors.white),),
+            ),
+            onTap: (){
+//              Navigator.pushNamed(
+//                context,
+//                '/payPreOrder',
+//                arguments: this._detailParams, //　传递参数
+//              );
+            },
+          )
+        ],
+      ),
+    );
+
   }
 
   Widget _buildServiceObjectInfomationItem(BuildContext context){
