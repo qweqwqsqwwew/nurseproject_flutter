@@ -1,4 +1,5 @@
 
+
 import 'package:flutter/material.dart';
 import '../../../../utils/util.dart';
 import '../home_item_request/home_item_detail_model.dart';
@@ -156,14 +157,15 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
           SizedBox(height: ScreenAdaper.height(20),),
           Container(
             width: ScreenAdaper.screenWidth(),
-            height:ScreenAdaper.height(300),
-            child:Consumer<ServiceItemList>(
+            height:ScreenAdaper.height(250),
+            child:Consumer<GainRelationObjectList>(
               builder: (_, a, child) =>
                   GridView.builder(
+                    physics: new NeverScrollableScrollPhysics(),
                     itemCount: _relationObjectListProvider.getRelateListModel == null? 0:_relationObjectListProvider.getRelateListModel.data.length,
                     itemBuilder: (BuildContext context, int index) {
                       //Widget Function(BuildContext context, int index)
-                      return _buildGridViewItem(_relationObjectListProvider.getRelateListModel.data[index]);
+                      return _buildGridViewItem(context,_relationObjectListProvider.getRelateListModel.data[index]);
                     },
                     //SliverGridDelegateWithFixedCrossAxisCount 构建一个横轴固定数量Widget
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -179,9 +181,15 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
             ),
           ),
           Container(
-
+            margin: EdgeInsets.only(top: ScreenAdaper.height(20),bottom: ScreenAdaper.height(20)),
+            height: ScreenAdaper.height(10),
+            color: Color(0xFFFCE4EC),
           ),
-          Text("关联信息"),
+          Container(
+            alignment: Alignment.centerLeft,
+            child: Text("关联信息",style: TextStyle(color: Colors.black87,fontSize: ScreenAdaper.sp(30)),),
+            margin: EdgeInsets.only(bottom: ScreenAdaper.height(10)),
+          ),
           DottedLineWidget(axis: Axis.horizontal,
             width: ScreenAdaper.screenWidth() - ScreenAdaper.width(70),
             height: 10.0,
@@ -191,8 +199,14 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
             color: Colors.black45,),
           Row(
            children: [
-             Text("服务详细地址"),
-             Text("江苏生接口都是跨境电商跨境电商进口跨境电商恐惧恐惧恐惧"),
+             Container(
+               margin: EdgeInsets.only(left: ScreenAdaper.width(5),top: ScreenAdaper.height(5),bottom: ScreenAdaper.height(5)),
+               child: Text("服务详细地址:",style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(23)),),
+             ),
+             Container(
+               margin: EdgeInsets.only(left: ScreenAdaper.width(10)),
+               child: Text(_relationObjectListProvider.getSelectRelationModel == null ? "":_relationObjectListProvider.getSelectRelationModel.address,style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(23)),),
+             ),
            ],
           ),
           DottedLineWidget(axis: Axis.horizontal,
@@ -202,8 +216,16 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
             lineWidth: 3,
             count: 40,
             color: Colors.black45,),
-          Container(),
-          Text("主照料人"),
+          Container(
+            margin: EdgeInsets.only(top: ScreenAdaper.height(20),bottom: ScreenAdaper.height(20)),
+            height: ScreenAdaper.height(10),
+            color: Color(0xFFFCE4EC),
+          ),
+          Container(
+            alignment: Alignment.centerLeft,
+            margin: EdgeInsets.only(bottom: ScreenAdaper.height(10)),
+              child: Text("主照料人",style: TextStyle(color: Colors.black87,fontSize: ScreenAdaper.sp(30)),),
+          ),
           DottedLineWidget(axis: Axis.horizontal,
             width: ScreenAdaper.screenWidth() - ScreenAdaper.width(70),
             height: 10.0,
@@ -362,19 +384,21 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
     );
   }
 
-  Widget _buildGridViewItem(RelatedObjectListData item){
+  Widget _buildGridViewItem(BuildContext context,RelatedObjectListData item){
     return Container(
-      child: RaisedButton(
-//        shape: CircleBorder(),
-        color: _selectRelationPersion == null?Colors.white:_selectRelationPersion.id==item.id?Colors.orange:Colors.white,
-        child: Text(item.realname,style: TextStyle(color: _selectRelationPersion == null?Colors.black87:_selectRelationPersion.id==item.id?Colors.white:Colors.black87,fontSize: ScreenAdaper.sp(23)),),
-        onPressed: (){
-          LogUtil.d("点击了");
-          setState(() {
-            _selectRelationPersion = item;
-          });
-        },
-      )
+      child: Consumer<GainRelationObjectList>(
+        builder: (_, a, child) =>
+                    RaisedButton(
+      //        shape: CircleBorder(),
+              color: _relationObjectListProvider.getSelectRelationModel == null?Colors.white:_relationObjectListProvider.getSelectRelationModel.id==item.id?Colors.orange:Colors.white,
+              child: Text(item.realname,style: TextStyle(color: _relationObjectListProvider.getSelectRelationModel == null?Colors.black87:_relationObjectListProvider.getSelectRelationModel.id==item.id?Colors.white:Colors.black87,fontSize: ScreenAdaper.sp(23)),),
+              onPressed: (){
+                LogUtil.d("点击了");
+                _selectRelationPersion = item;
+              _relationObjectListProvider.setSelectRelationModel(item);
+              },
+            )
+      ),
     );
   }
 

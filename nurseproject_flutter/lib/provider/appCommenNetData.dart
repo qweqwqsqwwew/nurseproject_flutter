@@ -55,7 +55,17 @@ class GainRelationObjectList with ChangeNotifier{
 
   RelatedObjectListEntity _relateListModel = null;
 
+  RelatedObjectListData _selectItemData = null;
+
+  RelatedObjectListData get getSelectRelationModel => _selectItemData;
+
+
   RelatedObjectListEntity get getRelateListModel => _relateListModel;
+
+  void setSelectRelationModel(RelatedObjectListData model){
+    _selectItemData = model;
+    notifyListeners();
+  }
 
   void setRelationList(){
     final model = StorageUtil().getUserModel();
