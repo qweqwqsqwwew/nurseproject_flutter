@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import '../../../../utils/util.dart';
 import '../home_item_request/home_item_detail_model.dart';
@@ -22,6 +23,8 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
   //分别定义两个输入框的焦点 用于切换焦点
   final FocusNode _nodeName = FocusNode();
   final FocusNode _nodeMobile = FocusNode();
+
+  RelatedObjectListData _selectRelationPersion;
 
   @override
   void initState() {
@@ -117,22 +120,40 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
 
   Widget _buildServiceObjectInfomationItem(BuildContext context){
     return Container(
+      padding: EdgeInsets.only(left: ScreenAdaper.width(20),right: ScreenAdaper.width(20),top: ScreenAdaper.height(20)),
       child: Column(
         children: [
-          Row(
-            children: [
-              CachedNetworkImage(errorWidget: (context, url, error) => Icon(Icons.error),fit: BoxFit.fill,imageUrl: widget.params.logo!=null? widget.params.logo:"https://didi.depin.tech/storage/service/2020/02/26/5e561ce9c4a00.jpg",width: ScreenAdaper.width(160),height: ScreenAdaper.height(160),),
-              Column(
-                children: [
-                  Text(widget.params.name),
-                  Text("适应人群:${widget.params.crowd}"),
-                  Text("¥${widget.params.price}")
-                ],
-              ),
-            ],
+          Container(
+            margin: EdgeInsets.only(top: ScreenAdaper.height(15)),
+            child: Row(
+              children: [
+                CachedNetworkImage(errorWidget: (context, url, error) => Icon(Icons.error),fit: BoxFit.fill,imageUrl: widget.params.logo!=null? widget.params.logo:"https://didi.depin.tech/storage/service/2020/02/26/5e561ce9c4a00.jpg",width: ScreenAdaper.width(160),height: ScreenAdaper.height(160),),
+                Container(
+                  margin:EdgeInsets.only(left: ScreenAdaper.width(15)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(child: Text(widget.params.name,style: TextStyle(color: Colors.black87,fontSize: ScreenAdaper.sp(30)),),margin: EdgeInsets.only(top: 0,bottom: ScreenAdaper.height(10)),),
+                      SizedBox(height: ScreenAdaper.height(20),),
+                      Text("适应人群:${widget.params.crowd}",style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(23)),),
+                      SizedBox(height: ScreenAdaper.height(20),),
+                      Text("¥${widget.params.price}",style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(23)),)
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
-          Container(),
-          Text("选择关联对象"),
+          Container(
+            margin: EdgeInsets.only(top: ScreenAdaper.height(20),bottom: ScreenAdaper.height(20)),
+            height: ScreenAdaper.height(10),
+            color: Color(0xFFFCE4EC),
+          ),
+          Container(
+            alignment: Alignment.centerLeft,
+            child: Text("选择关联对象",style: TextStyle(color: Colors.black87,fontSize: ScreenAdaper.sp(30)),),
+          ),
+          SizedBox(height: ScreenAdaper.height(20),),
           Container(
             width: ScreenAdaper.screenWidth(),
             height:ScreenAdaper.height(300),
@@ -149,11 +170,11 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
                       //横轴元素个数
                         crossAxisCount: 4,
                         //纵轴间距
-                        mainAxisSpacing: ScreenAdaper.width(10),
+                        mainAxisSpacing: ScreenAdaper.width(30),
                         //横轴间距
-                        crossAxisSpacing: ScreenAdaper.height(10),
+                        crossAxisSpacing: ScreenAdaper.height(40),
                         //子组件宽高长度比例
-                        childAspectRatio: 2),
+                        childAspectRatio: 3),
                   ),
             ),
           ),
@@ -343,10 +364,15 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
 
   Widget _buildGridViewItem(RelatedObjectListData item){
     return Container(
-      child: OutlineButton(
-        child: Text(item.realname,style: TextStyle(color: Colors.black,fontSize: ScreenAdaper.sp(30)),),
+      child: RaisedButton(
+//        shape: CircleBorder(),
+        color: _selectRelationPersion == null?Colors.white:_selectRelationPersion.id==item.id?Colors.orange:Colors.white,
+        child: Text(item.realname,style: TextStyle(color: _selectRelationPersion == null?Colors.black87:_selectRelationPersion.id==item.id?Colors.white:Colors.black87,fontSize: ScreenAdaper.sp(23)),),
         onPressed: (){
           LogUtil.d("点击了");
+          setState(() {
+            _selectRelationPersion = item;
+          });
         },
       )
     );
