@@ -25,10 +25,10 @@ class _ServiceProjectState extends State<ServiceProject> with AutomaticKeepAlive
   List<HomeItem> _serviceRealList = [];
   List<ServiceCateItem> _cateList = [];
   int _currentClickIndex = 0;
+
   @override
   void dispose() {
     super.dispose();
-    LogUtil.d('data');
   }
 
   @override
@@ -120,13 +120,7 @@ class _ServiceProjectState extends State<ServiceProject> with AutomaticKeepAlive
             height: ScreenAdaper.screenHeight() - ScreenAdaper.height(540),
             child:Consumer<ServiceItemList>(
               builder: (_, a, child) =>
-//                  Text(
-//                '状态共享值：${_serviceItemListProvider.getserviceList.length == 0?'wwwww':_serviceItemListProvider.getserviceList[0].name}',
-//                style: TextStyle(fontSize: 18),
-//              ),
                   GridView.builder(
-
-//                    padding: EdgeInsets.all(10.0),
                     itemCount: _serviceRealList.length,
                     itemBuilder: (BuildContext context, int index) {
                       //Widget Function(BuildContext context, int index)

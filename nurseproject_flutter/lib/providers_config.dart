@@ -13,4 +13,5 @@ List<SingleChildWidget> providersConfig = [
   ChangeNotifierProvider<AppHomePageStore>.value(value: AppHomePageStore()),
   ChangeNotifierProvider<CounterStore>.value(value: CounterStore()),
   ChangeNotifierProvider<GainUserModel>.value(value: GainUserModel()),
+  ChangeNotifierProvider<GainRelationObjectList>.value(value: GainRelationObjectList()),
 ];

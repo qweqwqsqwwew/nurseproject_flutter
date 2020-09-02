@@ -92,7 +92,7 @@ class _HomeItemDetailState extends State<HomeItemDetail> {
               Navigator.pushNamed(
                 context,
                 '/homeServiceInformation',
-                arguments: {}, //　传递参数
+                arguments: _itemDetail, //　传递参数
               );
             },
           )

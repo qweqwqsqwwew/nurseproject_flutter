@@ -1,14 +1,27 @@
 import 'package:flutter/material.dart';
 import '../../../../utils/util.dart';
-
+import '../home_item_request/home_item_detail_model.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import '../../../AppHomePage/MyPersonal/RelatedObject_request/related_object_list_entity.dart';
+import '../../../../provider/appCommenNetData.dart';
+import 'package:provider/provider.dart';
+import '../../MyPersonal/RelatedObject_request/DottedLineWidget.dart';
+import '../../Commen/text_field.dart';
 class HomeServiceInformation extends StatefulWidget {
   HomeServiceInformation({Key key, this.params}) : super(key: key);
-  final  params;
+  final ItemDetail params;
   @override
   _HomeServiceInformationState createState() => _HomeServiceInformationState();
 }
 
 class _HomeServiceInformationState extends State<HomeServiceInformation> {
+
+  GainRelationObjectList _relationObjectListProvider;
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _mobileController = TextEditingController();
+  //分别定义两个输入框的焦点 用于切换焦点
+  final FocusNode _nodeName = FocusNode();
+  final FocusNode _nodeMobile = FocusNode();
 
   @override
   void initState() {
@@ -20,17 +33,267 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
   void dispose() {
     // TODO: implement dispose
     super.dispose();
+    _nameController.dispose();
+    _mobileController.dispose();
+  }
+
+  _dealWithRelationList(BuildContext context){
+    _relationObjectListProvider  = Provider.of<GainRelationObjectList>(context);
+    if(_relationObjectListProvider.getRelateListModel == null){
+      _relationObjectListProvider.setRelationList();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    _dealWithRelationList(context);
     return Scaffold(
       appBar: AppBar(
         title: Text("服务对象信息"),
       ),
-      body: Container(
-        child: Text("服务对象信息界面"),
+      body: ListView.builder(
+          itemCount: 1,
+          itemBuilder: (ctx, index) {
+            return _buildServiceObjectInfomationItem(context);
+          })
+    );
+  }
+
+  Widget _buildServiceObjectInfomationItem(BuildContext context){
+    return Container(
+      child: Column(
+        children: [
+          Row(
+            children: [
+              CachedNetworkImage(errorWidget: (context, url, error) => Icon(Icons.error),fit: BoxFit.fill,imageUrl: widget.params.logo!=null? widget.params.logo:"https://didi.depin.tech/storage/service/2020/02/26/5e561ce9c4a00.jpg",width: ScreenAdaper.width(160),height: ScreenAdaper.height(160),),
+              Column(
+                children: [
+                  Text(widget.params.name),
+                  Text("适应人群:${widget.params.crowd}"),
+                  Text("¥${widget.params.price}")
+                ],
+              ),
+            ],
+          ),
+          Container(),
+          Text("选择关联对象"),
+          Container(
+            width: ScreenAdaper.screenWidth(),
+            height:ScreenAdaper.height(300),
+            child:Consumer<ServiceItemList>(
+              builder: (_, a, child) =>
+                  GridView.builder(
+                    itemCount: _relationObjectListProvider.getRelateListModel == null? 0:_relationObjectListProvider.getRelateListModel.data.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      //Widget Function(BuildContext context, int index)
+                      return _buildGridViewItem(_relationObjectListProvider.getRelateListModel.data[index]);
+                    },
+                    //SliverGridDelegateWithFixedCrossAxisCount 构建一个横轴固定数量Widget
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      //横轴元素个数
+                        crossAxisCount: 4,
+                        //纵轴间距
+                        mainAxisSpacing: ScreenAdaper.width(10),
+                        //横轴间距
+                        crossAxisSpacing: ScreenAdaper.height(10),
+                        //子组件宽高长度比例
+                        childAspectRatio: 2),
+                  ),
+            ),
+          ),
+          Container(
+
+          ),
+          Text("关联信息"),
+          DottedLineWidget(axis: Axis.horizontal,
+            width: ScreenAdaper.screenWidth() - ScreenAdaper.width(70),
+            height: 10.0,
+            lineHeight: 0.5,
+            lineWidth: 3,
+            count: 40,
+            color: Colors.black45,),
+          Row(
+           children: [
+             Text("服务详细地址"),
+             Text("江苏生接口都是跨境电商跨境电商进口跨境电商恐惧恐惧恐惧"),
+           ],
+          ),
+          DottedLineWidget(axis: Axis.horizontal,
+            width: ScreenAdaper.screenWidth() - ScreenAdaper.width(70),
+            height: 10.0,
+            lineHeight: 0.5,
+            lineWidth: 3,
+            count: 40,
+            color: Colors.black45,),
+          Container(),
+          Text("主照料人"),
+          DottedLineWidget(axis: Axis.horizontal,
+            width: ScreenAdaper.screenWidth() - ScreenAdaper.width(70),
+            height: 10.0,
+            lineHeight: 0.5,
+            lineWidth: 3,
+            count: 40,
+            color: Colors.black45,),
+          SizedBox(),
+          MyTextField(
+            focusNode: _nodeName,
+            placeHolder: '请输入关联人姓名',
+            maxLength: 11,
+            keyboardType: TextInputType.phone,
+            controller: _nameController,
+          ),
+          DottedLineWidget(axis: Axis.horizontal,
+            width: ScreenAdaper.screenWidth() - ScreenAdaper.width(70),
+            height: 10.0,
+            lineHeight: 0.5,
+            lineWidth: 3,
+            count: 40,
+            color: Colors.black45,),
+          MyTextField(
+            focusNode: _nodeMobile,
+            placeHolder: '请输入关联人手机号',
+            maxLength: 11,
+            keyboardType: TextInputType.phone,
+            controller: _mobileController,
+          ),
+          DottedLineWidget(axis: Axis.horizontal,
+            width: ScreenAdaper.screenWidth() - ScreenAdaper.width(70),
+            height: 10.0,
+            lineHeight: 0.5,
+            lineWidth: 3,
+            count: 40,
+            color: Colors.black45,),
+          Container(),
+          Row(
+            children: [
+              Text("订单信息"),
+              Text("待预约"),
+            ],
+          ),
+          DottedLineWidget(axis: Axis.horizontal,
+            width: ScreenAdaper.screenWidth() - ScreenAdaper.width(70),
+            height: 10.0,
+            lineHeight: 0.5,
+            lineWidth: 3,
+            count: 40,
+            color: Colors.black45,),
+          Row(
+            children: [
+              Text("服务机构"),
+              Text("苏州第一附属医院"),
+            ],
+          ),
+          DottedLineWidget(axis: Axis.horizontal,
+            width: ScreenAdaper.screenWidth() - ScreenAdaper.width(70),
+            height: 10.0,
+            lineHeight: 0.5,
+            lineWidth: 3,
+            count: 40,
+            color: Colors.black45,),
+          Row(
+            children: [
+              Text("加急费（自选）"),
+              FlatButton(
+                  onPressed: (){
+                      LogUtil.d("点击了加急按钮");
+                  },
+                  child: Text("0.01元")),
+            ],
+          ),
+          Text("注：如未按约定时间上门服务，可退还加急费"),
+          DottedLineWidget(axis: Axis.horizontal,
+            width: ScreenAdaper.screenWidth() - ScreenAdaper.width(70),
+            height: 10.0,
+            lineHeight: 0.5,
+            lineWidth: 3,
+            count: 40,
+            color: Colors.black45,),
+          Row(
+            children: [
+              Text("服务时间"),
+              Text("2020-09-03 10:00:00"),
+            ],
+          ),
+          DottedLineWidget(axis: Axis.horizontal,
+            width: ScreenAdaper.screenWidth() - ScreenAdaper.width(70),
+            height: 10.0,
+            lineHeight: 0.5,
+            lineWidth: 3,
+            count: 40,
+            color: Colors.black45,),
+          Row(
+            children: [
+              Text("*注",style: TextStyle(color: Colors.red),),
+              Text("此机构包含基础服务费，服务费0.01元,起步价0.01元（5公里内），每公里增加0.01元"),
+            ],
+          ),
+          Container(),
+          Row(
+            children: [
+              Text("保险信息"),
+              Text("免费为服务对象投保中国人保意外保险")
+            ],
+          ),
+          Container(),
+          Text("情况描述"),
+          Container(
+            child: MyTextField(
+              focusNode: _nodeMobile,
+              placeHolder: '请输入情况描述',
+              maxLength: 11,
+              keyboardType: TextInputType.phone,
+              controller: _mobileController,
+            ),
+          ),
+          Text("最多输入一百字"),
+          Container(
+
+          ),
+          Text("上传辅助资料"),
+          Container(
+            child: Text("此处为图片上传"),
+          ),
+          Text("请上传近期医嘱，病历。检验单，以便医护人员全面了解情况。"),
+          Row(
+            children: [
+              FlatButton(onPressed: (){
+                LogUtil.d("点击了有护理工具");
+              }, child: Text("有护理工具")),
+              FlatButton(onPressed: (){
+                LogUtil.d("点击了有药品");
+              }, child: Text("有药品")),
+              FlatButton(onPressed: (){
+                LogUtil.d("点击了有医嘱");
+              }, child: Text("有医嘱")),
+            ],
+          ),
+          Container(
+
+          ),
+          Row(
+            children: [
+              Text('我已阅读'),
+              Text("《知情同意书》",style: TextStyle(color: Colors.orange),),
+              Text(","),
+              Text("点击此处",style: TextStyle(color: Colors.orange),),
+              Text("签字确认"),
+            ],
+          ),
+          Text("此处为签字"),
+        ],
       ),
     );
   }
+
+  Widget _buildGridViewItem(RelatedObjectListData item){
+    return Container(
+      child: OutlineButton(
+        child: Text(item.realname,style: TextStyle(color: Colors.black,fontSize: ScreenAdaper.sp(30)),),
+        onPressed: (){
+          LogUtil.d("点击了");
+        },
+      )
+    );
+  }
+
 }

@@ -3,6 +3,8 @@ import 'package:nurseproject_flutter/pages/AppHomePage/Home/home_request/home_mo
 import 'package:nurseproject_flutter/pages/AppHomePage/Home/home_request/home_request.dart';
 import '../pages/AppHomePage/LoginAndRegister/LoginAndRegisterRequest/LoginModel.dart';
 import '../utils/storage.dart';
+import '../pages/AppHomePage/MyPersonal/RelatedObject_request/related_object_list_entity.dart';
+import '../pages/AppHomePage/MyPersonal/RelatedObject_request/RelatedObjectRequest.dart';
 // Provider状态管理使用
 class ServiceItemList with ChangeNotifier {
   List<HomeItem> _serviceList = [];
@@ -43,6 +45,23 @@ class GainUserModel with ChangeNotifier{
     }else{
       _userModel = 0;
       Future.delayed(Duration(milliseconds: 200)).then((e) {
+        notifyListeners();
+      });
+    }
+  }
+}
+
+class GainRelationObjectList with ChangeNotifier{
+
+  RelatedObjectListEntity _relateListModel = null;
+
+  RelatedObjectListEntity get getRelateListModel => _relateListModel;
+
+  void setRelationList(){
+    final model = StorageUtil().getUserModel();
+    if (model != null) {
+      RelatedObjectRequest.requestRelatedObjectList((model as UserModel).token).then((value){
+        _relateListModel = value;
         notifyListeners();
       });
     }

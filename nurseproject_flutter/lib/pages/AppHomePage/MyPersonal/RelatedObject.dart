@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../utils/util.dart';
 import '../LoginAndRegister/LoginAndRegisterRequest/LoginModel.dart';
-import './RelatedObject_request/RelatedObjectItemModel.dart';
 import './RelatedObject_request/RelatedObjectItem.dart';
 import './RelatedObject_request/RelatedObjectRequest.dart';
+import './RelatedObject_request/related_object_list_entity.dart';
 
 class RelatedObject extends StatefulWidget {
   RelatedObject({Key key, this.params}) : super(key: key);
@@ -14,7 +14,7 @@ class RelatedObject extends StatefulWidget {
 
 class _RelatedObjectState extends State<RelatedObject> {
 
-  List<RelatedObjectItemModel> _relatedList = [];
+  RelatedObjectListEntity _relatedList;
 
   @override
   void initState() {
@@ -22,9 +22,8 @@ class _RelatedObjectState extends State<RelatedObject> {
     super.initState();
     RelatedObjectRequest.requestRelatedObjectList(widget.params.token).then((value){
       LogUtil.d(value);
-      _relatedList = [];
       setState(() {
-        _relatedList.addAll(value);
+        _relatedList = value;
       });
     });
   }
@@ -43,9 +42,9 @@ class _RelatedObjectState extends State<RelatedObject> {
       ),
       body: Container(
         child: ListView.builder(
-            itemCount: _relatedList.length,
+            itemCount: _relatedList == null?0:_relatedList.data.length,
             itemBuilder: (ctx, index) {
-              return RelatedObjectItem(_relatedList[index]);
+              return RelatedObjectItem(_relatedList.data[index]);
             }),
       ),
     );

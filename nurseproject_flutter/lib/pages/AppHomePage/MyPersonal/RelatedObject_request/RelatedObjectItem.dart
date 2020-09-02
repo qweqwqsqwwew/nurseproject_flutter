@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nurseproject_flutter/utils/screen_adaper.dart';
-import './RelatedObjectItemModel.dart';
 import './DottedLineWidget.dart';
+import 'related_object_list_entity.dart';
 class RelatedObjectItem extends StatelessWidget {
-  final RelatedObjectItemModel _model;
+  RelatedObjectListData _model;
   RelatedObjectItem(this._model);
 
   @override
@@ -34,7 +34,7 @@ class RelatedObjectItem extends StatelessWidget {
                     ],
                   ),
                   Container(
-                    child: Text('身份证号：${_model.card_no}'),
+                    child: Text('身份证号：${_model.cardNo}'),
                   ),
                   Container(
                     child: Text('关   系：${_model.relation}'),
