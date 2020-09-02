@@ -20,9 +20,12 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
   GainRelationObjectList _relationObjectListProvider;
   TextEditingController _nameController = TextEditingController();
   TextEditingController _mobileController = TextEditingController();
+  TextEditingController _qingkuangController = TextEditingController();
+
   //分别定义两个输入框的焦点 用于切换焦点
   final FocusNode _nodeName = FocusNode();
   final FocusNode _nodeMobile = FocusNode();
+  final FocusNode _nodeQingkuang = FocusNode();
 
   RelatedObjectListData _selectRelationPersion;
 
@@ -40,6 +43,7 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
     super.dispose();
     _nameController.dispose();
     _mobileController.dispose();
+    _qingkuangController.dispose();
   }
 
   _dealWithRelationList(BuildContext context){
@@ -434,11 +438,11 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
           ),
           Container(
             child: MyTextField(
-              focusNode: _nodeMobile,
+              focusNode: _nodeQingkuang,
               placeHolder: '请输入情况描述',
-              maxLength: 11,
-              keyboardType: TextInputType.phone,
-              controller: _mobileController,
+              maxLength: 100,
+              keyboardType: TextInputType.text,
+              controller: _qingkuangController,
             ),
           ),
           Container(

@@ -89,11 +89,20 @@ class _HomeItemDetailState extends State<HomeItemDetail> {
               child: Text("立即预约",style: TextStyle(color: Colors.white),),
             ),
             onTap: (){
-              Navigator.pushNamed(
-                context,
-                '/homeServiceInformation',
-                arguments: _itemDetail, //　传递参数
-              );
+              var m = StorageUtil().getUserModel();
+              if(m!=null){
+                Navigator.pushNamed(
+                  context,
+                  '/homeServiceInformation',
+                  arguments: _itemDetail, //　传递参数
+                );
+              }else{
+                Navigator.pushNamed(
+                  context,
+                  '/login',
+                  arguments: {}, //　传递参数
+                );
+              }
             },
           )
         ],
