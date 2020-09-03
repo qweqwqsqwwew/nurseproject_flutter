@@ -8,6 +8,7 @@ import '../../../../provider/appCommenNetData.dart';
 import 'package:provider/provider.dart';
 import '../../MyPersonal/RelatedObject_request/DottedLineWidget.dart';
 import '../../Commen/text_field.dart';
+import 'package:nurseproject_flutter/components/flutter_jd_address_selector.dart';
 class HomeServiceInformation extends StatefulWidget {
   HomeServiceInformation({Key key, this.params}) : super(key: key);
   final ItemDetail params;
@@ -128,6 +129,25 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
       ),
     );
 
+  }
+
+  void _choiceHospitalDialog() async {
+    print('======');
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return JDAddressDialog(
+              onSelected: (province, city, county) {
+//                address = '$province-$city-$county';
+//
+//                print('$address');
+//                setState(() {});
+              },
+              title: '选择机构',
+              titleArr: ['苏州市第一人民医院','苏州市第二人民医院','苏州市第三人民医院','苏州市第四人民医院','苏州市第五人民医院',],
+              selectedColor: Colors.red,
+              unselectedColor: Colors.black);
+        });
   }
 
   Widget _buildServiceObjectInfomationItem(BuildContext context){
@@ -311,6 +331,7 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
                 FlatButton(
                     onPressed: (){
                       LogUtil.d("点击了选择医院");
+                      _choiceHospitalDialog();
                     },
                     child: Row(
                       children: [
