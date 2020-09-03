@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import '../../../../utils/util.dart';
 import '../home_item_request/home_item_detail_model.dart';
@@ -9,6 +8,9 @@ import 'package:provider/provider.dart';
 import '../../MyPersonal/RelatedObject_request/DottedLineWidget.dart';
 import '../../Commen/text_field.dart';
 import 'package:nurseproject_flutter/components/flutter_jd_address_selector.dart';
+import 'hospital_model_entity.dart';
+import '../home_request/home_request.dart';
+import '../../../../components/images_picker/images_gridview_widget.dart';
 class HomeServiceInformation extends StatefulWidget {
   HomeServiceInformation({Key key, this.params}) : super(key: key);
   final ItemDetail params;
@@ -133,7 +135,7 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
 
   }
 
-  void _choiceHospitalDialog() async {
+  void _choiceHospitalDialog(List titleList) async {
     print('======');
     showModalBottomSheet(
         context: context,
@@ -144,7 +146,7 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
                 setState(() {});
               },
               title: '选择机构',
-              titleArr: ['苏州市第一人民医院','苏州市第二人民医院','苏州市第三人民医院','苏州市第四人民医院','苏州市第五人民医院',],
+              titleArr: titleList,
               selectedColor: Colors.red,
               unselectedColor: Colors.black);
         });
@@ -331,7 +333,19 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
                 FlatButton(
                     onPressed: (){
                       LogUtil.d("点击了选择医院");
-                      _choiceHospitalDialog();
+                      if(_relationObjectListProvider.getSelectRelationModel == null){
+                        ToasrShow.show("请先选择关联的病人");
+                        return;
+                      }
+                      HomeServiceInformationRequest.requestHospitalData(_relationObjectListProvider.getSelectRelationModel.cityId.toString(), widget.params.id).then((value){
+                        if(value != null){
+                          List titleArr = [];
+                          (value as HospitalModelEntity).xList.forEach((element) { 
+                            titleArr.add(element.name);
+                          });
+                          _choiceHospitalDialog(titleArr);
+                        }
+                      });
                     },
                     child: Row(
                       children: [
@@ -481,7 +495,7 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
           ),
           SizedBox(height: ScreenAdaper.height(10),),
           Container(
-            child: Text("此处为图片上传"),
+            child: ImagesGridviewWidget(),
           ),
           SizedBox(height: ScreenAdaper.height(10),),
           Text("请上传近期医嘱，病历。检验单，以便医护人员全面了解情况。",style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(23)),),

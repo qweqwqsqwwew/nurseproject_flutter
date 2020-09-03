@@ -47,6 +47,8 @@ dependencies:
 #  flutter_plugin_qrcode: ^1.0.1   #二维码扫描
   tobias: ^1.7.1    #支付宝支付
   cached_network_image: ^2.2.0+1 #缓存图片相关
+  multi_image_picker: ^4.6.1   #图片选择器
+  uuid: ^2.0.4
 
 dev_dependencies:
   flutter_test:

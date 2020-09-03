@@ -175,3 +175,16 @@ Future<Map> requestAliPayStr(String token,String trade_no) async{
   );
   return resData ?? {};
 }
+
+///获取医院列表
+Future<Map> requestHospital(String area_id,String item_id) async{
+  Map resData = await safeRequest(
+    serviceUrl['app_hospital_list'],
+    data: {
+      'area_id':area_id,
+      'item_id':item_id,
+    },
+    options: Options(method: 'POST'),
+  );
+  return resData ?? {};
+}

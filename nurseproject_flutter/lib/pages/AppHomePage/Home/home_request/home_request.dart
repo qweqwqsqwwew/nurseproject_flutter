@@ -1,22 +1,10 @@
 import 'package:nurseproject_flutter/utils/log_util.dart';
 import 'package:nurseproject_flutter/pages/AppHomePage/Home/home_request/home_model.dart';
 import 'package:nurseproject_flutter/services/api.dart';
-
+import 'package:nurseproject_flutter/generated/json/base/json_convert_content.dart';
+import '../ServiceObject/hospital_model_entity.dart';
 class HomeBannerRequest {
-  /*
-  static Future<List<MovieItem>> requestMovieList(int start) async {
-    final movieUrl = 'https://douban-api.uieee.com/v2/movie/top250?start=$start&count=${DoubanConfig.MOVIE_COUNT}';
 
-    final response = await HttpRequest.request(movieUrl);
-    final subjects = response['subjects'];
-
-    List<MovieItem> movies = [];
-    for(var sub in subjects){
-      movies.add(MovieItem.fromMap(sub));
-    }
-    return movies;
-  }
-  */
 
   static Future<List<BannerItem>> requestHomeBannerAds() async {
     Map resData = await getHomeBannerData();
@@ -45,6 +33,18 @@ class HomeItemsRequest {
       return itemsData;
     }else{
       return itemsData;
+    }
+  }
+}
+
+class HomeServiceInformationRequest{
+  static Future<dynamic> requestHospitalData(String area_id,String item_id) async {
+    Map resData = await requestHospital(area_id, item_id);
+    LogUtil.d(resData);
+    if (resData['success'] == 1){
+      return JsonConvert.fromJsonAsT<HospitalModelEntity>(resData["data"]);
+    }else{
+      return null;
     }
   }
 }

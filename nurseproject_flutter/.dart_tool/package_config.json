@@ -176,6 +176,12 @@
       "languageVersion": "2.10"
     },
     {
+      "name": "multi_image_picker",
+      "rootUri": "file:///Users/developer/Documents/developer/fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/multi_image_picker-4.7.12",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "nested",
       "rootUri": "file:///Users/developer/Documents/developer/fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/nested-0.0.4",
       "packageUri": "lib/",
@@ -452,7 +458,7 @@
       "languageVersion": "2.6"
     }
   ],
-  "generated": "2020-09-03T01:33:37.219473Z",
+  "generated": "2020-09-03T06:49:36.205887Z",
   "generator": "pub",
   "generatorVersion": "2.10.0-7.2.beta"
 }

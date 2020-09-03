@@ -197,9 +197,13 @@ if [ -r "${ARTIFACT_LIST_FILE}" ]; then
 fi
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/BSGridCollectionViewLayout/BSGridCollectionViewLayout.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/BSImagePicker/BSImagePicker.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/BSImageView/BSImageView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework"
   install_framework "${PODS_ROOT}/../Flutter/Flutter.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/fluttertoast/fluttertoast.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/multi_image_picker/multi_image_picker.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/package_info/package_info.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/path_provider/path_provider.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/shared_preferences/shared_preferences.framework"
@@ -208,9 +212,13 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/webview_flutter/webview_flutter.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/BSGridCollectionViewLayout/BSGridCollectionViewLayout.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/BSImagePicker/BSImagePicker.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/BSImageView/BSImageView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework"
   install_framework "${PODS_ROOT}/../Flutter/Flutter.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/fluttertoast/fluttertoast.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/multi_image_picker/multi_image_picker.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/package_info/package_info.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/path_provider/path_provider.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/shared_preferences/shared_preferences.framework"
@@ -219,9 +227,13 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/webview_flutter/webview_flutter.framework"
 fi
 if [[ "$CONFIGURATION" == "Profile" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/BSGridCollectionViewLayout/BSGridCollectionViewLayout.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/BSImagePicker/BSImagePicker.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/BSImageView/BSImageView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework"
   install_framework "${PODS_ROOT}/../Flutter/Flutter.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/fluttertoast/fluttertoast.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/multi_image_picker/multi_image_picker.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/package_info/package_info.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/path_provider/path_provider.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/shared_preferences/shared_preferences.framework"

@@ -10,6 +10,12 @@
 @import fluttertoast;
 #endif
 
+#if __has_include(<multi_image_picker/MultiImagePickerPlugin.h>)
+#import <multi_image_picker/MultiImagePickerPlugin.h>
+#else
+@import multi_image_picker;
+#endif
+
 #if __has_include(<package_info/FLTPackageInfoPlugin.h>)
 #import <package_info/FLTPackageInfoPlugin.h>
 #else
@@ -62,6 +68,7 @@
 
 + (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
   [FluttertoastPlugin registerWithRegistrar:[registry registrarForPlugin:@"FluttertoastPlugin"]];
+  [MultiImagePickerPlugin registerWithRegistrar:[registry registrarForPlugin:@"MultiImagePickerPlugin"]];
   [FLTPackageInfoPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTPackageInfoPlugin"]];
   [FLTPathProviderPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTPathProviderPlugin"]];
   [PermissionHandlerPlugin registerWithRegistrar:[registry registrarForPlugin:@"PermissionHandlerPlugin"]];
