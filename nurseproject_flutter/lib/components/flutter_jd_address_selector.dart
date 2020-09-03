@@ -9,6 +9,7 @@ import 'dart:ui' as ui show window;
 class JDAddressDialog extends StatefulWidget {
   final String title;
   final Function(String province, String city, String county) onSelected;
+  final Function(String title) onSingleSelected;
 
   final Color unselectedColor;
   final Color selectedColor;
@@ -21,7 +22,8 @@ class JDAddressDialog extends StatefulWidget {
 
   JDAddressDialog(
       {Key key,
-      @required this.onSelected,
+        this.onSelected,
+        this.onSingleSelected,
       this.title,
         this.titleArr,
       this.unselectedColor: Colors.grey,
@@ -220,44 +222,16 @@ class _JDAddressDialogState extends State<JDAddressDialog>
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
                   height: itemHeight,
                   alignment: Alignment.center,
-                  child: Row(children: <Widget>[
-                    Text(widget.titleArr[index],
-                        style: TextStyle(
-                            fontSize: widget.itemTextFontSize,
-                            color:widget.unselectedColor)),
-                    SizedBox(height: 8),
-//                    Offstage(
-//                        offstage: false,
-//                        child: Icon(Icons.check,
-//                            size: 16.0, color: widget.selectedColor))
-                  ])),
+                  child: Text(widget.titleArr[index],
+                      style: TextStyle(
+                          fontSize: widget.itemTextFontSize,
+                          color:widget.unselectedColor)),
+              ),
               onTap: () {
-                myTabs[_index] = Tab(text: mList[index]["name"]);
-                _positions[_index] = index;
-                _index++;
-                switch (_index) {
-                  case 1:
-                    mList = cities = provinces[_positions[0]]['cityList'];
-                    myTabs[1] = Tab(text: "请选择");
-                    myTabs[2] = Tab(text: "");
-                    break;
-                  case 2:
-                    mList = counties = cities[_positions[1]]['countyList'];
-                    myTabs[2] = Tab(text: "请选择");
-                    break;
-                  case 3:
-                    _index = 2;
-                    widget.onSelected(
-                        provinces[_positions[0]]["name"],
-                        cities[_positions[1]]["name"],
-                        counties[_positions[2]]["name"]);
+                    widget.onSingleSelected(
+                          widget.titleArr[index],
+                    );
                     Navigator.maybePop(context);
-                    break;
-                }
-                setState(() {});
-                _controller.animateTo(0.0,
-                    duration: Duration(milliseconds: 100), curve: Curves.ease);
-                _tabController.animateTo(_index);
               }),
           itemCount: widget.titleArr.length);
     }

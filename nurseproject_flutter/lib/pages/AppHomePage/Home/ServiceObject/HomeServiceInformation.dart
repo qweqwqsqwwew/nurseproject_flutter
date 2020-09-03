@@ -32,6 +32,8 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
 
   bool _isJiaJi = false;
 
+  String _selectJiGou = '选择机构';
+
   @override
   void initState() {
     // TODO: implement initState
@@ -137,11 +139,9 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
         context: context,
         builder: (BuildContext context) {
           return JDAddressDialog(
-              onSelected: (province, city, county) {
-//                address = '$province-$city-$county';
-//
-//                print('$address');
-//                setState(() {});
+              onSingleSelected: (title) {
+                _selectJiGou = title;
+                setState(() {});
               },
               title: '选择机构',
               titleArr: ['苏州市第一人民医院','苏州市第二人民医院','苏州市第三人民医院','苏州市第四人民医院','苏州市第五人民医院',],
@@ -337,7 +337,7 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
                       children: [
                         Container(
                           alignment: Alignment.centerLeft,
-                          child: Text("苏州第一附属医院",style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(23)),),
+                          child: Text(_selectJiGou,style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(23)),),
                         ),
                         Image.asset("asset/images/mine/jiantou.png",width: ScreenAdaper.width(25),height: ScreenAdaper.height(25),fit: BoxFit.fill,),
                       ],
