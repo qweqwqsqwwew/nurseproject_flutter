@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'my_iamge.dart';
 import 'package:uuid/uuid.dart';
+import '../../utils/util.dart';
 
 class ImagesGridviewWidget extends StatefulWidget {
   @override
@@ -31,7 +32,7 @@ class ImagesGridviewWidgetState extends State<ImagesGridviewWidget> {
     return Container(
       margin: EdgeInsets.only(left: 15, right: 15, top: 30),
       width: gradWidth,
-      height: gradWidth,
+      height: images.length<3?itemWidth:itemWidth*2,
 //              color: Colors.green,
       child: GridView(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -218,7 +219,8 @@ class ImagesGridviewWidgetState extends State<ImagesGridviewWidget> {
   }
 
   Future<void> loadImages() async {
-    if (images.length >= 9) {
+    if (images.length >= 4) {
+      ToasrShow.show("最多只能上传四张图片");
       return;
     }
 
@@ -227,12 +229,11 @@ class ImagesGridviewWidgetState extends State<ImagesGridviewWidget> {
 
     try {
       resultList = await MultiImagePicker.pickImages(
-        maxImages: 9 - images.length,
+        maxImages: 4 - images.length,
         enableCamera: true,
 
       );
     } on Exception catch (e) {
-//      error = e.message;
     }
 
     // If the widget was removed from the tree while the asynchronous platform
