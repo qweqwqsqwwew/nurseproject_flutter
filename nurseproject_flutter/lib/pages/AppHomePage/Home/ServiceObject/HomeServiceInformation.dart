@@ -495,7 +495,11 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
           ),
           SizedBox(height: ScreenAdaper.height(10),),
           Container(
-            child: ImagesGridviewWidget(),
+            child: ImagesGridviewWidget(
+              onSelectedImageList: (imageList){
+                LogUtil.d(imageList.length);
+              },
+            ),
           ),
           SizedBox(height: ScreenAdaper.height(10),),
           Text("请上传近期医嘱，病历。检验单，以便医护人员全面了解情况。",style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(23)),),

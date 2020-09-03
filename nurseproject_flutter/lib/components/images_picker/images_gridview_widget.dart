@@ -6,6 +6,14 @@ import 'package:uuid/uuid.dart';
 import '../../utils/util.dart';
 
 class ImagesGridviewWidget extends StatefulWidget {
+
+  final Function(List imageList) onSelectedImageList;
+
+  ImagesGridviewWidget(
+      {Key key,
+        this.onSelectedImageList})
+      :super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -224,6 +232,8 @@ class ImagesGridviewWidgetState extends State<ImagesGridviewWidget> {
       return;
     }
 
+
+
     List<Asset> resultList;
 //    String error;
 
@@ -235,10 +245,6 @@ class ImagesGridviewWidgetState extends State<ImagesGridviewWidget> {
       );
     } on Exception catch (e) {
     }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
     if (!mounted) return;
 
     if(resultList==null) return;
@@ -247,7 +253,7 @@ class ImagesGridviewWidgetState extends State<ImagesGridviewWidget> {
         String uuid = Uuid().v1();
         images.add(MyImage(asset,uuid));
       }
-//      if (error == null) _error = 'No Error Dectected';
+      widget.onSelectedImageList(images);
     });
   }
 
