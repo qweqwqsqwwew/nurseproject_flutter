@@ -188,3 +188,15 @@ Future<Map> requestHospital(String area_id,String item_id) async{
   );
   return resData ?? {};
 }
+
+///获取医院机构协议
+Future<Map> requestHospitalXi(String hospital_id) async{
+  Map resData = await safeRequest(
+    serviceUrl['app_hospital_xiyi'],
+    data: {
+      'hospital_id':hospital_id,
+    },
+    options: Options(method: 'POST'),
+  );
+  return resData ?? {};
+}

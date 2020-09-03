@@ -7,6 +7,8 @@ import 'package:nurseproject_flutter/pages/AppHomePage/Home/ServiceObject/hospit
 import 'package:nurseproject_flutter/generated/json/hospital_model_entity_helper.dart';
 import 'package:nurseproject_flutter/pages/AppHomePage/MyPersonal/RelatedObject_request/related_object_list_entity.dart';
 import 'package:nurseproject_flutter/generated/json/related_object_list_entity_helper.dart';
+import 'package:nurseproject_flutter/pages/AppHomePage/Home/ServiceObject/hospitai_xi_yi_model_entity.dart';
+import 'package:nurseproject_flutter/generated/json/hospitai_xi_yi_model_entity_helper.dart';
 import 'package:nurseproject_flutter/pages/AppHomePage/MyPersonal/Order/order_model_entity.dart';
 import 'package:nurseproject_flutter/generated/json/order_model_entity_helper.dart';
 import 'package:nurseproject_flutter/pages/AppHomePage/MyPersonal/Order/order_detail_entity.dart';
@@ -28,7 +30,8 @@ class JsonConvert<T> {
 			return hospitalModelEntityFromJson(data as HospitalModelEntity, json) as T;			case HospitalModelList:
 			return hospitalModelListFromJson(data as HospitalModelList, json) as T;			case RelatedObjectListEntity:
 			return relatedObjectListEntityFromJson(data as RelatedObjectListEntity, json) as T;			case RelatedObjectListData:
-			return relatedObjectListDataFromJson(data as RelatedObjectListData, json) as T;			case OrderModelEntity:
+			return relatedObjectListDataFromJson(data as RelatedObjectListData, json) as T;			case HospitaiXiYiModelEntity:
+			return hospitaiXiYiModelEntityFromJson(data as HospitaiXiYiModelEntity, json) as T;			case OrderModelEntity:
 			return orderModelEntityFromJson(data as OrderModelEntity, json) as T;			case OrderModelList:
 			return orderModelListFromJson(data as OrderModelList, json) as T;			case OrderDetailEntity:
 			return orderDetailEntityFromJson(data as OrderDetailEntity, json) as T;			case PayModelEntity:
@@ -41,7 +44,8 @@ class JsonConvert<T> {
 			return hospitalModelEntityToJson(data as HospitalModelEntity);			case HospitalModelList:
 			return hospitalModelListToJson(data as HospitalModelList);			case RelatedObjectListEntity:
 			return relatedObjectListEntityToJson(data as RelatedObjectListEntity);			case RelatedObjectListData:
-			return relatedObjectListDataToJson(data as RelatedObjectListData);			case OrderModelEntity:
+			return relatedObjectListDataToJson(data as RelatedObjectListData);			case HospitaiXiYiModelEntity:
+			return hospitaiXiYiModelEntityToJson(data as HospitaiXiYiModelEntity);			case OrderModelEntity:
 			return orderModelEntityToJson(data as OrderModelEntity);			case OrderModelList:
 			return orderModelListToJson(data as OrderModelList);			case OrderDetailEntity:
 			return orderDetailEntityToJson(data as OrderDetailEntity);			case PayModelEntity:
@@ -54,7 +58,8 @@ class JsonConvert<T> {
 			return HospitalModelEntity().fromJson(json);			case 'HospitalModelList':
 			return HospitalModelList().fromJson(json);			case 'RelatedObjectListEntity':
 			return RelatedObjectListEntity().fromJson(json);			case 'RelatedObjectListData':
-			return RelatedObjectListData().fromJson(json);			case 'OrderModelEntity':
+			return RelatedObjectListData().fromJson(json);			case 'HospitaiXiYiModelEntity':
+			return HospitaiXiYiModelEntity().fromJson(json);			case 'OrderModelEntity':
 			return OrderModelEntity().fromJson(json);			case 'OrderModelList':
 			return OrderModelList().fromJson(json);			case 'OrderDetailEntity':
 			return OrderDetailEntity().fromJson(json);			case 'PayModelEntity':
@@ -68,7 +73,8 @@ class JsonConvert<T> {
 			return List<HospitalModelEntity>();			case 'HospitalModelList':
 			return List<HospitalModelList>();			case 'RelatedObjectListEntity':
 			return List<RelatedObjectListEntity>();			case 'RelatedObjectListData':
-			return List<RelatedObjectListData>();			case 'OrderModelEntity':
+			return List<RelatedObjectListData>();			case 'HospitaiXiYiModelEntity':
+			return List<HospitaiXiYiModelEntity>();			case 'OrderModelEntity':
 			return List<OrderModelEntity>();			case 'OrderModelList':
 			return List<OrderModelList>();			case 'OrderDetailEntity':
 			return List<OrderDetailEntity>();			case 'PayModelEntity':

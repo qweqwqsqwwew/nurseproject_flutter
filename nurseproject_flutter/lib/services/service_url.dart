@@ -16,4 +16,5 @@ const serviceUrl = {
    'app_order_detail':appurlPro + 'order/detail',
    'app_order_pay':appurlProExcept + 'pay/prepay',
    'app_hospital_list':appurlPro + 'service/city/hospital',
+   'app_hospital_xiyi':appurlPro + 'content/consent',
 };

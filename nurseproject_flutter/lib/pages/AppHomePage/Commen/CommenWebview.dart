@@ -23,10 +23,12 @@ class _CommenWebviewState extends State<CommenWebview> {
       appBar: AppBar(
         title: Text(widget.params["title"],style: TextStyle(color: Colors.white),),
       ),
-      body: WebView(
-        initialUrl: widget.params["url"],
-        javascriptMode: JavascriptMode.unrestricted,
-        // 监听
+      body: Container(
+        color: Colors.white,
+        child: WebView(
+          initialUrl: widget.params["url"],
+          javascriptMode: JavascriptMode.unrestricted,
+          // 监听
 //        onWebViewCreated: (controller) {
 //          _controller = controller;
 //          _title = widget.navTtile;
@@ -39,26 +41,27 @@ class _CommenWebviewState extends State<CommenWebview> {
 //            });
 //          });
 //        },
-        navigationDelegate: (NavigationRequest request) {
-          if (request.url.startsWith("gxmobile://")) {
-            // 拦截处理
-            return NavigationDecision.prevent;
-          }
-          // 不需要链接处理
-          return NavigationDecision.navigate;
-        },
-        onWebResourceError: (error) {
-          // 界面加载错误
-          print(error.description);
-        },
-        // 注入js
-        javascriptChannels: <JavascriptChannel>[
-          JavascriptChannel(
-              name: 'name',
-              onMessageReceived: (JavascriptMessage message) {
-                print("参数： ${message.message}");
-              })
-        ].toSet(),
+          navigationDelegate: (NavigationRequest request) {
+            if (request.url.startsWith("gxmobile://")) {
+              // 拦截处理
+              return NavigationDecision.prevent;
+            }
+            // 不需要链接处理
+            return NavigationDecision.navigate;
+          },
+          onWebResourceError: (error) {
+            // 界面加载错误
+            print(error.description);
+          },
+          // 注入js
+          javascriptChannels: <JavascriptChannel>[
+            JavascriptChannel(
+                name: 'name',
+                onMessageReceived: (JavascriptMessage message) {
+                  print("参数： ${message.message}");
+                })
+          ].toSet(),
+        ),
       ),
     );
   }

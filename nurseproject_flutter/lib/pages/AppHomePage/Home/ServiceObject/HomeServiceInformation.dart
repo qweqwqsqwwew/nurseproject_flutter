@@ -11,6 +11,7 @@ import 'package:nurseproject_flutter/components/flutter_jd_address_selector.dart
 import 'hospital_model_entity.dart';
 import '../home_request/home_request.dart';
 import '../../../../components/images_picker/images_gridview_widget.dart';
+import 'hospitai_xi_yi_model_entity.dart';
 class HomeServiceInformation extends StatefulWidget {
   HomeServiceInformation({Key key, this.params}) : super(key: key);
   final ItemDetail params;
@@ -34,7 +35,7 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
 
   bool _isJiaJi = false;
 
-  String _selectJiGou = '选择机构';
+  HospitalModelList _selectJiGou = null;
 
   @override
   void initState() {
@@ -137,16 +138,24 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
 
   void _choiceHospitalDialog(List titleList) async {
     print('======');
+    List titleArr = [];
+    titleList.forEach((element) {
+      titleArr.add(element.name);
+    });
     showModalBottomSheet(
         context: context,
         builder: (BuildContext context) {
           return JDAddressDialog(
               onSingleSelected: (title) {
-                _selectJiGou = title;
+                titleList.forEach((element) {
+                  if(element.name == title){
+                    _selectJiGou = element;
+                  }
+                });
                 setState(() {});
               },
               title: '选择机构',
-              titleArr: titleList,
+              titleArr: titleArr,
               selectedColor: Colors.red,
               unselectedColor: Colors.black);
         });
@@ -339,11 +348,7 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
                       }
                       HomeServiceInformationRequest.requestHospitalData(_relationObjectListProvider.getSelectRelationModel.cityId.toString(), widget.params.id).then((value){
                         if(value != null){
-                          List titleArr = [];
-                          (value as HospitalModelEntity).xList.forEach((element) { 
-                            titleArr.add(element.name);
-                          });
-                          _choiceHospitalDialog(titleArr);
+                          _choiceHospitalDialog((value as HospitalModelEntity).xList);
                         }
                       });
                     },
@@ -351,7 +356,7 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
                       children: [
                         Container(
                           alignment: Alignment.centerLeft,
-                          child: Text(_selectJiGou,style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(23)),),
+                          child: Text(_selectJiGou==null?'选择机构':_selectJiGou.name,style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(23)),),
                         ),
                         Image.asset("asset/images/mine/jiantou.png",width: ScreenAdaper.width(25),height: ScreenAdaper.height(25),fit: BoxFit.fill,),
                       ],
@@ -524,7 +529,25 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
           Row(
             children: [
               Text('我已阅读'),
-              Text("《知情同意书》",style: TextStyle(color: Colors.orange),),
+              GestureDetector(
+                child: Text("《知情同意书》",style: TextStyle(color: Colors.orange),),
+                onTap: (){
+                  if(_selectJiGou == null){
+                    ToasrShow.show("请选择服务机构");
+                    return;
+                  }
+                  LogUtil.d('------------------ssss');
+                  HomeServiceInformationRequest.requestHospitalXiYi(_selectJiGou.id.toString()).then((value){
+                    if(value != null){
+                      Navigator.pushNamed(
+                        context,
+                        '/commmenWebview',
+                        arguments: {"url":(value as HospitaiXiYiModelEntity).url,"title":(value as HospitaiXiYiModelEntity).title}, //　传递参数
+                      );
+                    }
+                  });
+                },
+              ),
               Text(","),
               Text("点击此处",style: TextStyle(color: Colors.orange),),
               Text("签字确认"),
