@@ -49,6 +49,7 @@ dependencies:
   cached_network_image: ^2.2.0+1 #缓存图片相关
   multi_image_picker: ^4.6.1   #图片选择器
   uuid: ^2.0.4
+  flutter_custom_calendar: ^1.0.4+0.5 #日历
 
 dev_dependencies:
   flutter_test:

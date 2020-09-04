@@ -104,6 +104,12 @@
       "languageVersion": "2.6"
     },
     {
+      "name": "flutter_custom_calendar",
+      "rootUri": "file:///Users/developer/Documents/developer/fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_custom_calendar-1.0.4+0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
       "name": "flutter_localizations",
       "rootUri": "file:///Users/developer/Documents/developer/fluttersdk/flutter/packages/flutter_localizations",
       "packageUri": "lib/",
@@ -458,7 +464,7 @@
       "languageVersion": "2.6"
     }
   ],
-  "generated": "2020-09-03T09:13:58.231937Z",
+  "generated": "2020-09-04T05:18:17.696474Z",
   "generator": "pub",
   "generatorVersion": "2.10.0-7.2.beta"
 }

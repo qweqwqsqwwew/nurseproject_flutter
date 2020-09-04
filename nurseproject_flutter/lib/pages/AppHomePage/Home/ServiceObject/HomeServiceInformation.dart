@@ -44,6 +44,8 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
   ///签名图片
   DartUI.Image _signerImage = null;
 
+  Widget _dealSignerImage = null;
+
 
   @override
   void initState() {
@@ -70,6 +72,7 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
   @override
   Widget build(BuildContext context) {
     _dealWithRelationList(context);
+    LogUtil.d('重新绘制');
     return Scaffold(
       appBar: AppBar(
         title: Text("服务对象信息"),
@@ -572,6 +575,7 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
                         }
                       },
                       sureSignerImage:(image){
+                        LogUtil.d('dssddsdsds');
                         setState(() {
                           _signerImage = image;
                         });
@@ -595,21 +599,31 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
     if(_signerImage == null){
       return Text("此处为签字");
     }else{
+      LogUtil.d('---------1');
       return Container(
         child:FutureBuilder<Widget>(
           future: showImage(image),
           builder: (BuildContext context, AsyncSnapshot snapshot){
           // 请求已结束
+            LogUtil.d('---------1');
             if(snapshot.connectionState == ConnectionState.done){
             if(snapshot.hasError){
+              LogUtil.d('---------3');
               return Text("此处为签字");
             }else{
             // 请求成功，显示数据
+              LogUtil.d('---------4');
               Widget image = snapshot.data;
+              _dealSignerImage = image;
                  return image;
             }
              }else{
-                  return Text("此处为签字");
+              LogUtil.d('---------5');
+                  if(_dealSignerImage == null){
+                    return Text("此处为签字");
+                  }else{
+                    return _dealSignerImage;
+                  }
             }
           }
       )
@@ -619,7 +633,7 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
 
    Future<Widget> showImage(DartUI.Image image) async {
     var pngBytes = await image.toByteData(format: DartUI.ImageByteFormat.png);
-    return Image.memory(Uint8List.view(pngBytes.buffer));
+    return  Image.memory(Uint8List.view(pngBytes.buffer));
   }
 
   Widget _buildGridViewItem(BuildContext context,RelatedObjectListData item){
