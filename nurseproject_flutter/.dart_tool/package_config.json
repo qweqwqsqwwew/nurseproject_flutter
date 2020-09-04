@@ -20,6 +20,12 @@
       "languageVersion": "2.10"
     },
     {
+      "name": "bot_toast",
+      "rootUri": "file:///Users/developer/Documents/developer/fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/bot_toast-3.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "cached_network_image",
       "rootUri": "file:///Users/developer/Documents/developer/fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/cached_network_image-2.3.1",
       "packageUri": "lib/",
@@ -464,7 +470,7 @@
       "languageVersion": "2.6"
     }
   ],
-  "generated": "2020-09-04T05:22:01.253122Z",
+  "generated": "2020-09-04T08:16:50.105919Z",
   "generator": "pub",
   "generatorVersion": "2.10.0-7.2.beta"
 }

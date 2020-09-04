@@ -9,6 +9,7 @@ import 'package:nurseproject_flutter/utils/log_util.dart';
 import 'package:nurseproject_flutter/pages/AppHomePage/Home/HomeComponents/home_top_service_widget.dart';
 import 'package:nurseproject_flutter/pages/AppHomePage/Home/HomeComponents/home_item_widget.dart';
 import 'package:nurseproject_flutter/provider/appCommenNetData.dart';
+
 class Home extends StatefulWidget {
   Home({Key key, this.params}) : super(key: key);
   final params;

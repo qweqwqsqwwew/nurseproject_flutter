@@ -23,6 +23,13 @@
             </list>
           </value>
         </entry>
+        <entry key="bot_toast">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../../fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/bot_toast-3.0.4/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="cached_network_image">
           <value>
             <list>
@@ -540,6 +547,7 @@
       <root url="file://$PROJECT_DIR$/../../fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/ana_page_loop-0.1.7/lib" />
       <root url="file://$PROJECT_DIR$/../../fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/async-2.5.0-nullsafety/lib" />
       <root url="file://$PROJECT_DIR$/../../fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/boolean_selector-2.1.0-nullsafety/lib" />
+      <root url="file://$PROJECT_DIR$/../../fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/bot_toast-3.0.4/lib" />
       <root url="file://$PROJECT_DIR$/../../fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/cached_network_image-2.3.1/lib" />
       <root url="file://$PROJECT_DIR$/../../fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/carousel_slider-2.2.1/lib" />
       <root url="file://$PROJECT_DIR$/../../fluttersdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/characters-1.1.0-nullsafety.2/lib" />

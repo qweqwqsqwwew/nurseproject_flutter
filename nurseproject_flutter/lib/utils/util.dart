@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:fluttertoast/fluttertoast.dart';
 import './storage.dart';
 import '../pages/AppHomePage/LoginAndRegister/LoginAndRegisterRequest/LoginModel.dart';
+import 'package:bot_toast/bot_toast.dart';
 
 export 'sp_util.dart' show SpUtil;
 export 'perm_utils.dart' show PermUtils;
@@ -10,6 +11,7 @@ export 'screen_adaper.dart' show ScreenAdaper;
 export 'toast_show.dart' show ToasrShow;
 export 'storage.dart' show StorageUtil;
 //export 'LoginModel.dart' show UserModel;
+export 'package:bot_toast/bot_toast.dart' show BotToast;
 
 class Util {
   /// 防抖函数
