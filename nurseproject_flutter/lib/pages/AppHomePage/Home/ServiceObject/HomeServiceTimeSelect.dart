@@ -161,12 +161,30 @@ class _HomeServiceTimeSelectState extends State<HomeServiceTimeSelect> {
               child: Text('已选择日期，需要选择两次服务时间',style: TextStyle(color: Colors.orange,fontSize: ScreenAdaper.sp(27)),),
             ),
             Container(
+              width: ScreenAdaper.screenWidth(),
+              height: ScreenAdaper.height(100),
               child: ListView.builder(
+                  scrollDirection:Axis.horizontal,
                   itemCount: _selectTwoDataList.length,
                   itemBuilder: (ctx, index) {
                     return _buildSelectData(index);
-                  });
-            )
+                  })
+            ),
+            GestureDetector(
+              child: new ClipRRect(
+                borderRadius: BorderRadius.circular(ScreenAdaper.width(35)),
+                child: Container(
+                  width: ScreenAdaper.screenWidth() - ScreenAdaper.width(100),
+                  color: Colors.orange,
+                  height: ScreenAdaper.height(80),
+                  alignment: Alignment.center,
+                  child:Text('确定',style: TextStyle(color: Colors.white,fontSize: ScreenAdaper.sp(35),),textAlign: TextAlign.center,),
+                ),
+              ),
+              onTap: (){
+                Navigator.maybePop(context);
+              },
+            ),
           ],
         ),
       )
@@ -174,7 +192,15 @@ class _HomeServiceTimeSelectState extends State<HomeServiceTimeSelect> {
   }
 
   Widget _buildSelectData(int index){
-    
+    return Container(
+      child: OutlineButton(
+        color: Colors.orange,
+        onPressed: (){
+          
+        },
+        child: Text(_selectTwoDataList[index],style: TextStyle(color: Colors.white,fontSize: ScreenAdaper.sp(25)),),
+      ),
+    );
   }
 
   Widget _buildGridViewItem(BuildContext context,int index){
