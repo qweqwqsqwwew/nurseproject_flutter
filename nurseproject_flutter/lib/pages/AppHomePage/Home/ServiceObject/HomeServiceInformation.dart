@@ -428,6 +428,11 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
                 FlatButton(
                     onPressed: (){
                       LogUtil.d("点击了选择时间");
+                      Navigator.pushNamed(
+                        context,
+                        '/homeServiceTimeSelect',
+                        arguments: {}, //　传递参数
+                      );
                     },
                     child: Row(
                       children: [

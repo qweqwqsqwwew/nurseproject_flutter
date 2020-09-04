@@ -44,4 +44,7 @@ class RouteName {
 
   ///服务对象信息界面 HomeServiceInformation
   static String homeServiceInformation = '/homeServiceInformation';
+
+  ///服务对象信息界面选择时间 HomeServiceTimeSelect
+  static String homeServiceTimeSelect = '/homeServiceTimeSelect';
  }

@@ -6,6 +6,7 @@ import '../pages/SplashPage/SplashPage.dart';
 import '../pages/TestDemo/TestDemo.dart';
 import '../pages/AppHomePage/Home/HomeItemDetail.dart';
 import '../pages/AppHomePage/Home/ServiceObject/HomeServiceInformation.dart';
+import '../pages/AppHomePage/Home/ServiceObject/HomeServiceTimeSelect.dart';
 import '../pages/AppHomePage/Commen/CommenWebview.dart';
 import '../pages/AppHomePage/LoginAndRegister/RegisterP.dart';
 import '../pages/AppHomePage/LoginAndRegister/Login.dart';
@@ -47,4 +48,6 @@ final Map<String, WidgetBuilder> routesData = {
   RouteName.payPreOrder:(BuildContext context,{params}) => PayPreOrder(params:params),
   ///服务对象信息界面 HomeServiceInformation
   RouteName.homeServiceInformation:(BuildContext context,{params}) => HomeServiceInformation(params:params),
+  ///服务对象信息界面选择日期 HomeServiceTimeSelect
+  RouteName.homeServiceTimeSelect:(BuildContext context,{params}) => HomeServiceTimeSelect(params:params),
 };
