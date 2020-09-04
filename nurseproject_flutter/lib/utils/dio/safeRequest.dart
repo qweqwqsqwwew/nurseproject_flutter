@@ -5,6 +5,7 @@ import '../../config/app_config.dart';
 import 'interceptors/header_interceptor.dart';
 import 'interceptors/log_interceptor.dart';
 
+
 /// 底层请求方法说明
 ///
 /// [options] dio请求的配置参数，默认get请求
@@ -62,6 +63,8 @@ Future safeRequest(
       new HeaderInterceptors(),
       new LogsInterceptors(),
     ]);
+
+
 
     return dioClient
         .request(

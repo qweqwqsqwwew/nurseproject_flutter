@@ -12,6 +12,10 @@ import 'hospital_model_entity.dart';
 import '../home_request/home_request.dart';
 import '../../../../components/images_picker/images_gridview_widget.dart';
 import 'hospitai_xi_yi_model_entity.dart';
+import '../../../../components/signer_dialog.dart';
+import '../../../../components/func.dart';
+import 'dart:typed_data';
+import 'dart:ui' as DartUI;
 class HomeServiceInformation extends StatefulWidget {
   HomeServiceInformation({Key key, this.params}) : super(key: key);
   final ItemDetail params;
@@ -36,6 +40,10 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
   bool _isJiaJi = false;
 
   HospitalModelList _selectJiGou = null;
+
+  ///签名图片
+  DartUI.Image _signerImage = null;
+
 
   @override
   void initState() {
@@ -549,16 +557,69 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
                 },
               ),
               Text(","),
-              Text("点击此处",style: TextStyle(color: Colors.orange),),
+              GestureDetector(
+                child: Text("点击此处",style: TextStyle(color: Colors.orange),),
+                onTap: (){
+                  LogUtil.d("-------点击了签名");
+                  FunctionUtil.popDialog(
+                    context,
+                    SignerDialog(
+                      items: ['取消', '确认'],
+                      onTap: (index) {
+                        LogUtil.d('object$index');
+                        if(index == 1){
+
+                        }
+                      },
+                      sureSignerImage:(image){
+                        setState(() {
+                          _signerImage = image;
+                        });
+                      },
+                    ),
+                  );
+                },
+              ),
               Text("签字确认"),
             ],
           ),
-          SizedBox(height: ScreenAdaper.height(50),),
-          Text("此处为签字"),
-          SizedBox(height: ScreenAdaper.height(50),),
+          SizedBox(height: ScreenAdaper.height(70),),
+          _isShowSigner(_signerImage),
+          SizedBox(height: ScreenAdaper.height(90),),
         ],
       ),
     );
+  }
+
+  Widget _isShowSigner(image){
+    if(_signerImage == null){
+      return Text("此处为签字");
+    }else{
+      return Container(
+        child:FutureBuilder<Widget>(
+          future: showImage(image),
+          builder: (BuildContext context, AsyncSnapshot snapshot){
+          // 请求已结束
+            if(snapshot.connectionState == ConnectionState.done){
+            if(snapshot.hasError){
+              return Text("此处为签字");
+            }else{
+            // 请求成功，显示数据
+              Widget image = snapshot.data;
+                 return image;
+            }
+             }else{
+                  return Text("此处为签字");
+            }
+          }
+      )
+      );
+    }
+  }
+
+   Future<Widget> showImage(DartUI.Image image) async {
+    var pngBytes = await image.toByteData(format: DartUI.ImageByteFormat.png);
+    return Image.memory(Uint8List.view(pngBytes.buffer));
   }
 
   Widget _buildGridViewItem(BuildContext context,RelatedObjectListData item){
