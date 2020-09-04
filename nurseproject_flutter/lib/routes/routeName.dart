@@ -47,4 +47,7 @@ class RouteName {
 
   ///服务对象信息界面选择时间 HomeServiceTimeSelect
   static String homeServiceTimeSelect = '/homeServiceTimeSelect';
+
+  ///关联对象详情页
+  static String relatedObjectItemDetail = '/relatedObjectItemDetail';
  }

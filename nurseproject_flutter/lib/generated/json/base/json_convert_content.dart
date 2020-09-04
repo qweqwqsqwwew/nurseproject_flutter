@@ -15,6 +15,8 @@ import 'package:nurseproject_flutter/pages/AppHomePage/MyPersonal/Order/order_de
 import 'package:nurseproject_flutter/generated/json/order_detail_entity_helper.dart';
 import 'package:nurseproject_flutter/pages/AppHomePage/MyPersonal/Order/pay_model_entity.dart';
 import 'package:nurseproject_flutter/generated/json/pay_model_entity_helper.dart';
+import 'package:nurseproject_flutter/pages/AppHomePage/MyPersonal/MineRequest/zong_xi_yi_model_entity.dart';
+import 'package:nurseproject_flutter/generated/json/zong_xi_yi_model_entity_helper.dart';
 
 class JsonConvert<T> {
 	T fromJson(Map<String, dynamic> json) {
@@ -35,7 +37,9 @@ class JsonConvert<T> {
 			return orderModelEntityFromJson(data as OrderModelEntity, json) as T;			case OrderModelList:
 			return orderModelListFromJson(data as OrderModelList, json) as T;			case OrderDetailEntity:
 			return orderDetailEntityFromJson(data as OrderDetailEntity, json) as T;			case PayModelEntity:
-			return payModelEntityFromJson(data as PayModelEntity, json) as T;    }
+			return payModelEntityFromJson(data as PayModelEntity, json) as T;			case ZongXiYiModelEntity:
+			return zongXiYiModelEntityFromJson(data as ZongXiYiModelEntity, json) as T;			case ZongXiYiModelData:
+			return zongXiYiModelDataFromJson(data as ZongXiYiModelData, json) as T;    }
     return data as T;
   }
 
@@ -49,7 +53,9 @@ class JsonConvert<T> {
 			return orderModelEntityToJson(data as OrderModelEntity);			case OrderModelList:
 			return orderModelListToJson(data as OrderModelList);			case OrderDetailEntity:
 			return orderDetailEntityToJson(data as OrderDetailEntity);			case PayModelEntity:
-			return payModelEntityToJson(data as PayModelEntity);    }
+			return payModelEntityToJson(data as PayModelEntity);			case ZongXiYiModelEntity:
+			return zongXiYiModelEntityToJson(data as ZongXiYiModelEntity);			case ZongXiYiModelData:
+			return zongXiYiModelDataToJson(data as ZongXiYiModelData);    }
     return data as T;
   }
   //Go back to a single instance by type
@@ -63,7 +69,9 @@ class JsonConvert<T> {
 			return OrderModelEntity().fromJson(json);			case 'OrderModelList':
 			return OrderModelList().fromJson(json);			case 'OrderDetailEntity':
 			return OrderDetailEntity().fromJson(json);			case 'PayModelEntity':
-			return PayModelEntity().fromJson(json);    }
+			return PayModelEntity().fromJson(json);			case 'ZongXiYiModelEntity':
+			return ZongXiYiModelEntity().fromJson(json);			case 'ZongXiYiModelData':
+			return ZongXiYiModelData().fromJson(json);    }
     return null;
   }
 
@@ -78,7 +86,9 @@ class JsonConvert<T> {
 			return List<OrderModelEntity>();			case 'OrderModelList':
 			return List<OrderModelList>();			case 'OrderDetailEntity':
 			return List<OrderDetailEntity>();			case 'PayModelEntity':
-			return List<PayModelEntity>();    }
+			return List<PayModelEntity>();			case 'ZongXiYiModelEntity':
+			return List<ZongXiYiModelEntity>();			case 'ZongXiYiModelData':
+			return List<ZongXiYiModelData>();    }
     return null;
   }
 

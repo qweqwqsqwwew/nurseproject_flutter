@@ -8,6 +8,8 @@ import 'package:flutter/services.dart';
 //import 'package:flutter_plugin_qrcode/flutter_plugin_qrcode.dart';
 import 'package:nurseproject_flutter/components/Qrcode/flutter_plugin_qrcode.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import '../MyPersonal/MineRequest/MineRequest.dart';
+import '../MyPersonal/MineRequest/zong_xi_yi_model_entity.dart';
 
 class MineLogin extends StatelessWidget {
   final UserModel _userModelData;
@@ -69,11 +71,15 @@ class MineLogin extends StatelessWidget {
           LogUtil.d('------点击了');
           showAlertDialog(context);
         }else if(index == 4){
-          Navigator.pushNamed(
-            context,
-            '/commmenWebview',
-            arguments: {"url":"https://didi.depin.tech/view-article/9f23f37fa9ced4dacd5f3df418ab9cf1","title":"帮助"}, //　传递参数
-          );
+          MineRequest.requestXiYia('platform_help').then((value){
+            if(value != null){
+              Navigator.pushNamed(
+                context,
+                '/commmenWebview',
+                arguments: {"url":(value as ZongXiYiModelEntity).data[0].url,"title":(value as ZongXiYiModelEntity).data[0].title}, //　传递参数
+              );
+            }
+          });
         }else if(index == 2){
           Navigator.pushNamed(
             context,
@@ -86,6 +92,16 @@ class MineLogin extends StatelessWidget {
             '/relatedObject',
             arguments: _userModelData, //　传递参数
           );
+        }else if(index == 5){
+            MineRequest.requestXiYia('info_protocol').then((value){
+              if(value != null){
+                Navigator.pushNamed(
+                  context,
+                  '/commmenWebview',
+                  arguments: {"url":(value as ZongXiYiModelEntity).data[0].url,"title":(value as ZongXiYiModelEntity).data[0].title}, //　传递参数
+                );
+              }
+            });
         }
       },
     );

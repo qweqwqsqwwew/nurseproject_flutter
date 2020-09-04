@@ -200,3 +200,13 @@ Future<Map> requestHospitalXi(String hospital_id) async{
   );
   return resData ?? {};
 }
+
+///获取服务条款协议
+Future<Map> requestXiYi(String cateCode) async{
+  Map resData = await safeRequest(
+    serviceUrl['app_xiyi'] + cateCode,
+    data: {},
+    options: Options(method: 'GET'),
+  );
+  return resData ?? {};
+}

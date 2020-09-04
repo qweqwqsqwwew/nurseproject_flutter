@@ -12,6 +12,7 @@ import '../pages/AppHomePage/LoginAndRegister/RegisterP.dart';
 import '../pages/AppHomePage/LoginAndRegister/Login.dart';
 import '../pages/AppHomePage/MyPersonal/PersonalSetting.dart';
 import '../pages/AppHomePage/MyPersonal/RelatedObject.dart';
+import '../pages/AppHomePage/MyPersonal/RelatedObject_request/RelatedObjectItemDetail.dart';
 import '../pages/AppHomePage/Changhuxian/OrderEvaluate.dart';
 import '../pages/AppHomePage/MyPersonal/Order/Order.dart';
 import '../pages/AppHomePage/MyPersonal/Order/OrderDetail.dart';
@@ -50,4 +51,6 @@ final Map<String, WidgetBuilder> routesData = {
   RouteName.homeServiceInformation:(BuildContext context,{params}) => HomeServiceInformation(params:params),
   ///服务对象信息界面选择日期 HomeServiceTimeSelect
   RouteName.homeServiceTimeSelect:(BuildContext context,{params}) => HomeServiceTimeSelect(params:params),
+  ///服务对象信息界面选择日期 RelatedObjectItemDetail
+  RouteName.relatedObjectItemDetail:(BuildContext context,{params}) => RelatedObjectItemDetail(params:params),
 };
