@@ -31,7 +31,8 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   _initAsync() async {
-    await SpUtil.getInstance();
+    /// 这边注释掉，这样就直接进主页
+        await SpUtil.getInstance();
     setState(() {
       /// 是否显示引导页。
       if (SpUtil.getData<bool>("key_guide", defValue: true)) {
