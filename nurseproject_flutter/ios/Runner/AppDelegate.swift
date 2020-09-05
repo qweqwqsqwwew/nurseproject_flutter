@@ -2,6 +2,7 @@ import UIKit
 import Flutter
 
 @UIApplicationMain
+//com.example.flutterFlexible
 @objc class AppDelegate: FlutterAppDelegate {
   override func application(
     _ application: UIApplication,
