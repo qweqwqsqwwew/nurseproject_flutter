@@ -2,6 +2,7 @@ import 'package:ana_page_loop/ana_page_loop.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jh_debug/jh_debug.dart';
+import 'package:nurseproject_flutter/ioc/locator.dart';
 import 'package:provider/provider.dart';
 import '../../components/UpdateAppVersion/UpdateAppVersion.dart'
     show getNewAppVer;
@@ -239,10 +240,15 @@ class _AppHomePageState extends State<AppHomePage> with PageViewListenerMixin {
           if(idx == 3){
             showAlertDialog(context);
           }else{
+            currentIndex = idx;
             setState(() {
               currentIndex = idx;
             });
-            pageController.jumpToPage(idx); // 跳转
+            if(idx == 4){
+              pageController.jumpToPage(idx-1); // 跳转
+            }else{
+              pageController.jumpToPage(idx); // 跳转
+            }
           }
         },
         items: _generateBottomBars(), // 底部菜单导航
