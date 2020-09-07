@@ -37,7 +37,10 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
 
   RelatedObjectListData _selectRelationPersion;
 
-  bool _isJiaJi = false;
+  bool _isJiaJi = false; ///是否加急
+  bool _isHuligongju = false; ///是否有护理工具
+  bool _isYaopin = false; ///是否有药品
+  bool _isYizhu = false; ///是否有医嘱
 
   HospitalModelList _selectJiGou = null;
 
@@ -529,15 +532,54 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
           Text("请上传近期医嘱，病历。检验单，以便医护人员全面了解情况。",style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(23)),),
           Row(
             children: [
-              FlatButton(onPressed: (){
-                LogUtil.d("点击了有护理工具");
-              }, child: Text("有护理工具")),
-              FlatButton(onPressed: (){
-                LogUtil.d("点击了有药品");
-              }, child: Text("有药品")),
-              FlatButton(onPressed: (){
-                LogUtil.d("点击了有医嘱");
-              }, child: Text("有医嘱")),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  new Checkbox(
+                    value: _isHuligongju,
+                    activeColor: Colors.orange,
+                    onChanged: (bool val) {
+                      // val 是布尔值
+                      setState(() {
+                        _isHuligongju = !_isHuligongju;
+                      });
+                    },
+                  ),
+                  Text("有护理工具",style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(23)),),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  new Checkbox(
+                    value: _isYaopin,
+                    activeColor: Colors.orange,
+                    onChanged: (bool val) {
+                      // val 是布尔值
+                      setState(() {
+                        _isYaopin = !_isYaopin;
+                      });
+                    },
+                  ),
+                  Text("有药品",style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(23)),),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  new Checkbox(
+                    value: _isYizhu,
+                    activeColor: Colors.orange,
+                    onChanged: (bool val) {
+                      // val 是布尔值
+                      setState(() {
+                        _isYizhu = !_isYizhu;
+                      });
+                    },
+                  ),
+                  Text("有医嘱",style: TextStyle(color: Colors.black54,fontSize: ScreenAdaper.sp(23)),),
+                ],
+              ),
             ],
           ),
           Container(
