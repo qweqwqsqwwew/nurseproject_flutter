@@ -23,6 +23,7 @@ class MyTextField extends StatefulWidget {
     this.isInputPwd: false,
     this.getVCode,
     this.countdown: 60,
+    this.noBottomLine:false,
   }) : super(key: key);
 
   final TextEditingController controller;
@@ -31,6 +32,7 @@ class MyTextField extends StatefulWidget {
   final TextInputType keyboardType;
   final FocusNode focusNode; //焦点
   final String placeHolder;
+  final bool noBottomLine;
   final bool isInputPwd;
   final Function getVCode;
 
@@ -121,7 +123,7 @@ class _MyTextFieldState extends State<MyTextField> {
             )),
             enabledBorder: UnderlineInputBorder(
                 borderSide: BorderSide(
-              color: Color(0xFFEEEEEE),
+              color: widget.noBottomLine?Colors.transparent:Color(0xFFEEEEEE),
               width: 0.8,
             )),
           ),

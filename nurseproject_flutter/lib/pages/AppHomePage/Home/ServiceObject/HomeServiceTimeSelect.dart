@@ -134,7 +134,7 @@ class _HomeServiceTimeSelectState extends State<HomeServiceTimeSelect> {
               count: 40,
               color: Colors.black45,),
             Container(
-              padding: EdgeInsets.only(left: ScreenAdaper.width(40),right: ScreenAdaper.width(40),top: ScreenAdaper.height(40)),
+              padding: EdgeInsets.only(left: ScreenAdaper.width(35),right: ScreenAdaper.width(35),top: ScreenAdaper.height(40)),
               width: ScreenAdaper.screenWidth(),
               height: ScreenAdaper.height(600),
               child: GridView.builder(
@@ -149,9 +149,9 @@ class _HomeServiceTimeSelectState extends State<HomeServiceTimeSelect> {
                   //横轴元素个数
                     crossAxisCount: 4,
                     //纵轴间距
-                    mainAxisSpacing: ScreenAdaper.width(50),
+                    mainAxisSpacing: ScreenAdaper.width(35),
                     //横轴间距
-                    crossAxisSpacing: ScreenAdaper.height(50),
+                    crossAxisSpacing: ScreenAdaper.height(35),
                     //子组件宽高长度比例
                     childAspectRatio: 1),
               ),
