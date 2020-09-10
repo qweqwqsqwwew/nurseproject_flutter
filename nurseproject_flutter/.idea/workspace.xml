@@ -5,6 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd158dda-6711-4c0d-89a7-3c39eb7842d2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/5.6.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/5.6.2/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/5.6.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/5.6.2/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/5.6.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/5.6.2/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/5.6.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/5.6.2/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/AppHomePage/Home/ServiceObject/HomeServiceInformation.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/AppHomePage/Home/ServiceObject/HomeServiceInformation.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,7 +20,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="35b95a20" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="12344321" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -44,6 +51,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/components" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -93,6 +101,10 @@
       <workItem from="1598602367408" duration="2801000" />
       <workItem from="1598605267865" duration="1825000" />
       <workItem from="1598837951143" duration="1124000" />
+      <workItem from="1599620641232" duration="98000" />
+      <workItem from="1599620765882" duration="118000" />
+      <workItem from="1599620899569" duration="471000" />
+      <workItem from="1599628156429" duration="2827000" />
     </task>
     <servers />
   </component>
@@ -118,25 +130,33 @@
     </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1358" height="251" key="GridCell.Tab.0.bottom" timestamp="1598607094008">
+    <state width="1358" height="251" key="GridCell.Tab.0.bottom" timestamp="1599631316499">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1358" height="251" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1598607094008" />
-    <state width="1358" height="251" key="GridCell.Tab.0.center" timestamp="1598607094008">
+    <state width="1358" height="251" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1599631316499" />
+    <state width="1358" height="251" key="GridCell.Tab.0.center" timestamp="1599631316498">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1358" height="251" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1598607094008" />
-    <state width="1358" height="251" key="GridCell.Tab.0.left" timestamp="1598607094007">
+    <state width="1358" height="251" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1599631316498" />
+    <state width="1358" height="251" key="GridCell.Tab.0.left" timestamp="1599631316497">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1358" height="251" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1598607094007" />
-    <state width="1358" height="251" key="GridCell.Tab.0.right" timestamp="1598607094008">
+    <state width="1358" height="251" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1599631316497" />
+    <state width="1358" height="251" key="GridCell.Tab.0.right" timestamp="1599631316498">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1358" height="251" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1598607094008" />
-    <state x="5" y="84" key="SettingsEditor" timestamp="1598603610384">
+    <state width="1358" height="251" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1599631316498" />
+    <state x="237" y="98" key="SettingsEditor" timestamp="1599629677716">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="5" y="84" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1598603610384" />
+    <state x="237" y="98" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1599629677716" />
+    <state x="441" y="74" width="598" height="735" key="find.popup" timestamp="1599630431655">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="441" y="74" width="598" height="735" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1599630431655" />
+    <state x="108" y="167" key="new project wizard" timestamp="1599621002530">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="108" y="167" key="new project wizard/0.23.1440.877@0.23.1440.877" timestamp="1599621002530" />
   </component>
 </project>

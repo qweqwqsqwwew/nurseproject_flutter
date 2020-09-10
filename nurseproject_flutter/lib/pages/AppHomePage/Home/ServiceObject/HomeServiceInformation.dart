@@ -47,7 +47,7 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
   ///签名图片
   DartUI.Image _signerImage = null;
 
-  Widget _dealSignerImage = null;
+  List <Widget> _dealSignerImage_list = [];
 
 
   @override
@@ -627,6 +627,7 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
                       sureSignerImage:(image){
                         LogUtil.d('dssddsdsds');
                         setState(() {
+                          LogUtil.d('--------------------qqqq------${image}');
                           _signerImage = image;
                         });
                       },
@@ -647,7 +648,16 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
 
   Widget _isShowSigner(image){
     if(_signerImage == null){
-      return Text("此处为签字");
+      LogUtil.d('---------9');
+//      return Text("此处为签字");
+      if(_dealSignerImage_list.length == 0){
+        LogUtil.d('---------7');
+        return Text("此处为签字");
+//      return Container();
+      }else{
+        LogUtil.d('---------8');
+        return _dealSignerImage_list[0];
+      }
     }else{
       LogUtil.d('---------1');
       return Container(
@@ -655,24 +665,30 @@ class _HomeServiceInformationState extends State<HomeServiceInformation> {
           future: showImage(image),
           builder: (BuildContext context, AsyncSnapshot snapshot){
           // 请求已结束
-            LogUtil.d('---------1');
+            LogUtil.d('---------6');
             if(snapshot.connectionState == ConnectionState.done){
             if(snapshot.hasError){
+              LogUtil.d('---------10');
               LogUtil.d('---------3');
               return Text("此处为签字");
+//              return Container();
             }else{
             // 请求成功，显示数据
               LogUtil.d('---------4');
+              _dealSignerImage_list = [];
               Widget image = snapshot.data;
-              _dealSignerImage = image;
+              _dealSignerImage_list.add(image);
                  return image;
             }
              }else{
               LogUtil.d('---------5');
-                  if(_dealSignerImage == null){
+                  if(_dealSignerImage_list.length == 0){
+                    LogUtil.d('---------7');
                     return Text("此处为签字");
+//                    return Container();
                   }else{
-                    return _dealSignerImage;
+                    LogUtil.d('---------8');
+                    return _dealSignerImage_list[0];
                   }
             }
           }
