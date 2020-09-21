@@ -176,7 +176,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         image: DecorationImage(
-                            image: NetworkImage(item.img),
+                            image: NetworkImage(item.img!=null?item.img:"https://didi.depin.tech/storage/service/2020/02/26/5e561e7f86e2b.jpg"),
                             fit: BoxFit.cover
                         )
                     ),
